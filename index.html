@@ -2169,12 +2169,10 @@
 
     .fuel-ticket-currency-mark {
       display: block;
+      width: 1.2rem !important;
+      height: 1.2rem !important;
       color: #fff;
-      font-size: 1.12rem;
-      font-weight: 800;
-      line-height: 1;
-      letter-spacing: -.04em;
-      transform: translateY(-.02em);
+      transform: none;
     }
 
     .fuel-ticket-label {
@@ -3238,7 +3236,9 @@
           <div class="fuel-ticket-total">
             <div class="fuel-ticket-total-copy">
               <span class="fuel-ticket-icon" aria-hidden="true">
-                <span class="fuel-ticket-currency-mark">$</span>
+                <svg class="fuel-ticket-currency-mark" viewBox="0 0 24 24" shape-rendering="geometricPrecision">
+                  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                </svg>
               </span>
               <div>
                 <span class="fuel-ticket-label">Trip cost</span>

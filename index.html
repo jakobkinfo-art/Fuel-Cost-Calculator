@@ -1575,7 +1575,1306 @@
       .fuel-presets { grid-template-columns: 1fr 1fr; }
     }
 
+    /* ============ Simplified calculator layout ============ */
+    .fuel-hero {
+      max-width: 42rem;
+      padding-top: clamp(1.25rem, 4vw, 2.5rem);
+    }
+
+    .fuel-hero h1 {
+      font-size: clamp(2.35rem, 6vw, 3.85rem);
+      letter-spacing: -.045em;
+    }
+
+    .fuel-hero-copy {
+      max-width: none;
+      margin-top: .55rem;
+      color: var(--slate-600);
+      font-size: clamp(1rem, 2vw, 1.18rem);
+      line-height: 1.55;
+    }
+
+    .container > header { margin-bottom: clamp(1.5rem, 4vw, 2.4rem); }
+
+    .fuel-calculator {
+      grid-template-columns: minmax(0, 1.03fr) minmax(330px, .97fr);
+      border-color: #d8e9ef;
+      border-radius: 1.75rem;
+      box-shadow: 0 26px 70px -35px rgba(15, 57, 82, .35), 0 8px 24px -16px rgba(15, 23, 42, .18);
+    }
+
+    .fuel-form-panel {
+      display: flex;
+      flex-direction: column;
+      padding: clamp(1.5rem, 3.5vw, 2.5rem);
+    }
+
+    .fuel-panel-heading { display: contents; }
+
+    .fuel-panel-heading > div:first-child {
+      order: 0;
+      margin-bottom: 1.6rem;
+    }
+
+    .fuel-panel-heading h2 {
+      font-size: 1.35rem;
+      letter-spacing: -.025em;
+    }
+
+    .fuel-panel-heading p {
+      max-width: 31rem;
+      margin-top: .42rem;
+    }
+
+    .fuel-form-panel > .fuel-core-distance { order: 1; }
+    .fuel-form-panel > .fuel-core-details { order: 2; }
+    .fuel-form-panel > .fuel-section:has(#advancedToggle) { order: 3; }
+    .fuel-form-panel > .fuel-units-bar { order: 4; }
+    .fuel-form-panel > .fuel-mileage-section { order: 7; }
+    .fuel-form-panel > .fuel-error { order: 8; }
+    .fuel-form-panel > .fuel-calculate { order: 9; }
+
+    .fuel-core-distance,
+    .fuel-core-details {
+      margin: 0 !important;
+      padding: 0 !important;
+      border: 0 !important;
+    }
+
+    .fuel-core-details { margin-top: 1rem !important; }
+
+    .fuel-core-distance .fuel-section-title,
+    .fuel-core-details .fuel-section-title { display: none; }
+
+    .fuel-core-details .fuel-grid-2 {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .fuel-core-distance .fuel-field,
+    .fuel-core-details .fuel-field {
+      display: grid;
+      grid-template-columns: 3.75rem minmax(0, 1fr);
+      grid-template-rows: auto auto;
+      column-gap: 1rem;
+      align-items: center;
+      min-width: 0;
+    }
+
+    .fuel-field-icon {
+      grid-column: 1;
+      grid-row: 1 / span 2;
+      display: grid;
+      place-items: center;
+      width: 3.75rem;
+      height: 3.75rem;
+      border: 1px solid #d9eef3;
+      border-radius: 50%;
+      color: var(--sky-700);
+      background: linear-gradient(145deg, #f1fbfc, #e6f5f7);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.9);
+    }
+
+    .fuel-field-icon svg {
+      width: 1.7rem;
+      height: 1.7rem;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.9;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .fuel-field-icon img {
+      display: block;
+      width: 2.65rem;
+      height: 2.65rem;
+      object-fit: contain;
+    }
+
+    .fuel-core-distance .fuel-field > label,
+    .fuel-core-distance .fuel-field > .fuel-control,
+    .fuel-core-details .fuel-field > label,
+    .fuel-core-details .fuel-field > .fuel-control {
+      grid-column: 2;
+    }
+
+    .fuel-core-details .fuel-field > .fuel-label-link {
+      grid-column: 2;
+      justify-self: start;
+      margin-top: .4rem;
+    }
+
+    .fuel-core-distance .fuel-field > label,
+    .fuel-core-details .fuel-field > label {
+      margin-bottom: .42rem;
+      color: #16324a;
+      font-size: .86rem;
+      font-weight: 700;
+    }
+
+    .fuel-core-distance .fuel-help,
+    .fuel-core-details .fuel-help { display: none; }
+
+    .fuel-core-distance .fuel-field input,
+    .fuel-core-distance .fuel-field select,
+    .fuel-core-details .fuel-field input,
+    .fuel-core-details .fuel-field select {
+      min-height: 3.25rem;
+    }
+
+    .fuel-core-distance .fuel-field input,
+    .fuel-core-details .fuel-field input {
+      font-size: 1.05rem;
+    }
+
+    .fuel-section:has(#advancedToggle) {
+      display: flex;
+      flex-direction: column;
+      margin: 1.15rem 0 0 !important;
+      padding: 0 !important;
+      border: 0 !important;
+    }
+
+    .fuel-section:has(#advancedToggle) > .fuel-section-title { display: none; }
+    .fuel-section:has(#advancedToggle) > .fuel-field,
+    .fuel-section:has(#advancedToggle) > .fuel-switch-row,
+    .fuel-section:has(#advancedToggle) > .fuel-split-fields { display: none; }
+
+    #advancedToggle {
+      order: 0;
+      min-height: 3.1rem;
+      margin: 0;
+      padding: .8rem 1rem;
+      border-style: solid;
+      border-color: #d8e7ed;
+      border-radius: .85rem;
+      color: #38536a;
+      background: #f9fcfd;
+      font-size: .84rem;
+    }
+
+    #advancedToggle .fuel-options-button-copy {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+    }
+
+    #advancedToggle .fuel-options-button-copy svg {
+      width: 17px;
+      height: 17px;
+      transform: none;
+    }
+
+    #advancedToggle > svg { color: var(--sky-700); }
+
+    .fuel-section:has(#advancedToggle) > .fuel-field { order: 1; margin-top: 1rem; }
+    .fuel-section:has(#advancedToggle) > .fuel-switch-row { order: 2; }
+    .fuel-section:has(#advancedToggle) > .fuel-split-fields { order: 3; }
+    .fuel-section:has(#advancedToggle) > #advancedFields { order: 4; }
+
+    .fuel-form-panel:has(#advancedToggle[aria-expanded="true"]) > .fuel-units-bar,
+    .fuel-form-panel:has(#advancedToggle[aria-expanded="true"]) > .fuel-mileage-section {
+      display: flex;
+    }
+
+    .fuel-form-panel:has(#advancedToggle[aria-expanded="true"]) .fuel-section:has(#advancedToggle) > .fuel-field,
+    .fuel-form-panel:has(#advancedToggle[aria-expanded="true"]) .fuel-section:has(#advancedToggle) > .fuel-switch-row {
+      display: flex;
+    }
+
+    .fuel-form-panel:has(#advancedToggle[aria-expanded="true"]) .fuel-section:has(#advancedToggle) > .fuel-field {
+      display: block;
+    }
+
+    .fuel-form-panel:has(#advancedToggle[aria-expanded="true"]) .fuel-section:has(#advancedToggle) > .fuel-split-fields.open {
+      display: block;
+    }
+
+    .fuel-units-bar,
+    .fuel-mileage-section { display: none; }
+
+    .fuel-units-bar {
+      margin-top: 1rem;
+      border-color: #dbe7ec;
+      background: #f8fbfc;
+    }
+
+    .fuel-mileage-section {
+      flex-direction: column;
+      margin: 1rem 0 0 !important;
+      padding: 0 !important;
+      border: 0 !important;
+    }
+
+    .fuel-calculate {
+      width: 100%;
+      min-height: 3.55rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .65rem;
+      margin-top: 1rem;
+      padding: .85rem 1.1rem;
+      border: 0;
+      border-radius: .8rem;
+      color: #fff;
+      background: linear-gradient(135deg, #ff861f, #ff6712);
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 10px 22px -12px rgba(255, 103, 18, .7);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+
+    .fuel-calculate:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 26px -13px rgba(255, 103, 18, .75);
+    }
+
+    .fuel-calculate:active { transform: translateY(0); }
+
+    .fuel-calculate svg {
+      width: 19px;
+      height: 19px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .fuel-error { margin-top: 1rem; }
+
+    .fuel-result-panel {
+      align-self: stretch;
+      margin: 1.35rem 1.35rem 1.35rem 0;
+      padding: clamp(1.35rem, 3vw, 2rem);
+      border: 1px solid #d5e8ec;
+      border-radius: 1.25rem;
+      color: #123654;
+      background: linear-gradient(150deg, #f0fafb, #e7f5f7);
+      box-shadow: 0 12px 28px -22px rgba(16, 67, 91, .45), inset 0 1px 0 rgba(255,255,255,.85);
+    }
+
+    .fuel-result-panel::before {
+      top: 28%;
+      right: auto;
+      left: -.8rem;
+      width: 1.55rem;
+      height: 1.55rem;
+      background: #fff;
+      box-shadow: inset -1px 0 0 #d5e8ec;
+    }
+
+    .fuel-result-panel::after {
+      top: 64%;
+      bottom: auto;
+      left: -.8rem;
+      width: 1.55rem;
+      height: 1.55rem;
+      background: #fff;
+      box-shadow: inset -1px 0 0 #d5e8ec;
+    }
+
+    .fuel-result-intro,
+    .fuel-result-label,
+    .fuel-result-subtext,
+    .fuel-split-highlight span,
+    .fuel-result-card span,
+    .fuel-breakdown h3,
+    .fuel-breakdown-row,
+    .fuel-note { color: #60788b; }
+
+    .fuel-result-primary {
+      border-color: #d2e5e9;
+      background: rgba(255,255,255,.58);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.85);
+      backdrop-filter: none;
+    }
+
+    .fuel-result-value { color: #0d3454; text-shadow: none; }
+    .fuel-split-highlight { border-color: #d1e3e7; }
+
+    .fuel-result-card {
+      border-color: #d3e5e9;
+      background: rgba(255,255,255,.54);
+    }
+
+    .fuel-result-card strong,
+    .fuel-split-highlight strong,
+    .fuel-breakdown-row strong,
+    .fuel-commute-grid strong { color: #123654; }
+
+    .fuel-breakdown { border-color: #cfe1e5; }
+
+    .fuel-action {
+      border-color: #bcd9df;
+      color: #21506e;
+      background: rgba(255,255,255,.62);
+    }
+
+    .fuel-action:hover { background: #fff; }
+
+    .fuel-action-primary {
+      border-color: #0f6f9d;
+      color: #fff;
+      background: #0f6f9d;
+      box-shadow: 0 7px 16px -10px rgba(15, 111, 157, .8);
+    }
+
+    .fuel-action-primary:hover { background: #0b628d; }
+
+    .fuel-yearly {
+      border-color: #cfe2e6;
+      background: rgba(255,255,255,.58);
+    }
+
+    .fuel-yearly span,
+    .fuel-commute-grid small { color: #60788b; }
+    .fuel-commute-grid div { background: rgba(225, 240, 243, .72); }
+
+    @media (max-width: 900px) {
+      .fuel-calculator { grid-template-columns: 1fr; }
+      .fuel-result-panel { margin: 0 1.15rem 1.15rem; }
+      .fuel-result-panel::before,
+      .fuel-result-panel::after { display: none; }
+    }
+
+    @media (max-width: 640px) {
+      .container { padding-inline: .85rem; }
+      .fuel-hero { padding-top: .85rem; }
+      .fuel-hero h1 { font-size: clamp(2rem, 11vw, 2.75rem); }
+      .fuel-panel-heading > div:first-child { margin-bottom: 1.25rem; }
+      .fuel-core-distance .fuel-field,
+      .fuel-core-details .fuel-field {
+        grid-template-columns: 3.15rem minmax(0, 1fr);
+        column-gap: .75rem;
+      }
+      .fuel-field-icon { width: 3.15rem; height: 3.15rem; }
+      .fuel-field-icon svg { width: 1.45rem; height: 1.45rem; }
+      .fuel-core-distance .fuel-field input,
+      .fuel-core-distance .fuel-field select,
+      .fuel-core-details .fuel-field input,
+      .fuel-core-details .fuel-field select { min-height: 3rem; }
+      .fuel-result-panel { margin: 0 .75rem .75rem; padding: 1.15rem; }
+    }
+
+    /* ============ Site header and receipt-style result ============ */
+    .fuel-site-header {
+      width: 100%;
+      color: #fff;
+      background: linear-gradient(110deg, #075985 0%, #063f68 52%, #082f52 100%);
+      box-shadow: 0 1px 0 rgba(255,255,255,.08), 0 7px 22px -18px rgba(2, 34, 58, .8);
+    }
+
+    .fuel-site-header-inner {
+      width: min(100%, 76rem);
+      min-height: 4.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-inline: auto;
+      padding: .7rem clamp(1rem, 4vw, 1.6rem);
+    }
+
+    .fuel-site-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: .75rem;
+      color: #fff;
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -.02em;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .fuel-site-mark {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 2.55rem;
+      height: 2.55rem;
+      border: 2px solid rgba(255,255,255,.95);
+      border-radius: 50% 50% 50% .35rem;
+      transform: rotate(-45deg);
+    }
+
+    .fuel-site-mark svg {
+      width: 1.35rem;
+      height: 1.35rem;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.9;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transform: rotate(45deg);
+    }
+
+    .fuel-site-nav {
+      display: flex;
+      align-items: center;
+      gap: clamp(.45rem, 2vw, 1.6rem);
+    }
+
+    .fuel-site-nav a {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      padding: .55rem .65rem;
+      border-radius: .55rem;
+      color: rgba(255,255,255,.92);
+      font-size: .86rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color .15s ease, background-color .15s ease;
+    }
+
+    .fuel-site-nav a:hover {
+      color: #fff;
+      background: rgba(255,255,255,.1);
+    }
+
+    .fuel-site-nav svg {
+      width: .85rem;
+      height: .85rem;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .fuel-visually-hidden {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+
+    .fuel-result-panel {
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+      padding: clamp(1.25rem, 3vw, 1.8rem);
+      background:
+        radial-gradient(circle at 88% 8%, rgba(255,255,255,.9), transparent 27%),
+        linear-gradient(145deg, #f0fafb, #e5f4f6);
+    }
+
+    .fuel-ticket-visual {
+      display: grid;
+      grid-template-columns: 4.5rem minmax(0, 1fr);
+      align-items: center;
+      gap: .85rem;
+      min-height: 5rem;
+      margin-bottom: .25rem;
+    }
+
+    .fuel-ticket-car {
+      display: grid;
+      place-items: center;
+      width: 4.25rem;
+      height: 4.25rem;
+      border: 1px solid #bddde4;
+      border-radius: 50%;
+      color: #0d6594;
+      background: rgba(255,255,255,.64);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.9);
+    }
+
+    .fuel-ticket-car svg {
+      width: 2.7rem;
+      height: 2.7rem;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.75;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .fuel-ticket-route {
+      width: 100%;
+      height: 4.25rem;
+      overflow: visible;
+    }
+
+    .fuel-ticket-context {
+      margin: 0 0 .75rem 5.35rem;
+      color: #647d8e;
+      font-size: .7rem;
+      font-weight: 600;
+      line-height: 1.45;
+    }
+
+    .fuel-ticket-total {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 0 1.05rem;
+      border-top: 1px solid #c9e0e5;
+      border-bottom: 1px solid #c9e0e5;
+    }
+
+    .fuel-ticket-total-copy {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      min-width: 0;
+    }
+
+    .fuel-ticket-total-copy > div { min-width: 0; }
+
+    .fuel-ticket-icon {
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      color: #fff;
+      background: #0c78a8;
+    }
+
+    .fuel-ticket-icon svg {
+      width: 1.15rem;
+      height: 1.15rem;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .fuel-ticket-label {
+      display: block;
+      color: #24465f;
+      font-size: .9rem;
+      font-weight: 600;
+    }
+
+    .fuel-ticket-subtext {
+      display: block;
+      max-width: 15rem;
+      margin-top: .18rem;
+      overflow: hidden;
+      color: #718898;
+      font-size: .66rem;
+      font-weight: 500;
+      line-height: 1.35;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .fuel-ticket-total-value {
+      flex: 0 0 auto;
+      color: #0d3454;
+      font-size: clamp(2rem, 4vw, 2.65rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -.04em;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .fuel-ticket-rows { width: 100%; }
+
+    .fuel-ticket-row {
+      min-height: 3.65rem;
+      display: grid;
+      grid-template-columns: 2rem minmax(0, 1fr) auto;
+      align-items: center;
+      gap: .75rem;
+      padding: .7rem 0;
+      border-bottom: 1px solid #c9e0e5;
+    }
+
+    .fuel-ticket-row .fuel-ticket-icon {
+      color: #0b6f9d;
+      background: transparent;
+    }
+
+    .fuel-ticket-row .fuel-ticket-icon svg {
+      width: 1.35rem;
+      height: 1.35rem;
+      stroke-width: 1.9;
+    }
+
+    .fuel-ticket-row-copy {
+      min-width: 0;
+      color: #294a62;
+      font-size: .86rem;
+      font-weight: 600;
+    }
+
+    .fuel-ticket-row-copy small {
+      display: block;
+      margin-top: .1rem;
+      color: #718898;
+      font-size: .65rem;
+      font-weight: 500;
+    }
+
+    .fuel-ticket-row-value {
+      color: #143650;
+      font-size: .92rem;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .fuel-result-hidden-data { display: none; }
+
+    .fuel-result-panel .fuel-yearly {
+      margin-top: .85rem;
+      border-color: #c7dfe4;
+      background: rgba(255,255,255,.5);
+    }
+
+    .fuel-result-panel .fuel-action-row {
+      margin-top: 1rem;
+    }
+
+    .fuel-result-panel .fuel-note {
+      margin-top: .75rem;
+      color: #718898;
+      font-size: .64rem;
+    }
+
+    @media (max-width: 640px) {
+      .fuel-site-header-inner {
+        min-height: 4rem;
+        gap: .6rem;
+        padding-inline: .85rem;
+      }
+
+      .fuel-site-title { display: none; }
+      .fuel-site-brand { gap: 0; }
+      .fuel-site-mark { width: 2.25rem; height: 2.25rem; }
+      .fuel-site-nav { gap: .1rem; }
+      .fuel-site-nav a { padding: .45rem .4rem; font-size: .7rem; }
+      .fuel-site-nav svg { display: none; }
+      .fuel-ticket-visual { grid-template-columns: 3.8rem minmax(0, 1fr); }
+      .fuel-ticket-car { width: 3.6rem; height: 3.6rem; }
+      .fuel-ticket-context { margin-left: 4.65rem; }
+      .fuel-ticket-total-value { font-size: 2rem; }
+      .fuel-ticket-total { gap: .65rem; }
+      .fuel-ticket-row { grid-template-columns: 1.8rem minmax(0, 1fr) auto; gap: .55rem; }
+    }
+
+    /* ============ Compact units switch ============ */
+    .fuel-form-panel { position: relative; }
+
+    .fuel-panel-heading > div:first-child {
+      padding-right: 0;
+    }
+
+    .fuel-top-controls {
+      order: 1;
+      position: static;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .4rem;
+      width: 100%;
+      margin: -.35rem 0 1.15rem;
+    }
+
+    .fuel-top-controls .fuel-reset {
+      display: inline-flex;
+      align-items: center;
+      gap: .3rem;
+      padding: .38rem .42rem;
+      border: 0;
+      border-radius: .5rem;
+      color: #6a8191;
+      background: transparent;
+      font-size: .68rem;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .fuel-top-controls .fuel-reset:hover {
+      color: #0b658e;
+      background: #eef7f9;
+      border-color: transparent;
+    }
+
+    .fuel-top-controls .fuel-reset svg {
+      width: .85rem;
+      height: .85rem;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .fuel-quick-switches {
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+    }
+
+    .fuel-vehicle-quick {
+      display: flex;
+      margin: 0;
+      padding: .2rem;
+      border: 1px solid #d6e4e9;
+      border-radius: 999px;
+      background: #eef5f7;
+      box-shadow: inset 0 1px 1px rgba(15, 57, 82, .04);
+    }
+
+    .fuel-vehicle-quick-toggle {
+      width: 5.7rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .1rem;
+    }
+
+    .fuel-vehicle-quick-option {
+      min-height: 2rem;
+      padding: .3rem .45rem;
+      border: 0;
+      border-radius: 999px;
+      color: #637b8c;
+      background: transparent;
+      font-size: .7rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .fuel-vehicle-quick-option.active {
+      color: #0b658e;
+      background: #fff;
+      box-shadow: 0 1px 4px rgba(15, 57, 82, .16);
+    }
+
+    .fuel-top-controls .fuel-units-bar {
+      display: flex !important;
+      width: auto;
+      margin: 0;
+      padding: .2rem;
+      border: 1px solid #d6e4e9;
+      border-radius: 999px;
+      background: #eef5f7;
+      box-shadow: inset 0 1px 1px rgba(15, 57, 82, .04);
+    }
+
+    .fuel-units-label {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .fuel-units-toggle {
+      flex: 0 0 auto;
+      width: 10.7rem;
+      gap: .1rem;
+      padding: 0;
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+    }
+
+    .fuel-units-option {
+      min-height: 2rem;
+      padding: .3rem .55rem;
+      border-radius: 999px;
+      color: #637b8c;
+      font-size: .7rem;
+      font-weight: 600;
+    }
+
+    .fuel-units-option.active {
+      color: #0b658e;
+      background: #fff;
+      box-shadow: 0 1px 4px rgba(15, 57, 82, .16);
+    }
+
+    /* Keep every measurement selector aligned to the widest current label. */
+    .fuel-unit select {
+      flex: 0 0 8rem;
+      width: 8rem;
+      min-width: 8rem;
+      max-width: 8rem;
+    }
+
+    @media (min-width: 641px) and (max-width: 1100px) {
+      .fuel-top-controls {
+        position: static;
+        width: 100%;
+        justify-content: space-between;
+        margin: -.35rem 0 1.15rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .fuel-panel-heading > div:first-child { padding-right: 0; }
+
+      .fuel-top-controls {
+        position: static;
+        width: 100%;
+        display: block;
+        margin: -.35rem 0 1.15rem;
+      }
+
+      .fuel-top-controls .fuel-reset {
+        position: absolute;
+        top: 1.45rem;
+        right: 1.15rem;
+      }
+
+      .fuel-quick-switches {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .fuel-vehicle-quick-toggle { width: 6.25rem; }
+      .fuel-units-toggle { width: 10.25rem; }
+    }
+
+    /* ============ Mobile-first polish ============ */
+    @media (max-width: 640px) {
+      html { scroll-padding-top: .75rem; }
+
+      body {
+        background-image:
+          radial-gradient(28rem 20rem at 90% -5%, rgba(56, 189, 248, .12), transparent 65%),
+          linear-gradient(180deg, #f2faff 0%, #fff 30rem);
+      }
+
+      .container {
+        padding: .75rem .75rem calc(3rem + env(safe-area-inset-bottom));
+      }
+
+      .container > header { margin-bottom: 1.15rem; }
+
+      .fuel-site-header-inner {
+        min-height: 3.75rem;
+        gap: .3rem;
+        padding: calc(.4rem + env(safe-area-inset-top)) .65rem .4rem;
+      }
+
+      .fuel-site-mark {
+        width: 2.4rem;
+        height: 2.4rem;
+      }
+
+      .fuel-site-brand {
+        min-width: 2.75rem;
+        min-height: 2.75rem;
+        justify-content: center;
+      }
+
+      .fuel-site-nav {
+        min-width: 0;
+        margin-left: auto;
+        gap: 0;
+      }
+
+      .fuel-site-nav a {
+        min-height: 2.75rem;
+        justify-content: center;
+        padding: .6rem .5rem;
+        font-size: .74rem;
+      }
+
+      .fuel-hero {
+        padding: .8rem .25rem 0;
+      }
+
+      .fuel-hero h1 {
+        font-size: clamp(2.15rem, 11.5vw, 2.75rem);
+        line-height: 1;
+      }
+
+      .fuel-hero-copy {
+        margin-top: .65rem;
+        font-size: .95rem;
+        line-height: 1.5;
+      }
+
+      .fuel-calculator {
+        border-radius: 1.35rem;
+        box-shadow: 0 18px 48px -30px rgba(15, 57, 82, .42), 0 4px 14px -10px rgba(15, 23, 42, .16);
+      }
+
+      .fuel-form-panel {
+        padding: 1.2rem 1rem 1rem;
+      }
+
+      .fuel-panel-heading > div:first-child { margin-bottom: 1.15rem; }
+      .fuel-panel-heading h2 { font-size: 1.2rem; }
+      .fuel-panel-heading p { max-width: 16rem; font-size: .8rem; }
+
+      .fuel-top-controls {
+        margin: -.25rem 0 1.15rem;
+      }
+
+      .fuel-top-controls .fuel-reset {
+        top: 1rem;
+        right: .85rem;
+      }
+
+      .fuel-top-controls .fuel-reset::before {
+        content: "";
+        position: absolute;
+        inset: -.55rem -.35rem;
+      }
+
+      .fuel-quick-switches { gap: .45rem; }
+
+      .fuel-vehicle-quick-option,
+      .fuel-units-option {
+        min-height: 2.5rem;
+        font-size: .72rem;
+      }
+
+      .fuel-core-distance .fuel-field,
+      .fuel-core-details .fuel-field {
+        grid-template-columns: 2.75rem minmax(0, 1fr);
+        column-gap: .65rem;
+      }
+
+      .fuel-field-icon {
+        width: 2.75rem;
+        height: 2.75rem;
+      }
+
+      .fuel-field-icon svg {
+        width: 1.3rem;
+        height: 1.3rem;
+      }
+
+      .fuel-field-icon img {
+        width: 2.15rem;
+        height: 2.15rem;
+      }
+
+      .fuel-core-details .fuel-grid-2 { gap: 1.05rem; }
+
+      .fuel-control {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .fuel-control > input { width: 0; }
+
+      .fuel-field input,
+      .fuel-field select,
+      .fuel-core-distance .fuel-field input,
+      .fuel-core-distance .fuel-field select,
+      .fuel-core-details .fuel-field input,
+      .fuel-core-details .fuel-field select {
+        min-height: 3.25rem;
+        font-size: 1rem;
+      }
+
+      .fuel-field select {
+        padding-left: .75rem;
+        padding-right: 2.05rem;
+        background-position: right .65rem center;
+      }
+
+      .fuel-form-panel .fuel-unit select { font-size: .8125rem; }
+
+      .fuel-label-link {
+        min-height: 2.75rem;
+        display: inline-flex;
+        align-items: center;
+        margin: .05rem 0 -.3rem;
+        padding: .45rem 0;
+        font-size: .75rem;
+        line-height: 1.35;
+      }
+
+      #advancedToggle {
+        min-height: 3.35rem;
+        padding: .9rem 1rem;
+        border-radius: .9rem;
+        font-size: .86rem;
+      }
+
+      .fuel-advanced-toggle > span {
+        padding-right: .5rem;
+        text-align: left;
+        line-height: 1.4;
+      }
+
+      .fuel-switch-row {
+        gap: .75rem;
+        margin-top: .8rem;
+        padding: .85rem .9rem;
+      }
+
+      .fuel-switch-copy { min-width: 0; }
+      .fuel-switch-copy strong { font-size: .86rem; }
+      .fuel-switch-copy span { font-size: .75rem; }
+
+      .fuel-switch::before {
+        content: "";
+        position: absolute;
+        inset: -.6rem -.3rem;
+      }
+
+      .fuel-advanced-fields { margin-top: .75rem; }
+
+      #mileageToggle {
+        min-height: 3.6rem;
+        padding-block: .75rem;
+      }
+
+      .fuel-calculate {
+        min-height: 3.55rem;
+        border-radius: .9rem;
+        font-size: 1rem;
+      }
+
+      .fuel-result-panel {
+        margin: 0 .6rem .6rem;
+        padding: 1rem;
+        border-radius: 1.1rem;
+      }
+
+      .fuel-ticket-visual {
+        grid-template-columns: 3.55rem minmax(0, 1fr);
+        gap: .65rem;
+        min-height: 4.25rem;
+      }
+
+      .fuel-ticket-car {
+        width: 3.4rem;
+        height: 3.4rem;
+      }
+
+      .fuel-ticket-car svg {
+        width: 2.2rem;
+        height: 2.2rem;
+      }
+
+      .fuel-ticket-route { height: 3.8rem; }
+      .fuel-ticket-context { margin: .1rem 0 .7rem 4.2rem; }
+
+      .fuel-ticket-total {
+        gap: .55rem;
+        padding: .9rem 0;
+      }
+
+      .fuel-ticket-total-copy { gap: .55rem; }
+      .fuel-ticket-total-value { font-size: 1.9rem; }
+
+      .fuel-ticket-row {
+        min-height: 3.5rem;
+        gap: .5rem;
+        padding: .65rem 0;
+      }
+
+      .fuel-ticket-row-copy { font-size: .83rem; }
+      .fuel-ticket-row-value { font-size: .86rem; }
+
+      .fuel-result-panel .fuel-action-row {
+        gap: .6rem;
+        margin-top: .85rem;
+      }
+
+      .fuel-action { min-height: 3.1rem; }
+
+      .fuel-result-panel .fuel-note {
+        margin-top: .65rem;
+        font-size: .65rem;
+        line-height: 1.45;
+      }
+
+      .fuel-crosslink {
+        gap: .8rem;
+        padding: 1rem;
+        border-radius: 1rem;
+      }
+
+      .fuel-crosslink-cta {
+        width: 100%;
+        min-height: 2.75rem;
+        justify-content: center;
+      }
+
+      .fuel-content-grid { gap: .85rem; }
+
+      .fuel-content-card,
+      .fuel-seo-content {
+        padding: 1.1rem;
+        border-radius: 1rem;
+      }
+
+      .fuel-content-card h2,
+      .fuel-seo-content h2 {
+        font-size: 1.22rem;
+        line-height: 1.25;
+      }
+
+      .fuel-content-card p,
+      .fuel-seo-content p,
+      .fuel-seo-content li {
+        font-size: .9rem;
+        line-height: 1.68;
+      }
+
+      .fuel-info-step,
+      .fuel-feature,
+      .fuel-example,
+      .fuel-related-link { padding: .9rem; }
+
+      .fuel-table-wrap {
+        margin-inline: -.15rem;
+        overflow: visible;
+      }
+
+      .fuel-table,
+      .fuel-table tbody {
+        width: 100%;
+        min-width: 0;
+        display: block;
+      }
+
+      .fuel-table thead { display: none; }
+
+      .fuel-table tbody {
+        display: grid;
+        gap: .65rem;
+      }
+
+      .fuel-table tr {
+        display: grid;
+        grid-template-columns: 5.4rem minmax(0, 1fr);
+        overflow: hidden;
+        border: 1px solid var(--slate-200);
+        border-radius: .8rem;
+        background: #fff;
+      }
+
+      .fuel-table td {
+        display: block;
+        padding: .7rem;
+        border: 0;
+        font-size: .8rem;
+        line-height: 1.5;
+      }
+
+      .fuel-table td:first-child {
+        color: var(--slate-800);
+        background: var(--slate-50);
+        font-weight: 700;
+      }
+
+      .fuel-table td:nth-child(3) {
+        grid-column: 1 / -1;
+        padding-top: .6rem;
+        border-top: 1px solid var(--slate-200);
+        color: var(--slate-600);
+      }
+
+      .fuel-table td:nth-child(3)::before {
+        content: "How to read it";
+        display: block;
+        margin-bottom: .2rem;
+        color: var(--slate-500);
+        font-size: .64rem;
+        font-weight: 700;
+        letter-spacing: .05em;
+        text-transform: uppercase;
+      }
+
+      .fuel-faq summary {
+        min-height: 3.25rem;
+        display: flex;
+        align-items: center;
+      }
+
+      .fuel-sticky {
+        padding: .45rem .75rem calc(.45rem + env(safe-area-inset-bottom));
+      }
+
+      .fuel-sticky-inner {
+        min-height: 3rem;
+        gap: .65rem;
+      }
+
+      .fuel-sticky-value { font-size: 1rem; }
+
+      .fuel-sticky-cta {
+        min-height: 2.5rem;
+        padding: .55rem .7rem;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .container { padding-inline: .5rem; }
+      .fuel-site-header-inner { padding-inline: .5rem; }
+      .fuel-site-nav a { padding-inline: .4rem; font-size: .7rem; }
+      .fuel-hero h1 { font-size: 2.15rem; }
+
+      .fuel-form-panel { padding: 1.1rem .75rem .85rem; }
+      .fuel-top-controls .fuel-reset { right: .65rem; }
+
+      .fuel-vehicle-quick-toggle { width: 5.45rem; }
+      .fuel-units-toggle { width: 9.55rem; }
+
+      .fuel-core-distance .fuel-field,
+      .fuel-core-details .fuel-field {
+        grid-template-columns: 2.5rem minmax(0, 1fr);
+        column-gap: .5rem;
+      }
+
+      .fuel-field-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+
+      .fuel-field-icon img {
+        width: 2rem;
+        height: 2rem;
+      }
+
+      .fuel-field select { padding-left: .65rem; }
+
+      .fuel-result-panel {
+        margin: 0 .5rem .5rem;
+        padding: .9rem;
+      }
+
+      .fuel-ticket-visual { grid-template-columns: 3.15rem minmax(0, 1fr); gap: .5rem; }
+      .fuel-ticket-car { width: 3rem; height: 3rem; }
+      .fuel-ticket-context { margin-left: 3.65rem; }
+      .fuel-ticket-icon { width: 1.8rem; height: 1.8rem; }
+      .fuel-ticket-total-value { font-size: 1.7rem; }
+      .fuel-ticket-label { font-size: .82rem; }
+      .fuel-ticket-row { grid-template-columns: 1.55rem minmax(0, 1fr) auto; gap: .35rem; }
+      .fuel-ticket-row-copy { font-size: .78rem; }
+      .fuel-ticket-row-value { font-size: .8rem; }
+
+      .fuel-sticky { padding-inline: .55rem; }
+      .fuel-sticky-inner { gap: .45rem; }
+      .fuel-sticky-label { font-size: .59rem; }
+      .fuel-sticky-value { font-size: .92rem; }
+      .fuel-sticky-cta { padding-inline: .6rem; }
+    }
+
     @media print {
+      .fuel-site-header { display: none !important; }
       .fuel-sticky, .fuel-toast { display: none !important; }
     }
 
@@ -1592,107 +2891,86 @@
 </head>
 
 <body class="bg-gradient-to-br from-primary-50 to-white min-h-screen font-sans text-gray-800">
+  <header class="fuel-site-header">
+    <div class="fuel-site-header-inner">
+      <a class="fuel-site-brand" href="/" aria-label="Fuel Cost Calculator home">
+        <span class="fuel-site-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M5 20V6a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v14M4 20h13M8 8h5v4H8z"/><path d="M16 9h2l2 2v6a1.5 1.5 0 0 1-3 0v-3"/></svg>
+        </span>
+        <span class="fuel-site-title">Fuel Cost Calculator</span>
+      </a>
+
+      <nav class="fuel-site-nav" aria-label="Primary navigation">
+        <a href="#calculator">
+          Calculators
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
+        </a>
+        <a href="#how-it-works">Guides</a>
+        <a href="#related-tools">Other</a>
+      </nav>
+    </div>
+  </header>
+
   <div class="container mx-auto px-3 py-4 max-w-6xl">
     <header class="mb-7">
       <div class="fuel-hero">
-        <nav class="fuel-breadcrumb" aria-label="Breadcrumb">
-          <a href="/">Home</a>
-          <span aria-hidden="true">/</span>
-          <span aria-current="page">Fuel Cost Calculator</span>
-        </nav>
-        <div class="fuel-eyebrow">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" aria-hidden="true">
-            <path d="M20 7h-9M14 17H5M17 4l3 3-3 3M8 14l-3 3 3 3"/>
-          </svg>
-          Gas, diesel &amp; electric
-        </div>
-
         <h1>Fuel Cost Calculator</h1>
-        <p class="fuel-hero-copy">
-          Calculate how much a trip costs in gas, petrol, diesel, or electricity. Enter your distance,
-          fuel economy or energy use, and price per gallon, liter, or kWh to see total cost, fuel used,
-          cost per mile or kilometer, and cost per person.
-        </p>
+        <p class="fuel-hero-copy">Plan the cost of your next drive.</p>
 
         <div data-shared-nav></div>
-
-        <ul class="fuel-benefits">
-          <li class="fuel-benefit">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>
-            No sign-up
-          </li>
-          <li class="fuel-benefit">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>
-            Instant results
-          </li>
-          <li class="fuel-benefit">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>
-            Miles and kilometers
-          </li>
-        </ul>
       </div>
     </header>
 
     <main class="fuel-page">
-      <section class="fuel-calculator" aria-labelledby="calculator-title">
+      <section class="fuel-calculator" id="calculator" aria-labelledby="calculator-title">
         <div class="fuel-form-panel">
           <div class="fuel-panel-heading">
             <div>
-              <h2 id="calculator-title">Calculate your trip cost</h2>
-              <p>Demo values are pre-filled. Change any field to update the result instantly.</p>
+              <h2 id="calculator-title">Your trip details</h2>
+              <p>Enter three details below. Your estimate updates instantly.</p>
             </div>
-            <div class="fuel-panel-actions">
-              <label class="fuel-currency-picker">
-                Currency
-                <select id="currency" aria-label="Currency">
-                  <option value="USD" selected>$ USD</option>
-                  <option value="EUR">€ EUR</option>
-                  <option value="GBP">£ GBP</option>
-                </select>
-              </label>
-              <button class="fuel-reset" id="resetButton" type="button">Start fresh</button>
+            <select id="currency" hidden aria-hidden="true" tabindex="-1">
+              <option value="USD" selected>$ USD</option>
+              <option value="EUR">€ EUR</option>
+              <option value="GBP">£ GBP</option>
+            </select>
+          </div>
+
+          <div class="fuel-top-controls">
+            <button class="fuel-reset" id="resetButton" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.3-5.7L4 8.5"/><path d="M4 4v4.5h4.5"/></svg>
+              Start fresh
+            </button>
+
+            <div class="fuel-quick-switches">
+              <div class="fuel-vehicle-quick">
+                <span class="fuel-visually-hidden" id="vehicleQuickLabel">Vehicle type</span>
+                <div class="fuel-vehicle-quick-toggle" role="group" aria-labelledby="vehicleQuickLabel">
+                  <button type="button" class="fuel-vehicle-quick-option active" data-vehicle-quick="gasoline" aria-pressed="true">Gas</button>
+                  <button type="button" class="fuel-vehicle-quick-option" data-vehicle-quick="electric" aria-pressed="false">EV</button>
+                </div>
+              </div>
+
+              <div class="fuel-units-bar">
+                <span class="fuel-units-label" id="unitsLabel">Units</span>
+                <div class="fuel-units-toggle" role="group" aria-labelledby="unitsLabel">
+                  <button type="button" class="fuel-units-option active" data-unit-system="us" aria-pressed="true">Miles</button>
+                  <button type="button" class="fuel-units-option" data-unit-system="metric" aria-pressed="false">Kilometers</button>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="fuel-units-bar">
-            <span class="fuel-units-label" id="unitsLabel">Units</span>
-            <div class="fuel-units-toggle" role="group" aria-labelledby="unitsLabel">
-              <button type="button" class="fuel-units-option active" data-unit-system="us" aria-pressed="true">Miles &middot; Gallons</button>
-              <button type="button" class="fuel-units-option" data-unit-system="metric" aria-pressed="false">Kilometers &middot; Liters</button>
-            </div>
-          </div>
-
-          <div class="fuel-section">
-            <div class="fuel-section-title">
-              <span class="fuel-step">1</span>
-              Choose vehicle type
-            </div>
-
-            <div class="fuel-segments" role="group" aria-label="Vehicle energy type">
-              <button type="button" class="fuel-segment active" data-vehicle="gasoline" aria-pressed="true">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 22V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v18M3 11h13M7 6h5"/><path d="M16 8h2l3 3v8a2 2 0 0 1-4 0v-5"/></svg>
-                Gasoline
-              </button>
-
-              <button type="button" class="fuel-segment" data-vehicle="diesel" aria-pressed="false">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 22V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v18M3 11h13M7 6h5"/><path d="M16 8h2l3 3v8a2 2 0 0 1-4 0v-5"/></svg>
-                Diesel
-              </button>
-
-              <button type="button" class="fuel-segment" data-vehicle="electric" aria-pressed="false">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m13 2-9 12h8l-1 8 9-12h-8l1-8z"/></svg>
-                Electric
-              </button>
-            </div>
-          </div>
-
-          <div class="fuel-section">
+          <div class="fuel-section fuel-core-distance">
             <div class="fuel-section-title">
               <span class="fuel-step">2</span>
               Enter trip details
             </div>
 
             <div class="fuel-field">
+              <span class="fuel-field-icon" aria-hidden="true">
+                <img src="/assets/icons/trip-distance-crisp.svg" alt="" width="64" height="64">
+              </span>
               <label for="distance">Trip distance</label>
               <div class="fuel-control fuel-unit">
                 <input id="distance" type="text" inputmode="decimal" pattern="[0-9]*[.,]?[0-9]*" value="250">
@@ -1706,7 +2984,7 @@
 
           </div>
 
-          <div class="fuel-section">
+          <div class="fuel-section fuel-core-details">
             <div class="fuel-section-title">
               <span class="fuel-step">3</span>
               <span id="efficiencySectionLabel">Add fuel efficiency and price</span>
@@ -1714,7 +2992,10 @@
 
             <div class="fuel-grid-2">
               <div class="fuel-field">
-                <label for="efficiency" id="efficiencyLabel">Vehicle efficiency</label>
+                <span class="fuel-field-icon" aria-hidden="true">
+                  <img src="/assets/icons/fuel-efficiency-crisp.svg" alt="" width="64" height="64">
+                </span>
+                <label for="efficiency" id="efficiencyLabel">Fuel efficiency</label>
                 <div class="fuel-control fuel-unit">
                   <input id="efficiency" type="text" inputmode="decimal" pattern="[0-9]*[.,]?[0-9]*" value="28">
                   <select id="efficiencyUnit" aria-label="Vehicle efficiency unit">
@@ -1725,18 +3006,15 @@
                     <option value="liters_per_100km">L/100 km</option>
                   </select>
                 </div>
-                <div class="fuel-presets" role="group" aria-label="Typical efficiency presets">
-                  <button type="button" data-preset="small">Small car</button>
-                  <button type="button" data-preset="sedan">Sedan</button>
-                  <button type="button" data-preset="suv">SUV</button>
-                  <button type="button" data-preset="van">Van</button>
-                </div>
-                <div class="fuel-help" id="efficiencyHelp">Use your car's combined MPG rating.</div>
                 <button class="fuel-label-link" id="efficiencyHelperLink" type="button">Don't know your car's efficiency?</button>
+                <div class="fuel-help" id="efficiencyHelp">Use your car's combined MPG rating.</div>
               </div>
 
               <div class="fuel-field">
-                <label for="energyPrice" id="priceLabel">Gas price</label>
+                <span class="fuel-field-icon" aria-hidden="true">
+                  <img src="/assets/icons/fuel-price-crisp.svg" alt="" width="64" height="64">
+                </span>
+                <label for="energyPrice" id="priceLabel">Fuel price</label>
                 <div class="fuel-control fuel-unit fuel-currency">
                   <span id="currencySymbol">$</span>
                   <input id="energyPrice" type="text" inputmode="decimal" pattern="[0-9]*[.,]?[0-9]*" value="3.45">
@@ -1761,7 +3039,7 @@
               <label for="extraCosts">Tolls, parking &amp; other costs</label>
               <div class="fuel-control fuel-currency">
                 <span>$</span>
-                <input id="extraCosts" type="text" inputmode="decimal" pattern="[0-9]*[.,]?[0-9]*" value="12.50">
+                <input id="extraCosts" type="text" inputmode="decimal" pattern="[0-9]*[.,]?[0-9]*" value="0">
               </div>
               <div class="fuel-help">Added once to the full calculation.</div>
             </div>
@@ -1787,7 +3065,10 @@
             </div>
 
             <button class="fuel-advanced-toggle" id="advancedToggle" type="button" aria-expanded="false" aria-controls="advancedFields">
-              More options
+              <span class="fuel-options-button-copy">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h10M18 7h2M14 4v6M4 17h2M10 17h10M10 14v6"/></svg>
+                More options
+              </span>
               <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <path d="m6 9 6 6 6-6"/>
               </svg>
@@ -1902,48 +3183,87 @@
           </div>
 
           <div class="fuel-error" id="errorBox" role="alert"></div>
+          <button class="fuel-calculate" id="calculateButton" type="button">
+            Calculate trip
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
         </div>
 
         <aside class="fuel-result-panel" aria-live="polite" aria-atomic="false">
-          <h2>Estimated trip cost</h2>
-          <p class="fuel-result-intro" id="resultContext">250 miles · Gasoline · 1 trip</p>
+          <h2 class="fuel-visually-hidden">Estimated trip cost</h2>
 
-          <div class="fuel-result-primary">
-            <div class="fuel-result-label">Total trip cost</div>
-            <div class="fuel-result-value" id="totalCost">$43.30</div>
-            <div class="fuel-result-subtext" id="costExplanation">Fuel plus additional trip costs</div>
+          <div class="fuel-ticket-visual" aria-hidden="true">
+            <span class="fuel-ticket-car">
+              <svg viewBox="0 0 48 36">
+                <path d="M8 23h32l-2.4-8.1a4 4 0 0 0-3.8-2.9H17.2a4 4 0 0 0-3.7 2.5L10 23"/>
+                <path d="M8 23v6h4M40 23v6h-4M12 29h24"/>
+                <path d="M15 16h20M7 20H4M41 20h3"/>
+                <circle cx="16" cy="27" r="2.4"/><circle cx="33" cy="27" r="2.4"/>
+              </svg>
+            </span>
+            <svg class="fuel-ticket-route" viewBox="0 0 260 72">
+              <path d="M29 40c31 21 55-20 88-3 35 18 55 14 83-7 14-11 25-9 34-3" fill="none" stroke="#0873a4" stroke-width="2.3" stroke-dasharray="5 6" stroke-linecap="round"/>
+              <path d="M23 35c-6-7-9-12-9-17a9 9 0 1 1 18 0c0 5-3 10-9 17Z" fill="#0873a4"/>
+              <circle cx="23" cy="18" r="3.3" fill="#e9f7f8"/>
+              <circle cx="23" cy="42" r="3.2" fill="#9fbfca"/>
+              <path d="M238 30c-6-7-9-12-9-17a9 9 0 1 1 18 0c0 5-3 10-9 17Z" fill="#ff6b1a"/>
+              <circle cx="238" cy="13" r="3.3" fill="#fff6ee"/>
+              <circle cx="238" cy="37" r="3.2" fill="#9fbfca"/>
+            </svg>
+          </div>
 
-            <div class="fuel-split-highlight">
+          <p class="fuel-ticket-context" id="resultContext">250 miles · Gasoline · 1 trip</p>
+
+          <div class="fuel-ticket-total">
+            <div class="fuel-ticket-total-copy">
+              <span class="fuel-ticket-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 3v18M16 7.5c0-1.4-1.8-2.5-4-2.5S8 6.1 8 7.5s1.8 2.5 4 2.5 4 1.1 4 2.5S14.2 15 12 15s-4-1.1-4-2.5"/></svg>
+              </span>
               <div>
-                <span>Each person pays</span>
-                <strong id="perPerson">$43.30</strong>
+                <span class="fuel-ticket-label">Trip cost</span>
+                <span class="fuel-ticket-subtext" id="costExplanation">1 one-way journey</span>
               </div>
-              <div class="fuel-people-align">
-                <span id="peopleResult">Not split</span>
-              </div>
+            </div>
+            <strong class="fuel-ticket-total-value" id="totalCost">$30.80</strong>
+          </div>
+
+          <div class="fuel-ticket-rows">
+            <div class="fuel-ticket-row">
+              <span class="fuel-ticket-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11Z"/><path d="M9.5 16.5c.7.8 1.5 1.1 2.5 1.1"/></svg>
+              </span>
+              <span class="fuel-ticket-row-copy" id="energyUsedLabel">Fuel used</span>
+              <strong class="fuel-ticket-row-value" id="energyUsed">8.93 US gal</strong>
+            </div>
+
+            <div class="fuel-ticket-row">
+              <span class="fuel-ticket-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 3v9h9A9 9 0 1 1 12 3Z"/><path d="M15 3.5A9 9 0 0 1 20.5 9H15V3.5Z"/></svg>
+              </span>
+              <span class="fuel-ticket-row-copy" id="costPerDistanceLabel">Cost per mile</span>
+              <strong class="fuel-ticket-row-value" id="costPerDistance">$0.12 / mi</strong>
+            </div>
+
+            <div class="fuel-ticket-row" id="splitResultRow" hidden>
+              <span class="fuel-ticket-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-4 2.7-6.5 6-6.5S15 16 15 20M14 14.2c.9-.5 1.9-.7 3-.7 2.8 0 5 2.1 5 5.5"/></svg>
+              </span>
+              <span class="fuel-ticket-row-copy">
+                Cost per person
+                <small id="peopleResult">Not split</small>
+              </span>
+              <strong class="fuel-ticket-row-value" id="perPerson">$30.80</strong>
             </div>
           </div>
 
-          <div class="fuel-result-grid">
-            <div class="fuel-result-card">
-              <span id="energyUsedLabel">GAS NEEDED</span>
-              <strong id="energyUsed">8.93 gal</strong>
-            </div>
-
-            <div class="fuel-result-card">
-              <span id="energyCostLabel">GAS COST</span>
-              <strong id="energyCost">$30.80</strong>
-            </div>
-
-            <div class="fuel-result-card">
-              <span>COST PER DISTANCE</span>
-              <strong id="costPerDistance">$0.17 / mi</strong>
-            </div>
-
-            <div class="fuel-result-card">
-              <span>TOTAL DISTANCE</span>
-              <strong id="totalDistance">250 mi</strong>
-            </div>
+          <div class="fuel-result-hidden-data" aria-hidden="true">
+            <span id="energyCostLabel">Fuel cost</span>
+            <span id="energyCost">$30.80</span>
+            <span id="totalDistance">250 mi</span>
+            <span id="breakdownEnergyLabel">Gasoline</span>
+            <span id="breakdownEnergy">$30.80</span>
+            <span id="breakdownExtras">$0.00</span>
+            <span id="costPerTrip">$30.80</span>
           </div>
 
           <div class="fuel-yearly" id="yearlyCard" hidden>
@@ -1964,22 +3284,6 @@
             </div>
           </div>
 
-          <div class="fuel-breakdown">
-            <h3>Cost breakdown</h3>
-            <div class="fuel-breakdown-row">
-              <span id="breakdownEnergyLabel">Gasoline</span>
-              <strong id="breakdownEnergy">$30.80</strong>
-            </div>
-            <div class="fuel-breakdown-row">
-              <span>Additional costs</span>
-              <strong id="breakdownExtras">$12.50</strong>
-            </div>
-            <div class="fuel-breakdown-row">
-              <span>Cost per trip</span>
-              <strong id="costPerTrip">$43.30</strong>
-            </div>
-          </div>
-
           <div class="fuel-action-row">
             <button class="fuel-action fuel-action-primary" id="copyButton" type="button">
               <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
@@ -1994,8 +3298,7 @@
 
           <p class="fuel-note">
             <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-            This is an estimate. Real consumption can change with traffic, speed, weather,
-            cargo, tire pressure, and driving style.
+            Estimate only — traffic, weather and driving style can change real consumption.
           </p>
         </aside>
       </section>
@@ -2348,9 +3651,9 @@
       const vehicleConfig = {
         gasoline: {
           name: 'Gasoline',
-          efficiencyLabel: 'Vehicle efficiency',
+          efficiencyLabel: 'Fuel efficiency',
           efficiencyHelp: "Use your car's combined MPG rating.",
-          priceLabel: 'Gas price',
+          priceLabel: 'Fuel price',
           priceHelp: 'Enter the price shown at the pump.',
           defaultEfficiency: 28,
           defaultPrice: 3.45,
@@ -2365,9 +3668,9 @@
         },
         diesel: {
           name: 'Diesel',
-          efficiencyLabel: 'Vehicle efficiency',
+          efficiencyLabel: 'Fuel efficiency',
           efficiencyHelp: "Use your car's combined efficiency rating.",
-          priceLabel: 'Diesel price',
+          priceLabel: 'Fuel price',
           priceHelp: 'Enter the current diesel price.',
           defaultEfficiency: 35,
           defaultPrice: 3.85,
@@ -2436,6 +3739,13 @@
         state.vehicle = vehicle;
         document.querySelectorAll('[data-vehicle]').forEach(button => {
           const active = button.dataset.vehicle === vehicle;
+          button.classList.toggle('active', active);
+          button.setAttribute('aria-pressed', String(active));
+        });
+
+        document.querySelectorAll('[data-vehicle-quick]').forEach(button => {
+          const quickVehicle = vehicle === 'electric' ? 'electric' : 'gasoline';
+          const active = button.dataset.vehicleQuick === quickVehicle;
           button.classList.toggle('active', active);
           button.setAttribute('aria-pressed', String(active));
         });
@@ -2550,8 +3860,8 @@
           energyUsed = batteryEnergy * (1 + chargingLoss / 100);
           energyCost = energyUsed * price;
           energyUsedText = `${formatNumber(energyUsed, 2)} kWh`;
-          energyUsedLabel = 'ELECTRICITY USED';
-          energyCostLabel = 'CHARGING COST';
+          energyUsedLabel = 'Electricity used';
+          energyCostLabel = 'Charging cost';
         } else {
           const fuel = calculateFuelUse(totalMiles, totalKm, efficiency, elements.efficiencyUnit.value);
           energyUsed = elements.priceUnit.value === 'per_gallon'
@@ -2565,8 +3875,8 @@
             : elements.priceUnit.value === 'per_imperial_gallon'
               ? `${formatNumber(fuel.imperialGallons, 2)} imp gal`
               : `${formatNumber(fuel.liters, 2)} L`;
-          energyUsedLabel = state.vehicle === 'diesel' ? 'DIESEL NEEDED' : 'GAS NEEDED';
-          energyCostLabel = state.vehicle === 'diesel' ? 'DIESEL COST' : 'GAS COST';
+          energyUsedLabel = 'Fuel used';
+          energyCostLabel = state.vehicle === 'diesel' ? 'Diesel cost' : 'Fuel cost';
         }
 
         const totalCost = energyCost + extras;
@@ -2588,13 +3898,15 @@
         $('energyUsed').textContent = energyUsedText;
         $('energyCostLabel').textContent = energyCostLabel;
         $('energyCost').textContent = formatMoney(energyCost);
+        $('costPerDistanceLabel').textContent = elements.distanceUnit.value === 'miles' ? 'Cost per mile' : 'Cost per kilometer';
         $('costPerDistance').textContent = `${formatMoney(costPerSelectedDistance)} / ${selectedDistanceShort}`;
         $('totalDistance').textContent = `${formatNumber(selectedTotalDistance, 1)} ${selectedDistanceShort}`;
         $('breakdownEnergyLabel').textContent = vehicleConfig[state.vehicle].name;
         $('breakdownEnergy').textContent = formatMoney(energyCost);
         $('breakdownExtras').textContent = formatMoney(extras);
         $('costPerTrip').textContent = formatMoney(costPerTrip);
-        $('costExplanation').textContent = `${formatNumber(tripCount, 0)} ${journeyLabel} ${tripCount === 1 ? 'journey' : 'journeys'}, including extras`;
+        const journeySummary = `${formatNumber(tripCount, 0)} ${journeyLabel} ${tripCount === 1 ? 'journey' : 'journeys'}`;
+        $('costExplanation').textContent = extras > 0 ? `${journeySummary}, including extras` : journeySummary;
 
         updateCurrencySymbols();
       }
@@ -2667,10 +3979,11 @@
         $('totalCost').textContent = formatMoney(0);
         $('perPerson').textContent = formatMoney(0);
         $('peopleResult').textContent = 'Not split';
-        $('energyUsedLabel').textContent = 'GAS NEEDED';
+        $('energyUsedLabel').textContent = 'Fuel used';
         $('energyUsed').textContent = '—';
-        $('energyCostLabel').textContent = 'GAS COST';
+        $('energyCostLabel').textContent = 'Fuel cost';
         $('energyCost').textContent = formatMoney(0);
+        $('costPerDistanceLabel').textContent = 'Cost per mile';
         $('costPerDistance').textContent = '—';
         $('totalDistance').textContent = '—';
         $('breakdownEnergyLabel').textContent = 'Gasoline';
@@ -2687,6 +4000,10 @@
         button.addEventListener('click', () => setVehicle(button.dataset.vehicle));
       });
 
+      document.querySelectorAll('[data-vehicle-quick]').forEach(button => {
+        button.addEventListener('click', () => setVehicle(button.dataset.vehicleQuick));
+      });
+
       Object.values(elements).forEach(element => {
         if (element instanceof HTMLElement && !['errorBox'].includes(element.id)) {
           element.addEventListener('input', calculate);
@@ -2698,6 +4015,17 @@
         const expanded = $('advancedToggle').getAttribute('aria-expanded') === 'true';
         $('advancedToggle').setAttribute('aria-expanded', String(!expanded));
         $('advancedFields').classList.toggle('open', !expanded);
+      });
+
+      $('calculateButton').addEventListener('click', () => {
+        calculate();
+        if (!elements.errorBox.classList.contains('show') && window.matchMedia('(max-width: 900px)').matches) {
+          const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          document.querySelector('.fuel-result-panel').scrollIntoView({
+            behavior: reduce ? 'auto' : 'smooth',
+            block: 'start'
+          });
+        }
       });
 
       $('resetButton').addEventListener('click', reset);
@@ -2752,7 +4080,10 @@
     let panelVisible = false;
 
     const update = () => {
-      const show = media.matches && !panelVisible;
+      // Only show the compact summary after the full receipt has been passed.
+      // This keeps it from covering the form and Calculate button on first load.
+      const panelIsAboveViewport = panel.getBoundingClientRect().bottom < 0;
+      const show = media.matches && !panelVisible && panelIsAboveViewport;
       bar.hidden = !show;
       document.body.classList.toggle('fuel-sticky-active', show);
     };
@@ -2764,6 +4095,7 @@
 
     if (media.addEventListener) media.addEventListener('change', update);
     else media.addListener(update);
+    window.addEventListener('scroll', update, { passive: true });
     update();
 
     document.getElementById('fuelStickyButton').addEventListener('click', () => {
@@ -2885,7 +4217,7 @@
     // Switching vehicle resets efficiency/price to US defaults (calculator
     // behavior). If the user is in metric, convert those fresh defaults too.
     // This listener runs after the calculator's own click handler.
-    document.querySelectorAll('[data-vehicle]').forEach(b => {
+    document.querySelectorAll('[data-vehicle], [data-vehicle-quick]').forEach(b => {
       b.addEventListener('click', () => {
         if (distanceUnit.value === 'km') apply('metric');
       });
@@ -2919,12 +4251,14 @@
     const toggle = document.getElementById('splitToggle');
     const fields = document.getElementById('splitFields');
     const people = document.getElementById('people');
-    if (!toggle || !fields || !people) return;
+    const resultRow = document.getElementById('splitResultRow');
+    if (!toggle || !fields || !people || !resultRow) return;
 
     const fire = () => people.dispatchEvent(new Event('input', { bubbles: true }));
 
     const applySplit = (on, resetPeople) => {
       fields.classList.toggle('open', on);
+      resultRow.hidden = !on;
       if (on) {
         const current = window.fuelParseNumber(people.value);
         if (!(current > 1)) people.value = 2;
@@ -2966,6 +4300,8 @@
     const fuelLabel = document.getElementById('mileageFuelLabel');
     const fuelHelp = document.getElementById('mileageFuelHelp');
     const helperLink = document.getElementById('efficiencyHelperLink');
+    const advToggle = document.getElementById('advancedToggle');
+    const advFields = document.getElementById('advancedFields');
     if (!toggleBtn || !fields || !dist || !fuel) return;
 
     const KM_PER_MILE = 1.609344;
@@ -2979,7 +4315,7 @@
     let helperMode = null;
 
     const isElectric = () => {
-      const button = document.querySelector('[data-vehicle="electric"]');
+      const button = document.querySelector('[data-vehicle-quick="electric"]');
       return !!(button && button.classList.contains('active'));
     };
 
@@ -3123,7 +4459,7 @@
     mainDistanceUnit.addEventListener('change', syncHelperUnits);
 
     // Switching vehicle swaps the helper between fuel and battery inputs.
-    document.querySelectorAll('[data-vehicle]').forEach(b => b.addEventListener('click', syncHelperMode));
+    document.querySelectorAll('[data-vehicle], [data-vehicle-quick]').forEach(b => b.addEventListener('click', syncHelperMode));
 
     useBtn.addEventListener('click', () => {
       const kmPerUnit = kmPerEnergyUnit();
@@ -3164,17 +4500,16 @@
     // "Don't know your car's efficiency?" link opens the helper and scrolls to it
     if (helperLink) {
       helperLink.addEventListener('click', () => {
+        if (advToggle && advToggle.getAttribute('aria-expanded') !== 'true') advToggle.click();
         if (toggleBtn.getAttribute('aria-expanded') !== 'true') toggleBtn.click();
         const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        fields.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+        toggleBtn.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
       });
     }
 
     syncHelperMode();
 
     // "Start fresh" clears and closes the helper and the More options panel
-    const advToggle = document.getElementById('advancedToggle');
-    const advFields = document.getElementById('advancedFields');
     document.getElementById('resetButton').addEventListener('click', () => {
       dist.value = '';
       fuel.value = '';
@@ -3297,8 +4632,8 @@
     };
 
     const currentVehicle = () => {
-      const active = document.querySelector('[data-vehicle].active');
-      return active ? active.dataset.vehicle : 'gasoline';
+      const active = document.querySelector('[data-vehicle-quick].active');
+      return active ? active.dataset.vehicleQuick : 'gasoline';
     };
 
     const toUnit = (base, vehicle, unit) => {
@@ -3342,7 +4677,7 @@
 
     efficiency.addEventListener('input', paint);
     efficiencyUnit.addEventListener('change', paint);
-    document.querySelectorAll('[data-vehicle]').forEach(b => b.addEventListener('click', paint));
+    document.querySelectorAll('[data-vehicle], [data-vehicle-quick]').forEach(b => b.addEventListener('click', paint));
     document.getElementById('resetButton').addEventListener('click', paint);
     paint();
   })();
@@ -3375,8 +4710,8 @@
     const PRICE_FROM = Object.fromEntries(Object.entries(PRICE_CODES).map(([k, v]) => [v, k]));
 
     const activeVehicle = () => {
-      const b = document.querySelector('[data-vehicle].active');
-      return b ? b.dataset.vehicle : 'gasoline';
+      const b = document.querySelector('[data-vehicle-quick].active');
+      return b ? b.dataset.vehicleQuick : 'gasoline';
     };
 
     const buildQuery = () => {
@@ -3416,7 +4751,7 @@
       field.addEventListener('input', syncUrl);
       field.addEventListener('change', syncUrl);
     });
-    document.querySelectorAll('[data-vehicle], [data-unit-system], [data-preset]').forEach(b =>
+    document.querySelectorAll('[data-vehicle], [data-vehicle-quick], [data-unit-system], [data-preset]').forEach(b =>
       b.addEventListener('click', syncUrl));
     document.getElementById('resetButton').addEventListener('click', () => {
       clearTimeout(syncTimeout);
@@ -3439,7 +4774,8 @@
 
       const vehicle = VEHICLE_FROM[q.get('v')] || 'gasoline';
       if (activeVehicle() !== vehicle) {
-        const button = document.querySelector('[data-vehicle="' + vehicle + '"]');
+        const quickVehicle = vehicle === 'electric' ? 'electric' : 'gasoline';
+        const button = document.querySelector('[data-vehicle-quick="' + quickVehicle + '"]');
         if (button) button.click();
       }
 

@@ -75,6 +75,8 @@
   </script>
 
   <link rel="stylesheet" href="/assets/site.v1.14.min.css?v=1.21">
+  <link rel="stylesheet" href="/assets/shared-layout.css?v=1.0">
+  <script src="/assets/shared-layout.js?v=1.0" defer></script>
 
   <style>
     /* ============ Tokens (splitbillcalculator.net design system) ============ */
@@ -2897,6 +2899,10 @@
       .fuel-sticky-cta { padding-inline: .6rem; }
     }
 
+    @media (min-width: 901px) {
+      .fuel-calculate { display: none; }
+    }
+
     @media print {
       .fuel-site-header { display: none !important; }
       .fuel-sticky, .fuel-toast { display: none !important; }
@@ -2915,25 +2921,7 @@
 </head>
 
 <body class="bg-gradient-to-br from-primary-50 to-white min-h-screen font-sans text-gray-800">
-  <header class="fuel-site-header">
-    <div class="fuel-site-header-inner">
-      <a class="fuel-site-brand" href="/" aria-label="Fuel Cost Calculator home">
-        <span class="fuel-site-mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M5 20V6a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v14M4 20h13M8 8h5v4H8z"/><path d="M16 9h2l2 2v6a1.5 1.5 0 0 1-3 0v-3"/></svg>
-        </span>
-        <span class="fuel-site-title">Fuel Cost Calculator</span>
-      </a>
-
-      <nav class="fuel-site-nav" aria-label="Primary navigation">
-        <a href="#calculator">
-          Calculators
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
-        </a>
-        <a href="#how-it-works">Guides</a>
-        <a href="#related-tools">Other</a>
-      </nav>
-    </div>
-  </header>
+  <div data-shared-header></div>
 
   <div class="container mx-auto px-3 py-4 max-w-6xl">
     <header class="mb-7">
@@ -2943,7 +2931,6 @@
           Plan any drive with a free estimate for gas, diesel, or EV. See your total fuel use, cost per mile or kilometer, and each passenger’s share.
         </p>
 
-        <div data-shared-nav></div>
       </div>
     </header>
 
@@ -3339,12 +3326,13 @@
 
       <section class="fuel-content-grid" id="how-it-works">
         <article class="fuel-content-card">
-          <h2>Calculate Trip Fuel Cost</h2>
+          <h2>Fuel Expense Calculator for Any Trip</h2>
           <p>
-            Use the calculator for a one-way drive, round trip, road trip, or several identical journeys.
+            Use this fuel expense calculator for a one-way drive, round trip, road trip, or several identical journeys.
             Enter the distance, your vehicle's real fuel economy, and the current price at the pump or charger.
             The result includes fuel or electricity used, total driving cost, cost per mile or kilometer, and an
-            equal cost per person when you are sharing the ride.
+            equal cost per person when you are sharing the ride. Include tolls, parking, and other charges for a
+            more complete car trip cost calculator estimate.
           </p>
 
           <div class="fuel-steps">
@@ -3364,7 +3352,12 @@
         </article>
 
         <article class="fuel-content-card">
-          <h2>Supported Fuel and Energy Units</h2>
+          <h2>Fuel Consumption Calculator and Supported Units</h2>
+          <p>
+            Use the tool as a fuel consumption calculator or fuel usage calculator when you want to estimate
+            the gallons, liters, or kWh needed for a journey—not only the price. Choose the units that match
+            your vehicle and local fuel or electricity price.
+          </p>
           <ul class="fuel-unit-list">
             <li>
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>
@@ -3386,6 +3379,31 @@
         </article>
       </section>
 
+      <section class="fuel-seo-content" id="gasoline-trip-cost">
+        <h2>Gasoline, Gas, and Travel Cost Estimates</h2>
+        <div class="fuel-feature-grid">
+          <article class="fuel-feature">
+            <h3>Gasoline trip budgets</h3>
+            <p>
+              For a gasoline vehicle, this gasoline cost calculator divides distance by fuel economy, then
+              multiplies the gallons used by the price at the pump. The same inputs make it a practical gas cost
+              calculator or gas expense calculator for commutes, road trips, deliveries, and carpools. To
+              calculate gas cost for trip planning, use the expected route distance and an MPG figure that
+              reflects how and where you will drive.
+            </p>
+          </article>
+          <article class="fuel-feature">
+            <h3>Total driving and travel costs</h3>
+            <p>
+              Because the tool can add tolls and parking, split passengers, and project repeated journeys, it
+              also works as a driving cost calculator or travel fuel cost calculator. The fill-up helper makes
+              it a useful car fuel calculator too: enter distance driven and fuel used to estimate your own
+              real-world MPG, km/L, or L/100 km before calculating the next trip.
+            </p>
+          </article>
+        </div>
+      </section>
+
       <section class="fuel-seo-content" id="commute-cost">
         <h2>Calculate Commute Cost</h2>
         <p>
@@ -3404,9 +3422,7 @@
           Switch on <strong>Split the cost</strong> and enter the total number of people in the car, including
           the driver if the driver is paying a share. The calculator adds fuel or charging cost and any extras,
           then divides the full amount equally. This makes it useful as a road trip gas split calculator, a
-          carpool cost calculator, or a quick way to work out fair gas money for passengers. If your group also
-          needs to divide hotels, meals, or activities, move the final driving total into the
-          <a href="/trip-expense-splitter.html">Trip Expense Splitter</a>.
+          carpool cost calculator, or a quick way to work out fair gas money for passengers.
         </p>
       </section>
 
@@ -3419,6 +3435,95 @@
           loss percentage is available under <strong>More options</strong>. Leave it at 0% when you want the
           battery-use estimate only, or add a measured loss when you want a closer estimate of energy drawn
           from the charger.
+        </p>
+      </section>
+
+      <section class="fuel-seo-content" id="fuel-consumption-factors">
+        <h2>What Affects Your Car's Fuel Consumption?</h2>
+        <p>
+          Your vehicle's official MPG, km/L, or L/100 km rating is a useful baseline, but real fuel consumption
+          and driving range change from one journey to another. The car must overcome rolling resistance, air
+          resistance, hills, repeated acceleration, and power used by accessories. For the most realistic
+          estimate, use an efficiency figure measured on recent trips in conditions similar to the journey you
+          are planning.
+        </p>
+
+        <div class="fuel-feature-grid">
+          <article class="fuel-feature">
+            <h3>Speed, acceleration, and braking</h3>
+            <p>
+              Rapid acceleration, hard braking, and speeding waste energy. Fuel economy usually falls quickly
+              above 50 mph because aerodynamic drag rises with speed. Smooth inputs, anticipation, and a steady
+              legal speed generally reduce consumption; cruise control can help on suitable, fairly level roads.
+            </p>
+          </article>
+          <article class="fuel-feature">
+            <h3>Tire pressure and rolling resistance</h3>
+            <p>
+              Underinflated tires flex more and increase rolling resistance. Check them when cold and use the
+              pressure on the driver's-door label or in the owner's manual—not the maximum printed on the tire.
+              Wheel misalignment, dragging brakes, and some high-resistance tire designs can also use more fuel.
+            </p>
+          </article>
+          <article class="fuel-feature">
+            <h3>Temperature and short journeys</h3>
+            <p>
+              A cold engine, transmission, battery, and tires operate less efficiently. Short trips are hit
+              hardest because the vehicle spends more of the journey warming up. In hot weather, air conditioning
+              adds load; in cold weather, heating and defrosting can noticeably reduce an EV's range.
+            </p>
+          </article>
+          <article class="fuel-feature">
+            <h3>Wind and aerodynamics</h3>
+            <p>
+              A strong headwind increases the air resistance the car must overcome, while a tailwind may reduce
+              it. Roof racks, roof boxes, bicycles, open windows at highway speed, and other items outside the
+              vehicle disturb airflow. Their effect becomes larger as driving speed increases.
+            </p>
+          </article>
+          <article class="fuel-feature">
+            <h3>Traffic, idling, and route choice</h3>
+            <p>
+              Stop-and-go traffic repeatedly turns fuel into acceleration and then loses that energy through
+              braking. Idling covers no distance while still using fuel. A slightly longer route at a steady
+              speed can sometimes use less than a congested route, and combining short errands avoids several
+              inefficient cold starts.
+            </p>
+          </article>
+          <article class="fuel-feature">
+            <h3>Hills, roads, and weather</h3>
+            <p>
+              Climbing requires extra energy, and the descent does not always recover all of it. Mountain roads,
+              gravel, mud, standing water, snow, and ice can increase resistance or wheel slip. Heavy rain and
+              poor conditions may also force repeated speed changes that make the original estimate less accurate.
+            </p>
+          </article>
+          <article class="fuel-feature">
+            <h3>Weight, towing, and four-wheel drive</h3>
+            <p>
+              Extra passengers, luggage, and cargo require more energy whenever the car accelerates or climbs.
+              Towing adds weight and substantial aerodynamic drag. Engaging four-wheel drive can add mechanical
+              losses, while a loaded roof box affects both weight and airflow.
+            </p>
+          </article>
+          <article class="fuel-feature">
+            <h3>Maintenance, oil, and fuel blend</h3>
+            <p>
+              Engine faults, incorrect oil, poor wheel alignment, and dragging brakes can reduce efficiency.
+              Follow the manufacturer's service schedule and investigate warning lights. Gasoline energy content
+              also varies with ethanol content and seasonal fuel blends, so identical trips may not always return
+              identical fuel usage.
+            </p>
+          </article>
+        </div>
+
+        <p>
+          <strong>Research basis:</strong> This guidance follows the U.S. Department of Energy and EPA information
+          on <a href="https://www.fueleconomy.gov/feg/factors.shtml" rel="noopener noreferrer">factors that affect MPG</a>,
+          <a href="https://www.fueleconomy.gov/feg/driveHabits.jsp" rel="noopener noreferrer">efficient driving</a>,
+          <a href="https://www.fueleconomy.gov/feg/maintain.jsp" rel="noopener noreferrer">vehicle maintenance</a>,
+          <a href="https://www.fueleconomy.gov/feg/coldweather.shtml" rel="noopener noreferrer">cold-weather fuel economy</a>,
+          and <a href="https://www.fueleconomy.gov/feg/hotweather.shtml" rel="noopener noreferrer">hot-weather fuel economy</a>.
         </p>
       </section>
 
@@ -3562,7 +3667,22 @@
             <summary>Is the result exact?</summary>
             <p>No. It is an estimate based on your inputs. Traffic, speed, weather, elevation, cargo, tire pressure, charging losses, and driving style can change real consumption.</p>
           </details>
+          <details>
+            <summary>What affects fuel consumption most on a road trip?</summary>
+            <p>Speed and driving style can have a large effect, especially at highway speeds. Headwinds, tire pressure, roof cargo, vehicle weight, hills, temperature, traffic, air conditioning, and maintenance can also change real fuel use and range.</p>
+          </details>
+          <details>
+            <summary>Why is my actual trip cost higher than the estimate?</summary>
+            <p>Your real MPG may be lower than the value entered because of traffic, cold starts, high speed, wind, hills, low tire pressure, extra weight, or climate-control use. Recalculate with fuel economy measured from a recent similar trip for a closer estimate.</p>
+          </details>
         </div>
+        <p class="fuel-trust-note">
+          <strong>Method and review:</strong> Calculations use 1 mile = 1.609344 km, 1 US gallon =
+          3.785411784 L, and 1 imperial gallon = 4.54609 L. The page keeps full internal precision and
+          rounds displayed money to two decimals. Methodology reviewed by the Fuel Cost Calculator
+          editorial team. Last updated July 20, 2026. For a separate official US trip-cost reference, see
+          <a href="https://www.fueleconomy.gov/trip/" rel="noopener noreferrer">FuelEconomy.gov</a>.
+        </p>
       </section>
 
       <section class="fuel-seo-content" id="related-tools">
@@ -3585,18 +3705,12 @@
             <span>Split a restaurant bill, tax, and tip quickly and fairly.</span>
           </a>
         </div>
-        <p class="fuel-trust-note">
-          <strong>Method and review:</strong> Calculations use 1 mile = 1.609344 km, 1 US gallon =
-          3.785411784 L, and 1 imperial gallon = 4.54609 L. The page keeps full internal precision and
-          rounds displayed money to two decimals. Methodology reviewed by the Split Bill Calculator
-          editorial team. Last updated July 20, 2026. For a separate official US trip-cost reference, see
-          <a href="https://www.fueleconomy.gov/trip/" rel="noopener noreferrer">FuelEconomy.gov</a>.
-        </p>
       </section>
     </main>
 
-    <div data-shared-footer></div>
   </div>
+
+  <div data-shared-footer></div>
 
   <div class="fuel-toast" id="toast" role="status" aria-live="polite">Result copied</div>
 
@@ -4884,6 +4998,5 @@
   })();
   </script>
 
-  <script src="/assets/shared-layout.js?v=1.18" defer></script>
 </body>
 </html>

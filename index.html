@@ -2087,6 +2087,7 @@
       place-items: center;
       width: 4.25rem;
       height: 4.25rem;
+      overflow: visible;
       border: 1px solid #bddde4;
       border-radius: 50%;
       color: #0d6594;
@@ -2102,6 +2103,14 @@
       stroke-width: 1.75;
       stroke-linecap: round;
       stroke-linejoin: round;
+    }
+
+    .fuel-ticket-car img {
+      display: block;
+      width: 5.25rem;
+      max-width: none;
+      height: auto;
+      filter: drop-shadow(0 4px 5px rgba(46, 52, 64, .18));
     }
 
     .fuel-ticket-route {
@@ -2671,6 +2680,8 @@
         height: 2.2rem;
       }
 
+      .fuel-ticket-car img { width: 4.1rem; }
+
       .fuel-ticket-route { height: 3.8rem; }
       .fuel-ticket-context { margin: .1rem 0 .7rem 4.2rem; }
 
@@ -2862,6 +2873,7 @@
 
       .fuel-ticket-visual { grid-template-columns: 3.15rem minmax(0, 1fr); gap: .5rem; }
       .fuel-ticket-car { width: 3rem; height: 3rem; }
+      .fuel-ticket-car img { width: 3.75rem; }
       .fuel-ticket-context { margin-left: 3.65rem; }
       .fuel-ticket-icon { width: 1.8rem; height: 1.8rem; }
       .fuel-ticket-total-value { font-size: 1.7rem; }
@@ -3198,12 +3210,7 @@
 
           <div class="fuel-ticket-visual" aria-hidden="true">
             <span class="fuel-ticket-car">
-              <svg viewBox="0 0 48 36">
-                <path d="M8 23h32l-2.4-8.1a4 4 0 0 0-3.8-2.9H17.2a4 4 0 0 0-3.7 2.5L10 23"/>
-                <path d="M8 23v6h4M40 23v6h-4M12 29h24"/>
-                <path d="M15 16h20M7 20H4M41 20h3"/>
-                <circle cx="16" cy="27" r="2.4"/><circle cx="33" cy="27" r="2.4"/>
-              </svg>
+              <img src="/assets/images/red-sports-car.png" alt="" width="1024" height="392">
             </span>
             <svg class="fuel-ticket-route" viewBox="0 0 260 72">
               <path d="M29 40c31 21 55-20 88-3 35 18 55 14 83-7 14-11 25-9 34-3" fill="none" stroke="#0873a4" stroke-width="2.3" stroke-dasharray="5 6" stroke-linecap="round"/>

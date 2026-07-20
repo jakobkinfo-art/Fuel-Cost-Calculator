@@ -31,10 +31,7 @@
   ];
 
   const mark = `
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M5 20V6a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v14M4 20h13M8 8h5v4H8z"/>
-      <path d="M16 9h2l2 2v6a1.5 1.5 0 0 1-3 0v-3"/>
-    </svg>`;
+    <img src="/assets/images/fuel-cost-calculator-fuel-logo.png" alt="" width="606" height="496" decoding="async">`;
 
   const headerRoot = document.querySelector('[data-shared-header]');
   if (headerRoot) {

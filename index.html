@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" href="/favicon.png" type="image/png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.png" type="image/png" sizes="512x512">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#0ea5e9">
@@ -13,7 +15,7 @@
 
   <title>Fuel Cost Calculator – Gas, Diesel &amp; EV Trip Costs</title>
   <meta name="description" content="Free fuel cost calculator for gasoline, diesel, and EV trips. Calculate fuel consumption, trip expenses, cost per mile or kilometer, and passenger shares.">
-  <link rel="canonical" href="https://splitbillcalculator.net/fuel-cost-calculator.html">
+  <link rel="canonical" href="https://fuel-cost-calculator.com/">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Split Bill Calculator">
@@ -75,8 +77,8 @@
   </script>
 
   <link rel="stylesheet" href="/assets/site.v1.14.min.css?v=1.21">
-  <link rel="stylesheet" href="/assets/shared-layout.css?v=1.0">
-  <script src="/assets/shared-layout.js?v=1.0" defer></script>
+  <link rel="stylesheet" href="/assets/shared-layout.css?v=1.1">
+  <script src="/assets/shared-layout.js?v=1.1" defer></script>
 
   <style>
     /* ============ Tokens (splitbillcalculator.net design system) ============ */
@@ -1998,25 +2000,17 @@
     }
 
     .fuel-site-mark {
-      position: relative;
-      display: grid;
-      place-items: center;
-      width: 2.55rem;
-      height: 2.55rem;
-      border: 2px solid rgba(255,255,255,.95);
-      border-radius: 50% 50% 50% .35rem;
-      transform: rotate(-45deg);
+      display: block;
+      width: 3.05rem;
+      height: 2.5rem;
+      flex: 0 0 auto;
     }
 
-    .fuel-site-mark svg {
-      width: 1.35rem;
-      height: 1.35rem;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 1.9;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      transform: rotate(45deg);
+    .fuel-site-mark img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     .fuel-site-nav {
@@ -4951,7 +4945,6 @@
     };
 
     restore();
-    syncUrl();
   })();
   </script>
 

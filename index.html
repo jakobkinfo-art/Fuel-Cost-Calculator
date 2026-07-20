@@ -1,0 +1,3530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#0ea5e9">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <title>Fuel Cost Calculator for Trips, Commutes, Gas, Diesel &amp; EV</title>
+  <meta name="description" content="Calculate trip fuel cost, fuel used, cost per mile, cost per kilometer, and cost per person for gas, petrol, diesel, or EV charging.">
+  <link rel="canonical" href="https://splitbillcalculator.net/fuel-cost-calculator.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Split Bill Calculator">
+  <meta property="og:title" content="Fuel Cost Calculator for Trips, Commutes, Gas, Diesel &amp; EV">
+  <meta property="og:description" content="Estimate trip and commute costs, fuel or electricity used, and the fair cost per passenger.">
+  <meta property="og:url" content="https://splitbillcalculator.net/fuel-cost-calculator.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Fuel Cost Calculator for Trips, Commutes, Gas, Diesel &amp; EV">
+  <meta name="twitter:description" content="Estimate trip and commute costs, fuel or electricity used, and the fair cost per passenger.">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://splitbillcalculator.net/fuel-cost-calculator.html#webpage",
+        "url": "https://splitbillcalculator.net/fuel-cost-calculator.html",
+        "name": "Fuel Cost Calculator",
+        "description": "Calculate trip fuel cost, fuel used, cost per mile, cost per kilometer, and cost per person for gas, petrol, diesel, or EV charging.",
+        "inLanguage": "en-US",
+        "dateModified": "2026-07-20",
+        "isPartOf": {
+          "@id": "https://splitbillcalculator.net/#website"
+        },
+        "breadcrumb": {
+          "@id": "https://splitbillcalculator.net/fuel-cost-calculator.html#breadcrumb"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://splitbillcalculator.net/fuel-cost-calculator.html#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://splitbillcalculator.net/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Fuel Cost Calculator",
+            "item": "https://splitbillcalculator.net/fuel-cost-calculator.html"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GM1YFWN8P1"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GM1YFWN8P1');
+  </script>
+
+  <link rel="stylesheet" href="/assets/site.v1.14.min.css?v=1.21">
+
+  <style>
+    /* ============ Tokens (splitbillcalculator.net design system) ============ */
+    :root {
+      --sky-50: #f0f9ff;   --sky-100: #e0f2fe;  --sky-200: #bae6fd;
+      --sky-300: #7dd3fc;  --sky-500: #0ea5e9;  --sky-600: #0284c7;
+      --sky-700: #0369a1;  --sky-800: #075985;
+      --slate-50: #f8fafc; --slate-100: #f1f5f9; --slate-200: #e2e8f0;
+      --slate-300: #cbd5e1; --slate-400: #94a3b8; --slate-500: #64748b;
+      --slate-600: #475569; --slate-700: #334155; --slate-800: #1e293b;
+      --slate-900: #0f172a;
+      --red-600: #dc2626;  --red-700: #b91c1c;  --red-50: #fef2f2; --red-200: #fecaca;
+      --radius-sm: .6rem;  --radius: .8rem;  --radius-lg: 1.1rem;  --radius-xl: 1.5rem;
+      --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --shadow-card: 0 1px 2px rgba(15, 23, 42, .04), 0 24px 55px -18px rgba(2, 132, 199, .18);
+    }
+
+    /* ============ Base ============ */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    [hidden] { display: none !important; }
+
+    html { -webkit-text-size-adjust: 100%; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--font-sans);
+      color: var(--slate-800);
+      background-color: #fff;
+      background-image:
+        radial-gradient(60rem 32rem at 85% -8%, rgba(56, 189, 248, .14), transparent 60%),
+        radial-gradient(50rem 30rem at -12% 18%, rgba(14, 165, 233, .08), transparent 55%),
+        linear-gradient(180deg, var(--sky-50) 0%, #fff 36rem);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* Form controls do not inherit fonts by default — this was the "weird fonts" bug */
+    button, input, select { font: inherit; color: inherit; }
+    button { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+
+    ::selection { background: var(--sky-200); color: var(--slate-900); }
+
+    :focus-visible { outline: 3px solid rgba(14, 165, 233, .45); outline-offset: 2px; }
+    input:focus-visible, select:focus-visible { outline: none; } /* custom ring below */
+
+    .container {
+      width: 100%;
+      max-width: 72rem;
+      margin-inline: auto;
+      padding: 1.25rem clamp(1rem, 4vw, 1.5rem) 3.5rem;
+    }
+
+    .container > header { margin-bottom: clamp(1.75rem, 4vw, 2.75rem); }
+
+    /* ============ Hero ============ */
+    .fuel-hero {
+      max-width: 46rem;
+      margin-inline: auto;
+      padding-top: clamp(.5rem, 3vw, 1.75rem);
+      text-align: center;
+    }
+
+    .fuel-breadcrumb {
+      display: flex;
+      justify-content: center;
+      gap: .45rem;
+      margin: 0 0 .85rem;
+      color: var(--slate-500);
+      font-size: .73rem;
+      line-height: 1.4;
+    }
+
+    .fuel-breadcrumb a {
+      color: var(--sky-700);
+      text-decoration: none;
+    }
+
+    .fuel-breadcrumb a:hover { text-decoration: underline; }
+
+    .fuel-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      padding: .42rem .8rem;
+      margin-bottom: 1.1rem;
+      border: 1px solid var(--sky-200);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--sky-700);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      box-shadow: 0 1px 2px rgba(2, 132, 199, .08);
+    }
+
+    .fuel-hero h1 {
+      margin: 0;
+      color: var(--slate-900);
+      font-size: clamp(2.1rem, 5.5vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.04;
+      letter-spacing: -.035em;
+      text-wrap: balance;
+    }
+
+    .fuel-hero-copy {
+      max-width: 38rem;
+      margin: 1rem auto 0;
+      color: var(--slate-600);
+      font-size: clamp(1rem, 2vw, 1.09rem);
+      line-height: 1.65;
+      text-wrap: pretty;
+    }
+
+    [data-shared-nav] { margin-top: 1.35rem; }
+
+    .fuel-benefits {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: .5rem .6rem;
+      margin-top: 1.25rem;
+      padding: 0;
+      list-style: none;
+    }
+
+    .fuel-benefit {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .4rem .75rem;
+      border: 1px solid var(--slate-200);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--slate-600);
+      font-size: .78rem;
+      font-weight: 600;
+    }
+
+    .fuel-benefit svg {
+      width: 14px;
+      height: 14px;
+      color: var(--sky-600);
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ============ Calculator shell ============ */
+    .fuel-page { width: 100%; }
+
+    .fuel-calculator {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(320px, .85fr);
+      align-items: stretch;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid var(--sky-100);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-card);
+    }
+
+    .fuel-form-panel { padding: clamp(1.25rem, 3vw, 1.9rem); }
+
+    .fuel-result-panel {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(1.25rem, 3vw, 1.9rem);
+      color: #fff;
+      background: linear-gradient(160deg, var(--sky-700) 0%, var(--sky-600) 45%, var(--sky-500) 100%);
+    }
+
+    .fuel-result-panel::before,
+    .fuel-result-panel::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .fuel-result-panel::before {
+      top: -8rem; right: -8rem; width: 22rem; height: 22rem;
+      background: radial-gradient(circle, rgba(255, 255, 255, .22), transparent 70%);
+    }
+
+    .fuel-result-panel::after {
+      bottom: -10rem; left: -6rem; width: 24rem; height: 24rem;
+      background: radial-gradient(circle, rgba(103, 232, 249, .16), transparent 70%);
+    }
+
+    .fuel-result-panel > * { position: relative; }
+
+    /* ============ Panel headings ============ */
+    .fuel-panel-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: .75rem 1rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .fuel-panel-heading h2,
+    .fuel-result-panel h2 {
+      margin: 0;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: -.02em;
+      color: inherit;
+    }
+
+    .fuel-panel-heading h2 { color: var(--slate-900); }
+
+    .fuel-panel-heading p,
+    .fuel-result-intro {
+      margin: .35rem 0 0;
+      font-size: .82rem;
+      line-height: 1.55;
+    }
+
+    .fuel-panel-heading p { color: var(--slate-500); }
+    .fuel-result-intro { color: rgba(255, 255, 255, .82); }
+
+    .fuel-panel-actions {
+      display: flex;
+      align-items: flex-end;
+      gap: .55rem;
+      flex: 0 0 auto;
+    }
+
+    .fuel-currency-picker {
+      display: grid;
+      gap: .18rem;
+      color: var(--slate-500);
+      font-size: .64rem;
+      font-weight: 600;
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    .fuel-currency-picker select {
+      min-height: 2.15rem;
+      padding: .4rem 1.8rem .4rem .65rem;
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-sm);
+      appearance: none;
+      background-color: #fff;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right .5rem center;
+      color: var(--slate-700);
+      font-size: .78rem;
+      font-weight: 600;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .fuel-currency-picker select:focus {
+      border-color: var(--sky-500);
+      box-shadow: 0 0 0 3px rgba(14, 165, 233, .14);
+    }
+
+    .fuel-reset {
+      flex: 0 0 auto;
+      padding: .5rem .75rem;
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-sm);
+      background: #fff;
+      color: var(--sky-700);
+      font-size: .78rem;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background-color .15s ease, border-color .15s ease;
+    }
+
+    .fuel-reset:hover { background: var(--sky-50); border-color: var(--sky-200); }
+
+    /* ============ Form sections ============ */
+    .fuel-section + .fuel-section {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--slate-100);
+    }
+
+    .fuel-section + .fuel-mileage-section {
+      margin-top: .65rem;
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    .fuel-mileage-section .fuel-advanced-toggle { margin-top: 0; }
+
+    .fuel-section-title {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      margin-bottom: .9rem;
+      color: var(--slate-800);
+      font-size: .92rem;
+      font-weight: 700;
+      letter-spacing: -.01em;
+    }
+
+    .fuel-step {
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      width: 1.6rem;
+      height: 1.6rem;
+      border-radius: .55rem;
+      background: linear-gradient(160deg, var(--sky-500), var(--sky-600));
+      color: #fff;
+      font-size: .74rem;
+      font-weight: 700;
+      box-shadow: 0 2px 6px rgba(2, 132, 199, .35);
+    }
+
+    /* ============ Vehicle segments ============ */
+    .fuel-segments {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: .4rem;
+      padding: .35rem;
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius);
+      background: var(--slate-100);
+    }
+
+    .fuel-segment {
+      min-height: 3.1rem;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: .5rem;
+      padding: .5rem;
+      border: 1px solid transparent;
+      border-radius: calc(var(--radius) - .25rem);
+      background: transparent;
+      color: var(--slate-500);
+      font-size: .84rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: color .15s ease, background-color .15s ease, box-shadow .15s ease, transform .1s ease;
+    }
+
+    .fuel-segment:hover { color: var(--slate-800); }
+    .fuel-segment:active { transform: scale(.98); }
+
+    .fuel-segment.active {
+      color: var(--sky-700);
+      background: #fff;
+      border-color: var(--sky-200);
+      box-shadow: 0 3px 10px rgba(2, 132, 199, .14);
+    }
+
+    .fuel-segment svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .fuel-segment.active svg { color: var(--sky-600); }
+
+    /* ============ Fields ============ */
+    .fuel-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .fuel-grid-2 > .fuel-field { min-width: 0; }
+
+    .fuel-field label {
+      display: block;
+      margin-bottom: .4rem;
+      color: var(--slate-700);
+      font-size: .8rem;
+      font-weight: 600;
+    }
+
+    .fuel-control {
+      position: relative;
+      display: flex;
+      align-items: stretch;
+      min-width: 0;
+    }
+
+    .fuel-control > input {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+
+    .fuel-field input,
+    .fuel-field select {
+      width: 100%;
+      min-height: 3rem;
+      padding: .65rem .85rem;
+      border: 1px solid var(--slate-300);
+      border-radius: var(--radius-sm);
+      background-color: #fff;
+      color: var(--slate-900);
+      font-size: 1rem; /* 16px stops iOS zoom-on-focus */
+      font-weight: 500;
+      font-variant-numeric: tabular-nums;
+      outline: none;
+      transition: border-color .15s ease, box-shadow .15s ease;
+    }
+
+    .fuel-field input:hover,
+    .fuel-field select:hover { border-color: var(--slate-400); }
+
+    .fuel-field select {
+      appearance: none;
+      padding-right: 2.3rem;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right .75rem center;
+    }
+
+    .fuel-field input:focus,
+    .fuel-field select:focus {
+      border-color: var(--sky-500);
+      box-shadow: 0 0 0 4px rgba(14, 165, 233, .14);
+    }
+
+    .fuel-field input.invalid,
+    .fuel-field select.invalid { border-color: var(--red-600); }
+
+    .fuel-field input.invalid:focus,
+    .fuel-field select.invalid:focus { box-shadow: 0 0 0 4px rgba(220, 38, 38, .12); }
+
+    .fuel-unit input,
+    .fuel-unit select { position: relative; }
+
+    .fuel-unit input:focus,
+    .fuel-unit select:focus { z-index: 1; }
+
+    .fuel-unit input {
+      border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+      border-right: 0;
+    }
+
+    .fuel-unit select {
+      flex: 0 0 auto;
+      width: auto;
+      min-width: 6.6rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      background-color: var(--slate-50);
+      color: var(--slate-700);
+      font-size: .86rem;
+      font-weight: 600;
+    }
+
+    .fuel-currency > span {
+      position: absolute;
+      left: .9rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--slate-500);
+      font-size: .95rem;
+      font-weight: 600;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .fuel-currency input { padding-left: 1.9rem; }
+
+    .fuel-help {
+      margin-top: .4rem;
+      color: var(--slate-500);
+      font-size: .75rem;
+      line-height: 1.5;
+    }
+
+    /* ============ Round trip switch ============ */
+    .fuel-switch-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 1rem;
+      padding: .85rem 1rem;
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius);
+      background: var(--slate-50);
+    }
+
+    .fuel-switch-copy strong {
+      display: block;
+      color: var(--slate-800);
+      font-size: .84rem;
+      font-weight: 600;
+    }
+
+    .fuel-switch-copy span {
+      display: block;
+      margin-top: .12rem;
+      color: var(--slate-500);
+      font-size: .74rem;
+      line-height: 1.45;
+    }
+
+    .fuel-switch {
+      position: relative;
+      width: 3rem;
+      height: 1.7rem;
+      flex: 0 0 auto;
+    }
+
+    .fuel-switch input { position: absolute; opacity: 0; }
+
+    .fuel-switch-track {
+      position: absolute;
+      inset: 0;
+      border-radius: 999px;
+      background: var(--slate-300);
+      transition: background-color .2s ease;
+    }
+
+    .fuel-switch-track::after {
+      content: "";
+      position: absolute;
+      top: .2rem;
+      left: .2rem;
+      width: 1.3rem;
+      height: 1.3rem;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, .25);
+      transition: transform .2s ease;
+    }
+
+    .fuel-switch input:checked + .fuel-switch-track { background: var(--sky-500); }
+    .fuel-switch input:checked + .fuel-switch-track::after { transform: translateX(1.3rem); }
+    .fuel-switch input:focus-visible + .fuel-switch-track { box-shadow: 0 0 0 4px rgba(14, 165, 233, .25); }
+
+    /* ============ Advanced toggle ============ */
+    .fuel-advanced-toggle {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 1rem;
+      padding: .8rem .9rem;
+      border: 1px dashed var(--slate-300);
+      border-radius: var(--radius-sm);
+      background: #fff;
+      color: var(--slate-600);
+      font-size: .8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: border-color .15s ease, background-color .15s ease, color .15s ease;
+    }
+
+    .fuel-advanced-toggle:hover {
+      border-color: var(--sky-300);
+      background: var(--sky-50);
+      color: var(--sky-700);
+    }
+
+    .fuel-advanced-toggle svg { transition: transform .18s ease; }
+    .fuel-advanced-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
+
+    .fuel-advanced-fields { display: none; margin-top: .9rem; }
+    .fuel-advanced-fields.open { display: block; }
+
+    .fuel-split-fields { display: none; margin-top: .9rem; }
+    .fuel-split-fields.open { display: block; }
+
+    /* ============ Errors ============ */
+    .fuel-error {
+      display: none;
+      margin-top: 1.1rem;
+      padding: .8rem .9rem;
+      border: 1px solid var(--red-200);
+      border-radius: var(--radius-sm);
+      background: var(--red-50);
+      color: var(--red-700);
+      font-size: .8rem;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    .fuel-error.show { display: block; }
+
+    /* ============ Result panel ============ */
+    .fuel-result-primary {
+      margin-top: 1.4rem;
+      padding: 1.25rem;
+      border: 1px solid rgba(255, 255, 255, .28);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, .13);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .25);
+    }
+
+    .fuel-result-label {
+      color: rgba(255, 255, 255, .8);
+      font-size: .72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+    }
+
+    .fuel-result-value {
+      margin-top: .3rem;
+      font-size: clamp(2.5rem, 6vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -.035em;
+      font-variant-numeric: tabular-nums;
+      text-shadow: 0 2px 12px rgba(3, 105, 161, .35);
+    }
+
+    .fuel-result-subtext {
+      margin-top: .6rem;
+      color: rgba(255, 255, 255, .8);
+      font-size: .78rem;
+      line-height: 1.5;
+    }
+
+    .fuel-split-highlight {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, .22);
+    }
+
+    .fuel-split-highlight span {
+      display: block;
+      color: rgba(255, 255, 255, .78);
+      font-size: .72rem;
+      font-weight: 500;
+    }
+
+    .fuel-split-highlight strong {
+      display: block;
+      margin-top: .15rem;
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -.025em;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .fuel-result-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .7rem;
+      margin-top: .9rem;
+    }
+
+    .fuel-result-card {
+      padding: .85rem .9rem;
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: var(--radius);
+      background: rgba(4, 58, 96, .32);
+    }
+
+    .fuel-result-card span {
+      display: block;
+      color: rgba(255, 255, 255, .72);
+      font-size: .66rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .fuel-result-card strong {
+      display: block;
+      margin-top: .25rem;
+      font-size: 1rem;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .fuel-breakdown {
+      margin-top: 1.15rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, .22);
+    }
+
+    .fuel-breakdown h3 {
+      margin: 0 0 .5rem;
+      color: rgba(255, 255, 255, .8);
+      font-size: .72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+    }
+
+    .fuel-breakdown-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: .4rem 0;
+      color: rgba(255, 255, 255, .82);
+      font-size: .82rem;
+    }
+
+    .fuel-breakdown-row strong {
+      color: #fff;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .fuel-action-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .7rem;
+      margin-top: 1.15rem;
+    }
+
+    .fuel-action {
+      min-height: 2.9rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      border: 1px solid rgba(255, 255, 255, .35);
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, .14);
+      color: #fff;
+      font-size: .82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color .15s ease, transform .1s ease, box-shadow .15s ease;
+    }
+
+    .fuel-action:hover { background: rgba(255, 255, 255, .24); }
+    .fuel-action:active { transform: scale(.98); }
+
+    .fuel-action-primary {
+      background: #fff;
+      border-color: #fff;
+      color: var(--sky-800);
+      box-shadow: 0 4px 14px rgba(3, 105, 161, .3);
+    }
+
+    .fuel-action-primary:hover {
+      background: #fff;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(3, 105, 161, .35);
+    }
+
+    .fuel-action svg {
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .fuel-note {
+      display: flex;
+      gap: .5rem;
+      margin: 1rem 0 0;
+      color: rgba(255, 255, 255, .72);
+      font-size: .72rem;
+      line-height: 1.55;
+    }
+
+    .fuel-note svg {
+      flex: 0 0 auto;
+      width: 14px;
+      height: 14px;
+      margin-top: .1rem;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+    }
+
+    /* ============ Content cards ============ */
+    .fuel-content-grid {
+      display: grid;
+      grid-template-columns: 1.12fr .88fr;
+      gap: 1.1rem;
+      margin-top: 1.1rem;
+    }
+
+    .fuel-content-card {
+      padding: clamp(1.25rem, 2.5vw, 1.6rem);
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-lg);
+      background: #fff;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, .03);
+    }
+
+    .fuel-content-card h2 {
+      margin: 0 0 .6rem;
+      color: var(--slate-900);
+      font-size: 1.08rem;
+      font-weight: 700;
+      letter-spacing: -.015em;
+    }
+
+    .fuel-content-card p {
+      margin: 0;
+      color: var(--slate-600);
+      font-size: .875rem;
+      line-height: 1.7;
+    }
+
+    .fuel-steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: .7rem;
+      margin-top: 1rem;
+    }
+
+    .fuel-info-step {
+      padding: .9rem;
+      border: 1px solid var(--slate-100);
+      border-radius: var(--radius);
+      background: var(--slate-50);
+    }
+
+    .fuel-info-step strong {
+      display: block;
+      margin-bottom: .3rem;
+      color: var(--slate-800);
+      font-size: .8rem;
+      font-weight: 700;
+    }
+
+    .fuel-info-step span {
+      color: var(--slate-500);
+      font-size: .75rem;
+      line-height: 1.55;
+    }
+
+    .fuel-unit-list {
+      margin: .85rem 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .fuel-unit-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: .5rem;
+      padding: .4rem 0;
+      color: var(--slate-600);
+      font-size: .85rem;
+      line-height: 1.55;
+    }
+
+    .fuel-unit-list svg {
+      flex: 0 0 auto;
+      width: 15px;
+      height: 15px;
+      margin-top: .18rem;
+      color: var(--sky-600);
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ============ Toast ============ */
+    .fuel-toast {
+      position: fixed;
+      left: 50%;
+      bottom: calc(1.25rem + env(safe-area-inset-bottom));
+      z-index: 10000;
+      transform: translate(-50%, 1rem);
+      padding: .7rem 1rem;
+      border-radius: .75rem;
+      background: var(--slate-900);
+      color: #fff;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, .25);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s ease, transform .2s ease;
+      font-size: .8rem;
+      font-weight: 600;
+    }
+
+    .fuel-toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    body.fuel-sticky-active .fuel-toast {
+      bottom: calc(5.5rem + env(safe-area-inset-bottom));
+    }
+
+    /* ============ Sticky mobile summary ============ */
+    .fuel-sticky {
+      position: fixed;
+      inset-inline: 0;
+      bottom: 0;
+      z-index: 9000;
+      padding: .6rem .9rem calc(.6rem + env(safe-area-inset-bottom));
+      background: rgba(255, 255, 255, .92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-top: 1px solid var(--slate-200);
+      box-shadow: 0 -10px 30px rgba(15, 23, 42, .1);
+      animation: fuel-sticky-in .25s ease;
+    }
+
+    @keyframes fuel-sticky-in {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+
+    .fuel-sticky-inner {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: .9rem;
+      padding: .1rem .1rem;
+      border: 0;
+      background: none;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .fuel-sticky-group { min-width: 0; }
+
+    .fuel-sticky-label {
+      display: block;
+      color: var(--slate-500);
+      font-size: .66rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+    }
+
+    .fuel-sticky-value {
+      display: block;
+      color: var(--slate-900);
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .fuel-sticky-divider {
+      width: 1px;
+      align-self: stretch;
+      background: var(--slate-200);
+    }
+
+    .fuel-sticky-cta {
+      margin-left: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: .3rem;
+      padding: .55rem .75rem;
+      border-radius: .65rem;
+      background: var(--sky-600);
+      color: #fff;
+      font-size: .74rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .fuel-sticky-cta svg {
+      width: 14px;
+      height: 14px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    @media (min-width: 900px) {
+      .fuel-sticky { display: none !important; }
+    }
+
+    @media (max-width: 899px) {
+      body.fuel-sticky-active { padding-bottom: calc(4.75rem + env(safe-area-inset-bottom)); }
+    }
+
+    /* ============ Unit system toggle ============ */
+    .fuel-units-bar {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      margin-bottom: 1.4rem;
+      padding: .55rem .7rem;
+      border: 1px solid var(--sky-100);
+      border-radius: var(--radius);
+      background: var(--sky-50);
+    }
+
+    .fuel-units-label {
+      flex: 0 0 auto;
+      padding-left: .25rem;
+      color: var(--sky-800);
+      font-size: .72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+    }
+
+    .fuel-units-toggle {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .3rem;
+      padding: .25rem;
+      border: 1px solid var(--sky-200);
+      border-radius: calc(var(--radius) - .2rem);
+      background: #fff;
+    }
+
+    .fuel-units-option {
+      min-height: 2.4rem;
+      padding: .35rem .5rem;
+      border: 1px solid transparent;
+      border-radius: calc(var(--radius) - .4rem);
+      background: transparent;
+      color: var(--slate-500);
+      font-size: .78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: color .15s ease, background-color .15s ease, box-shadow .15s ease;
+    }
+
+    .fuel-units-option:hover { color: var(--slate-800); }
+
+    .fuel-units-option.active {
+      color: #fff;
+      background: linear-gradient(160deg, var(--sky-500), var(--sky-600));
+      box-shadow: 0 3px 10px rgba(2, 132, 199, .3);
+    }
+
+    /* ============ Fill-up efficiency helper ============ */
+    #mileageToggle { margin-top: 0; }
+
+    .fuel-mileage-result {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: .75rem 1rem;
+      margin-top: .9rem;
+      padding: .85rem 1rem;
+      border: 1px solid var(--sky-100);
+      border-radius: var(--radius);
+      background: var(--sky-50);
+    }
+
+    .fuel-mileage-label {
+      display: block;
+      color: var(--sky-800);
+      font-size: .66rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    #mileageValue {
+      display: inline-block;
+      margin-top: .2rem;
+      color: var(--slate-900);
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .fuel-mileage-alt {
+      display: inline-block;
+      margin-left: .35rem;
+      color: var(--slate-500);
+      font-size: .78rem;
+      font-weight: 500;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .fuel-mileage-use {
+      flex: 0 0 auto;
+      min-height: 2.6rem;
+      padding: .5rem .9rem;
+      border: 0;
+      border-radius: var(--radius-sm);
+      background: var(--sky-600);
+      color: #fff;
+      font-size: .78rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color .15s ease, transform .1s ease;
+    }
+
+    .fuel-mileage-use:hover { background: var(--sky-700); }
+    .fuel-mileage-use:active { transform: scale(.98); }
+
+    .fuel-flash { animation: fuel-flash .9s ease; }
+
+    @keyframes fuel-flash {
+      0% { box-shadow: 0 0 0 6px rgba(14, 165, 233, .35); border-color: var(--sky-500); }
+      100% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0); }
+    }
+
+    /* ============ Efficiency helper link ============ */
+    .fuel-label-link {
+      display: block;
+      margin: .35rem 0 0;
+      padding: 0;
+      border: 0;
+      background: none;
+      color: var(--sky-600);
+      font-size: .72rem;
+      font-weight: 600;
+      text-align: left;
+      cursor: pointer;
+      text-decoration: underline;
+      text-decoration-color: var(--sky-300);
+      text-underline-offset: 2px;
+      transition: color .15s ease, text-decoration-color .15s ease;
+    }
+
+    .fuel-label-link:hover {
+      color: var(--sky-700);
+      text-decoration-color: var(--sky-500);
+    }
+
+    .fuel-label-link[hidden] { display: none; }
+
+    .fuel-trip-count { margin-top: 1rem; }
+
+    /* ============ Cross-link banner ============ */
+    .fuel-crosslink {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: .75rem 1rem;
+      margin-top: 1.1rem;
+      padding: 1rem 1.25rem;
+      border: 1px solid var(--sky-200);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(160deg, var(--sky-50), #fff);
+      text-decoration: none;
+    }
+
+    .fuel-crosslink strong {
+      display: block;
+      color: var(--slate-900);
+      font-size: .92rem;
+      font-weight: 700;
+    }
+
+    .fuel-crosslink-sub {
+      display: block;
+      margin-top: .15rem;
+      color: var(--slate-600);
+      font-size: .8rem;
+      line-height: 1.5;
+    }
+
+    .fuel-crosslink-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .55rem .85rem;
+      border-radius: var(--radius-sm);
+      background: var(--sky-600);
+      color: #fff;
+      font-size: .78rem;
+      font-weight: 700;
+      white-space: nowrap;
+      transition: background-color .15s ease;
+    }
+
+    .fuel-crosslink:hover .fuel-crosslink-cta { background: var(--sky-700); }
+
+    .fuel-crosslink-cta svg {
+      width: 15px;
+      height: 15px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ============ Commute projection card ============ */
+    .fuel-yearly {
+      display: block;
+      margin-top: .9rem;
+      padding: .9rem 1rem;
+      border: 1px solid rgba(255, 255, 255, .28);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, .13);
+    }
+
+    .fuel-yearly span {
+      color: rgba(255, 255, 255, .82);
+      font-size: .74rem;
+      font-weight: 600;
+    }
+
+    .fuel-commute-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: .65rem;
+      margin-top: .7rem;
+    }
+
+    .fuel-commute-grid div {
+      padding: .55rem .6rem;
+      border-radius: .65rem;
+      background: rgba(4, 58, 96, .25);
+    }
+
+    .fuel-commute-grid small {
+      display: block;
+      color: rgba(255, 255, 255, .72);
+      font-size: .63rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+    }
+
+    .fuel-commute-grid strong {
+      display: block;
+      margin-top: .22rem;
+      font-size: 1.02rem;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ============ Search-focused guide content ============ */
+    .fuel-seo-content {
+      margin-top: 1.1rem;
+      padding: clamp(1.35rem, 3vw, 2rem);
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-lg);
+      background: #fff;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, .03);
+    }
+
+    .fuel-seo-content h2 {
+      margin: 0 0 .7rem;
+      color: var(--slate-900);
+      font-size: clamp(1.25rem, 2.5vw, 1.55rem);
+      line-height: 1.25;
+      letter-spacing: -.025em;
+    }
+
+    .fuel-seo-content h3 {
+      margin: 1.25rem 0 .4rem;
+      color: var(--slate-900);
+      font-size: 1rem;
+      line-height: 1.35;
+    }
+
+    .fuel-seo-content p,
+    .fuel-seo-content li {
+      color: var(--slate-600);
+      font-size: .9rem;
+      line-height: 1.75;
+    }
+
+    .fuel-seo-content p { margin: .55rem 0 0; }
+    .fuel-seo-content a { color: var(--sky-700); font-weight: 600; }
+
+    .fuel-feature-grid,
+    .fuel-example-grid,
+    .fuel-related-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .85rem;
+      margin-top: 1rem;
+    }
+
+    .fuel-feature,
+    .fuel-example,
+    .fuel-related-link {
+      padding: 1rem;
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius);
+      background: var(--slate-50);
+    }
+
+    .fuel-feature h3,
+    .fuel-example h3 { margin: 0 0 .35rem; }
+    .fuel-feature p,
+    .fuel-example p { margin: 0; font-size: .83rem; line-height: 1.65; }
+
+    .fuel-formula {
+      margin-top: .9rem;
+      padding: .95rem 1rem;
+      border-left: 4px solid var(--sky-500);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      background: var(--sky-50);
+      color: var(--slate-800);
+      font-size: .86rem;
+      font-weight: 700;
+      line-height: 1.7;
+      overflow-wrap: anywhere;
+    }
+
+    .fuel-table-wrap { margin-top: .9rem; overflow-x: auto; }
+
+    .fuel-table {
+      width: 100%;
+      min-width: 38rem;
+      border-collapse: collapse;
+      font-size: .82rem;
+      line-height: 1.55;
+    }
+
+    .fuel-table th,
+    .fuel-table td {
+      padding: .7rem .75rem;
+      border-bottom: 1px solid var(--slate-200);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .fuel-table th { color: var(--slate-800); background: var(--slate-50); }
+    .fuel-table td { color: var(--slate-600); }
+
+    .fuel-faq { margin-top: .8rem; border-top: 1px solid var(--slate-200); }
+
+    .fuel-faq details { border-bottom: 1px solid var(--slate-200); }
+
+    .fuel-faq summary {
+      position: relative;
+      padding: .9rem 2rem .9rem 0;
+      color: var(--slate-900);
+      font-size: .9rem;
+      font-weight: 700;
+      line-height: 1.5;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .fuel-faq summary::-webkit-details-marker { display: none; }
+    .fuel-faq summary::after { content: "+"; position: absolute; right: .2rem; top: .82rem; color: var(--sky-600); font-size: 1.25rem; }
+    .fuel-faq details[open] summary::after { content: "−"; }
+    .fuel-faq details p { margin: -.25rem 0 .95rem; padding-right: 2rem; }
+
+    .fuel-related-link {
+      display: block;
+      color: inherit !important;
+      text-decoration: none;
+      transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease;
+    }
+
+    .fuel-related-link:hover {
+      transform: translateY(-2px);
+      border-color: var(--sky-300);
+      box-shadow: 0 8px 20px rgba(2, 132, 199, .09);
+    }
+
+    .fuel-related-link strong { display: block; color: var(--slate-900); font-size: .9rem; }
+    .fuel-related-link span { display: block; margin-top: .25rem; color: var(--slate-500); font-size: .78rem; line-height: 1.55; }
+
+    .fuel-people-align { text-align: right; }
+
+    .fuel-trust-note {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--slate-200);
+      color: var(--slate-500);
+      font-size: .76rem;
+      line-height: 1.65;
+    }
+
+    .fuel-cookie {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      z-index: 9999;
+      display: none;
+      width: 90%;
+      max-width: 420px;
+      padding: 14px 18px;
+      transform: translateX(-50%);
+      border: 1px solid rgba(14, 165, 233, .15);
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, .08);
+      font-size: 14px;
+    }
+
+    .fuel-cookie-copy { margin-bottom: 10px; color: var(--slate-700); line-height: 1.5; }
+    .fuel-cookie-copy a { color: var(--sky-500); font-weight: 500; text-decoration: none; }
+    .fuel-cookie-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .fuel-cookie-button {
+      padding: 6px 12px;
+      border: 0;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .fuel-cookie-button-primary { background: var(--sky-500); color: #fff; }
+    .fuel-cookie-button-secondary { background: var(--slate-100); color: var(--slate-900); }
+
+    /* ============ Efficiency presets ============ */
+    .fuel-presets {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .3rem;
+      margin-top: .45rem;
+      padding: .25rem;
+      border: 1px solid var(--sky-200);
+      border-radius: calc(var(--radius) - .2rem);
+      background: #fff;
+    }
+
+    .fuel-presets button {
+      min-height: 2.2rem;
+      padding: .3rem .2rem;
+      border: 1px solid transparent;
+      border-radius: calc(var(--radius) - .4rem);
+      background: transparent;
+      color: var(--slate-500);
+      font-size: .72rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: color .15s ease, background-color .15s ease;
+    }
+
+    .fuel-presets button:hover { color: var(--slate-800); }
+
+    .fuel-presets button.active {
+      color: var(--sky-700);
+      background: var(--sky-100);
+    }
+
+    /* ============ Responsive ============ */
+    @media (max-width: 900px) {
+      .fuel-calculator { grid-template-columns: 1fr; }
+      .fuel-content-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .fuel-form-panel,
+      .fuel-result-panel { padding: 1.15rem; }
+
+      .fuel-calculator { border-radius: var(--radius-lg); }
+
+      .fuel-grid-2,
+      .fuel-steps { grid-template-columns: 1fr; }
+
+      .fuel-segment {
+        flex-direction: column;
+        gap: .25rem;
+        min-height: 3.6rem;
+        font-size: .74rem;
+      }
+
+      .fuel-action-row { grid-template-columns: 1fr; }
+
+      .fuel-units-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: .45rem;
+      }
+
+      .fuel-units-option { font-size: .72rem; }
+
+      .fuel-panel-actions {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .fuel-feature-grid,
+      .fuel-example-grid,
+      .fuel-related-grid { grid-template-columns: 1fr; }
+
+      .fuel-commute-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 390px) {
+      .fuel-result-grid { grid-template-columns: 1fr; }
+      .fuel-unit select { min-width: 5.8rem; }
+      .fuel-segment { font-size: .68rem; }
+      .fuel-presets { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media print {
+      .fuel-sticky, .fuel-toast { display: none !important; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-gradient-to-br from-primary-50 to-white min-h-screen font-sans text-gray-800">
+  <div class="container mx-auto px-3 py-4 max-w-6xl">
+    <header class="mb-7">
+      <div class="fuel-hero">
+        <nav class="fuel-breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">Fuel Cost Calculator</span>
+        </nav>
+        <div class="fuel-eyebrow">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" aria-hidden="true">
+            <path d="M20 7h-9M14 17H5M17 4l3 3-3 3M8 14l-3 3 3 3"/>
+          </svg>
+          Gas, diesel &amp; electric
+        </div>
+
+        <h1>Fuel Cost Calculator</h1>
+        <p class="fuel-hero-copy">
+          Calculate how much a trip costs in gas, petrol, diesel, or electricity. Enter your distance,
+          fuel economy or energy use, and price per gallon, liter, or kWh to see total cost, fuel used,
+          cost per mile or kilometer, and cost per person.
+        </p>
+
+        <div data-shared-nav></div>
+
+        <ul class="fuel-benefits">
+          <li class="fuel-benefit">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>
+            No sign-up
+          </li>
+          <li class="fuel-benefit">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>
+            Instant results
+          </li>
+          <li class="fuel-benefit">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>
+            Miles and kilometers
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <main class="fuel-page">
+      <section class="fuel-calculator" aria-labelledby="calculator-title">
+        <div class="fuel-form-panel">
+          <div class="fuel-panel-heading">
+            <div>
+              <h2 id="calculator-title">Calculate your trip cost</h2>
+              <p>Demo values are pre-filled. Change any field to update the result instantly.</p>
+            </div>
+            <div class="fuel-panel-actions">
+              <label class="fuel-currency-picker">
+                Currency
+                <select id="currency" aria-label="Currency">
+                  <option value="USD" selected>$ USD</option>
+                  <option value="EUR">€ EUR</option>
+                  <option value="GBP">£ GBP</option>
+                </select>
+              </label>
+              <button class="fuel-reset" id="resetButton" type="button">Start fresh</button>
+            </div>
+          </div>
+
+          <div class="fuel-units-bar">
+            <span class="fuel-units-label" id="unitsLabel">Units</span>
+            <div class="fuel-units-toggle" role="group" aria-labelledby="unitsLabel">
+              <button type="button" class="fuel-units-option active" data-unit-system="us" aria-pressed="true">Miles &middot; Gallons</button>
+              <button type="button" class="fuel-units-option" data-unit-system="metric" aria-pressed="false">Kilometers &middot; Liters</button>
+            </div>
+          </div>
+
+          <div class="fuel-section">
+            <div class="fuel-section-title">
+              <span class="fuel-step">1</span>
+              Choose vehicle type
+            </div>
+
+            <div class="fuel-segments" role="group" aria-label="Vehicle energy type">
+              <button type="button" class="fuel-segment active" data-vehicle="gasoline" aria-pressed="true">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 22V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v18M3 11h13M7 6h5"/><path d="M16 8h2l3 3v8a2 2 0 0 1-4 0v-5"/></svg>
+                Gasoline
+              </button>
+
+              <button type="button" class="fuel-segment" data-vehicle="diesel" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 22V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v18M3 11h13M7 6h5"/><path d="M16 8h2l3 3v8a2 2 0 0 1-4 0v-5"/></svg>
+                Diesel
+              </button>
+
+              <button type="button" class="fuel-segment" data-vehicle="electric" aria-pressed="false">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m13 2-9 12h8l-1 8 9-12h-8l1-8z"/></svg>
+                Electric
+              </button>
+            </div>
+          </div>
+
+          <div class="fuel-section">
+            <div class="fuel-section-title">
+              <span class="fuel-step">2</span>
+              Enter trip details
+            </div>
+
+            <div class="fuel-field">
+              <label for="distance">Trip distance</label>
+              <div class="fuel-control fuel-unit">
+                <input id="distance" type="text" inputmode="decimal" pattern="[0-9]*[.,]?[0-9]*" value="250">
+                <select id="distanceUnit" aria-label="Trip distance unit">
+                  <option value="miles" selected>miles</option>
+                  <option value="km">km</option>
+                </select>
+              </div>
+              <div class="fuel-help">Enter the route distance yourself or paste it from your map app.</div>
+            </div>
+
+          </div>
+
+          <div class="fuel-section">
+            <div class="fuel-section-title">
+              <span class="fuel-step">3</span>
+              <span id="efficiencySectionLabel">Add fuel efficiency and price</span>
+            </div>
+
+            <div class="fuel-grid-2">
+              <div class="fuel-field">
+                <label for="efficiency" id="efficiencyLabel">Vehicle efficiency</label>
+                <div class="fuel-control fuel-unit">
+                  <input id="efficiency" type="text" inputmode="decimal" pattern="[0-9]*[.,]?[0-9]*" value="28">
+                  <select id="efficiencyUnit" aria-label="Vehicle efficiency unit">
+                    <option value="mpg_us" selected>MPG (US)</option>
+                    <option value="mpg_imp">MPG (UK)</option>
+                    <option value="miles_per_liter">mi/L</option>
+                    <option value="km_per_liter">km/L</option>
+                    <option value="liters_per_100km">L/100 km</option>
+                  </select>
+                </div>
+                <div class="fuel-presets" role="group" aria-label="Typical efficiency presets">
+                  <button type="button" data-preset="small">Small car</button>
+                  <button type="button" data-preset="sedan">Sedan</button>
+                  <button type="button" data-preset="suv">SUV</button>
+                  <button type="button" data-preset="van">Van</button>
+                </div>
+                <div class="fuel-help" id="efficiencyHelp">Use your car's combined MPG rating.</div>
+                <button class="fuel-label-link" id="efficiencyHelperLink" type="button">Don't know your car's efficiency?</button>
+              </div>
+
+              <div class="fuel-field">
+                <label for="energyPrice" id="priceLabel">Gas price</label>
+                <div class="fuel-control fuel-unit fuel-currency">
+                  <span id="currencySymbol">$</span>
+                  <input id="energyPrice" type="text" inputmode="decimal" pattern="[0-9]*[.,]?[0-9]*" value="3.45">
+                  <select id="priceUnit" aria-label="Energy price unit">
+                    <option value="per_gallon" selected>per US gal</option>
+                    <option value="per_imperial_gallon">per imp gal</option>
+                    <option value="per_liter">per L</option>
+                  </select>
+                </div>
+                <div class="fuel-help" id="priceHelp">Enter the current price shown at the pump.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="fuel-section">
+            <div class="fuel-section-title">
+              <span class="fuel-step">4</span>
+              Add extras and split the cost
+            </div>
+
+            <div class="fuel-field">
+              <label for="extraCosts">Tolls, parking &amp; other costs</label>
+              <div class="fuel-control fuel-currency">
+                <span>$</span>
+                <input id="extraCosts" type="text" inputmode="decimal" pattern="[0-9]*[.,]?[0-9]*" value="12.50">
+              </div>
+              <div class="fuel-help">Added once to the full calculation.</div>
+            </div>
+
+            <div class="fuel-switch-row">
+              <div class="fuel-switch-copy">
+                <strong>Split the cost</strong>
+                <span>Divide the total between everyone in the car.</span>
+              </div>
+
+              <label class="fuel-switch">
+                <input id="splitToggle" type="checkbox" aria-controls="splitFields" aria-label="Split the cost between several people">
+                <span class="fuel-switch-track" aria-hidden="true"></span>
+              </label>
+            </div>
+
+            <div class="fuel-split-fields" id="splitFields">
+              <div class="fuel-field">
+                <label for="people">Total people in car, including driver</label>
+                <input id="people" type="number" inputmode="numeric" min="1" max="100" step="1" value="1">
+                <div class="fuel-help">The total is split equally. Count the driver if they are paying a share.</div>
+              </div>
+            </div>
+
+            <button class="fuel-advanced-toggle" id="advancedToggle" type="button" aria-expanded="false" aria-controls="advancedFields">
+              More options
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="m6 9 6 6 6-6"/>
+              </svg>
+            </button>
+
+            <div class="fuel-advanced-fields" id="advancedFields">
+              <div class="fuel-switch-row">
+                <div class="fuel-switch-copy">
+                  <strong>Round trip</strong>
+                  <span>Automatically doubles the entered distance.</span>
+                </div>
+
+                <label class="fuel-switch">
+                  <input id="roundTrip" type="checkbox" aria-label="Calculate a round trip">
+                  <span class="fuel-switch-track" aria-hidden="true"></span>
+                </label>
+              </div>
+
+              <div class="fuel-switch-row">
+                <div class="fuel-switch-copy">
+                  <strong>Regular commute</strong>
+                  <span>Project this trip by week, month, and year.</span>
+                </div>
+
+                <label class="fuel-switch">
+                  <input id="commuteToggle" type="checkbox" aria-controls="commuteFields" aria-label="This is a regular commute">
+                  <span class="fuel-switch-track" aria-hidden="true"></span>
+                </label>
+              </div>
+
+              <div class="fuel-advanced-fields" id="commuteFields">
+                <div class="fuel-grid-2">
+                  <div class="fuel-field">
+                    <label for="tripsPerWeek">Commute days per week</label>
+                    <input id="tripsPerWeek" type="number" inputmode="numeric" min="1" max="7" step="1" value="5">
+                    <div class="fuel-help">Use a round trip above if the distance is one way.</div>
+                  </div>
+                  <div class="fuel-field">
+                    <label for="workWeeksYear">Working weeks per year</label>
+                    <input id="workWeeksYear" type="number" inputmode="numeric" min="1" max="52" step="1" value="48">
+                    <div class="fuel-help">Reduce this for vacation and time off.</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="fuel-field fuel-trip-count">
+                <label for="tripCount">Number of trips</label>
+                <input id="tripCount" type="number" inputmode="numeric" min="1" max="999" step="1" value="1">
+                <div class="fuel-help">Useful for regular commutes or repeated journeys.</div>
+              </div>
+              <div class="fuel-field fuel-trip-count" id="chargingLossField" hidden>
+                <label for="chargingLoss">Charging loss</label>
+                <div class="fuel-control fuel-unit">
+                  <input id="chargingLoss" type="number" inputmode="decimal" min="0" max="50" step="1" value="0">
+                  <select aria-label="Charging loss unit" disabled>
+                    <option selected>%</option>
+                  </select>
+                </div>
+                <div class="fuel-help">Optional estimate for energy lost between the charger and battery.</div>
+              </div>
+              <select id="occupancyNote" hidden aria-hidden="true">
+                <option value="equal" selected>Split equally</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="fuel-section fuel-mileage-section">
+            <button class="fuel-advanced-toggle" id="mileageToggle" type="button" aria-expanded="false" aria-controls="mileageFields">
+              <span id="mileageToggleLabel">Don't know your car's efficiency? Calculate it from a fill-up</span>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="m6 9 6 6 6-6"/>
+              </svg>
+            </button>
+
+            <div class="fuel-advanced-fields" id="mileageFields">
+              <div class="fuel-grid-2">
+                <div class="fuel-field">
+                  <label for="mileageDistance" id="mileageDistanceLabel">Distance driven</label>
+                  <div class="fuel-control fuel-unit">
+                    <input id="mileageDistance" type="text" inputmode="decimal" pattern="[0-9]*[.,]?[0-9]*" placeholder="e.g. 620">
+                    <select id="mileageDistanceUnit" aria-label="Distance driven unit">
+                      <option value="miles" selected>miles</option>
+                      <option value="km">km</option>
+                    </select>
+                  </div>
+                  <div class="fuel-help" id="mileageDistanceHelp">How far you drove on the fuel below &mdash; a full tank works best.</div>
+                </div>
+
+                <div class="fuel-field">
+                  <label for="mileageFuel" id="mileageFuelLabel">Fuel used</label>
+                  <div class="fuel-control fuel-unit">
+                    <input id="mileageFuel" type="text" inputmode="decimal" pattern="[0-9]*[.,]?[0-9]*" placeholder="e.g. 42">
+                    <select id="mileageFuelUnit" aria-label="Fuel used unit">
+                      <option value="gallons" selected>gallons</option>
+                      <option value="liters">liters</option>
+                    </select>
+                  </div>
+                  <div class="fuel-help" id="mileageFuelHelp">What it took to fill the tank back up.</div>
+                </div>
+              </div>
+
+              <div class="fuel-mileage-result" id="mileageResult" hidden>
+                <div class="fuel-mileage-copy">
+                  <span class="fuel-mileage-label">Your car's efficiency</span>
+                  <strong id="mileageValue">&mdash;</strong>
+                  <span class="fuel-mileage-alt" id="mileageValueAlt"></span>
+                </div>
+                <button class="fuel-mileage-use" id="mileageUse" type="button">Use in calculator</button>
+              </div>
+              <p class="fuel-help" id="mileageNote" hidden>Efficiency from fuel applies to gasoline and diesel &mdash; switch vehicle type to use it.</p>
+            </div>
+          </div>
+
+          <div class="fuel-error" id="errorBox" role="alert"></div>
+        </div>
+
+        <aside class="fuel-result-panel" aria-live="polite" aria-atomic="false">
+          <h2>Estimated trip cost</h2>
+          <p class="fuel-result-intro" id="resultContext">250 miles · Gasoline · 1 trip</p>
+
+          <div class="fuel-result-primary">
+            <div class="fuel-result-label">Total trip cost</div>
+            <div class="fuel-result-value" id="totalCost">$43.30</div>
+            <div class="fuel-result-subtext" id="costExplanation">Fuel plus additional trip costs</div>
+
+            <div class="fuel-split-highlight">
+              <div>
+                <span>Each person pays</span>
+                <strong id="perPerson">$43.30</strong>
+              </div>
+              <div class="fuel-people-align">
+                <span id="peopleResult">Not split</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="fuel-result-grid">
+            <div class="fuel-result-card">
+              <span id="energyUsedLabel">GAS NEEDED</span>
+              <strong id="energyUsed">8.93 gal</strong>
+            </div>
+
+            <div class="fuel-result-card">
+              <span id="energyCostLabel">GAS COST</span>
+              <strong id="energyCost">$30.80</strong>
+            </div>
+
+            <div class="fuel-result-card">
+              <span>COST PER DISTANCE</span>
+              <strong id="costPerDistance">$0.17 / mi</strong>
+            </div>
+
+            <div class="fuel-result-card">
+              <span>TOTAL DISTANCE</span>
+              <strong id="totalDistance">250 mi</strong>
+            </div>
+          </div>
+
+          <div class="fuel-yearly" id="yearlyCard" hidden>
+            <span id="yearlyNote">Commute projection &middot; 5 days/week</span>
+            <div class="fuel-commute-grid">
+              <div>
+                <small>Weekly</small>
+                <strong id="weeklyValue">$0.00</strong>
+              </div>
+              <div>
+                <small>Monthly average</small>
+                <strong id="monthlyValue">$0.00</strong>
+              </div>
+              <div>
+                <small>Annual</small>
+                <strong id="yearlyValue">$0.00</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="fuel-breakdown">
+            <h3>Cost breakdown</h3>
+            <div class="fuel-breakdown-row">
+              <span id="breakdownEnergyLabel">Gasoline</span>
+              <strong id="breakdownEnergy">$30.80</strong>
+            </div>
+            <div class="fuel-breakdown-row">
+              <span>Additional costs</span>
+              <strong id="breakdownExtras">$12.50</strong>
+            </div>
+            <div class="fuel-breakdown-row">
+              <span>Cost per trip</span>
+              <strong id="costPerTrip">$43.30</strong>
+            </div>
+          </div>
+
+          <div class="fuel-action-row">
+            <button class="fuel-action fuel-action-primary" id="copyButton" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy result
+            </button>
+
+            <button class="fuel-action" id="shareButton" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-4M8.6 13.5l6.8 4"/></svg>
+              Share
+            </button>
+          </div>
+
+          <p class="fuel-note">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+            This is an estimate. Real consumption can change with traffic, speed, weather,
+            cargo, tire pressure, and driving style.
+          </p>
+        </aside>
+      </section>
+
+      <a class="fuel-crosslink" href="/gas-vs-electric-calculator.html">
+        <span>
+          <strong>Thinking about an EV?</strong>
+          <span class="fuel-crosslink-sub">Compare what the same trip costs in a gas car vs. an electric car.</span>
+        </span>
+        <span class="fuel-crosslink-cta">
+          Compare gas vs. electric
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </span>
+      </a>
+
+      <section class="fuel-content-grid" id="how-it-works">
+        <article class="fuel-content-card">
+          <h2>Calculate Trip Fuel Cost</h2>
+          <p>
+            Use the calculator for a one-way drive, round trip, road trip, or several identical journeys.
+            Enter the distance, your vehicle's real fuel economy, and the current price at the pump or charger.
+            The result includes fuel or electricity used, total driving cost, cost per mile or kilometer, and an
+            equal cost per person when you are sharing the ride.
+          </p>
+
+          <div class="fuel-steps">
+            <div class="fuel-info-step">
+              <strong>1. Add the distance</strong>
+              <span>Use miles or kilometers and switch on round trip when needed.</span>
+            </div>
+            <div class="fuel-info-step">
+              <strong>2. Add efficiency</strong>
+              <span>Choose the exact MPG, L/100 km, km/L, or EV unit your vehicle uses.</span>
+            </div>
+            <div class="fuel-info-step">
+              <strong>3. Add and split costs</strong>
+              <span>Include tolls, parking, and other costs before dividing the total.</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="fuel-content-card">
+          <h2>Supported Fuel and Energy Units</h2>
+          <ul class="fuel-unit-list">
+            <li>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>
+              <span>Distance: miles and kilometers</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>
+              <span>Fuel economy: MPG (US), MPG (UK), miles/L, km/L, and L/100 km</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>
+              <span>EV efficiency: miles/kWh, km/kWh, kWh/100 mi, and kWh/100 km</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>
+              <span>Energy price: per US gallon, imperial gallon, liter, or kWh</span>
+            </li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="fuel-seo-content" id="commute-cost">
+        <h2>Calculate Commute Cost</h2>
+        <p>
+          To estimate the cost of driving to work, enter the route as one round trip or enter the one-way
+          distance and switch on <strong>Round trip</strong>. Under <strong>More options</strong>, turn on
+          <strong>Regular commute</strong>, then enter how many days you drive each week and how many weeks
+          you work each year. The result shows weekly, average monthly, and annual commute cost. Parking,
+          bridge fees, and road tolls can be included before the projection, so the estimate reflects more
+          than gas alone.
+        </p>
+      </section>
+
+      <section class="fuel-seo-content" id="split-fuel-cost">
+        <h2>Split Fuel Cost Between Passengers</h2>
+        <p>
+          Switch on <strong>Split the cost</strong> and enter the total number of people in the car, including
+          the driver if the driver is paying a share. The calculator adds fuel or charging cost and any extras,
+          then divides the full amount equally. This makes it useful as a road trip gas split calculator, a
+          carpool cost calculator, or a quick way to work out fair gas money for passengers. If your group also
+          needs to divide hotels, meals, or activities, move the final driving total into the
+          <a href="/trip-expense-splitter.html">Trip Expense Splitter</a>.
+        </p>
+      </section>
+
+      <section class="fuel-seo-content" id="ev-charging-cost">
+        <h2>Calculate EV Charging Cost</h2>
+        <p>
+          Choose <strong>Electric</strong>, enter your EV's efficiency, and add the electricity price per kWh.
+          You can use miles per kWh or kilometers per kWh when your dashboard shows distance per unit of
+          energy. If it shows consumption, choose kWh/100 miles or kWh/100 km instead. An optional charging
+          loss percentage is available under <strong>More options</strong>. Leave it at 0% when you want the
+          battery-use estimate only, or add a measured loss when you want a closer estimate of energy drawn
+          from the charger.
+        </p>
+      </section>
+
+      <section class="fuel-seo-content" id="fuel-cost-formula">
+        <h2>How the Fuel Cost Formula Works</h2>
+        <p>
+          The calculation first converts the selected distance and efficiency into fuel or electricity used.
+          It keeps full precision through every step and rounds displayed money to two decimal places. Tolls,
+          parking, and other expenses are added only after the energy cost is calculated.
+        </p>
+        <div class="fuel-formula">
+          Fuel used = distance ÷ fuel economy<br>
+          Fuel cost = fuel used × price per gallon or liter<br>
+          Total trip cost = fuel cost + tolls + parking + other costs<br>
+          Cost per person = total trip cost ÷ total people sharing
+        </div>
+        <p>
+          For L/100 km, the tool uses liters = kilometers × L/100 km ÷ 100. For an EV rated in kWh/100 km,
+          it uses kWh = kilometers × kWh/100 km ÷ 100. A round trip doubles distance before fuel use is
+          calculated; the number-of-trips option then multiplies the complete journey.
+        </p>
+      </section>
+
+      <section class="fuel-seo-content" id="gallon-difference">
+        <h2>US vs Imperial Gallons</h2>
+        <p>
+          A US gallon and a UK imperial gallon are not the same size. One US gallon equals 3.785411784 liters,
+          while one imperial gallon equals 4.54609 liters. That difference also means a UK MPG figure cannot be
+          entered as MPG (US) without changing the result. Choose <strong>MPG (US)</strong> for US vehicle data
+          and fuel sold per US gallon. Choose <strong>MPG (UK)</strong> for an imperial MPG rating; the calculator
+          then converts fuel use through imperial gallons and lets you pair it with price per imperial gallon or
+          price per liter. The explicit labels are there to prevent one of the most common fuel-cost errors.
+        </p>
+      </section>
+
+      <section class="fuel-seo-content" id="fuel-economy-units">
+        <h2>MPG, L/100 km, and km/L Explained</h2>
+        <div class="fuel-table-wrap">
+          <table class="fuel-table">
+            <thead>
+              <tr><th>Unit</th><th>What it means</th><th>How to read it</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>MPG (US)</td><td>Miles traveled per US gallon</td><td>A higher number means better fuel economy.</td></tr>
+              <tr><td>MPG (UK)</td><td>Miles traveled per imperial gallon</td><td>Use only with an imperial MPG rating.</td></tr>
+              <tr><td>L/100 km</td><td>Liters used to travel 100 kilometers</td><td>A lower number means better fuel economy.</td></tr>
+              <tr><td>km/L</td><td>Kilometers traveled per liter</td><td>A higher number means better fuel economy.</td></tr>
+              <tr><td>mi/kWh</td><td>Miles traveled per kilowatt-hour</td><td>A higher number means a more efficient EV.</td></tr>
+              <tr><td>kWh/100 km</td><td>Electricity used over 100 kilometers</td><td>A lower number means a more efficient EV.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="fuel-seo-content" id="examples">
+        <h2>Fuel Cost Calculator Examples</h2>
+        <div class="fuel-example-grid">
+          <article class="fuel-example">
+            <h3>Weekend road trip with friends</h3>
+            <p>A 300-mile round trip at 30 MPG uses 10 US gallons. At $3.50 per gallon, fuel is $35. Add $15 in tolls and split between four people: $12.50 each.</p>
+          </article>
+          <article class="fuel-example">
+            <h3>Daily gasoline commute</h3>
+            <p>A 24-mile round trip at 32 MPG uses 0.75 gallon per workday. At $3.60 per gallon, that is $13.50 per five-day week before parking or tolls.</p>
+          </article>
+          <article class="fuel-example">
+            <h3>European motorway trip</h3>
+            <p>A car rated at 6.5 L/100 km uses 32.5 liters over 500 km. At €1.80 per liter, fuel costs €58.50 before motorway tolls.</p>
+          </article>
+          <article class="fuel-example">
+            <h3>EV charged at home</h3>
+            <p>An EV using 18 kWh/100 km needs 36 kWh for 200 km. At €0.30 per kWh, charging costs €10.80 before an optional charging-loss adjustment.</p>
+          </article>
+          <article class="fuel-example">
+            <h3>Diesel van delivery</h3>
+            <p>A 180-mile delivery at 24 MPG (US) uses 7.5 gallons. At $3.90 per gallon, estimated diesel cost is $29.25.</p>
+          </article>
+          <article class="fuel-example">
+            <h3>One way vs. round trip</h3>
+            <p>If a 100-mile one-way drive costs $18, switching on round trip uses 200 miles and makes the equivalent estimate $36, assuming the same conditions.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="fuel-seo-content" id="faq">
+        <h2>Frequently Asked Questions</h2>
+        <div class="fuel-faq">
+          <details>
+            <summary>How do I calculate fuel cost for a trip?</summary>
+            <p>Divide the trip distance by your vehicle's fuel economy to find fuel used, then multiply by the price per gallon or liter. Add tolls, parking, and other trip costs afterward.</p>
+          </details>
+          <details>
+            <summary>How much gas will my trip cost?</summary>
+            <p>Enter the route distance, MPG, and current gas price in the calculator. It returns gas needed, gas cost, and total trip cost immediately.</p>
+          </details>
+          <details>
+            <summary>How do I calculate gas cost per mile?</summary>
+            <p>Divide total gas and trip expenses by the total miles driven. The result panel calculates this automatically as cost per distance.</p>
+          </details>
+          <details>
+            <summary>How do I split gas cost between passengers?</summary>
+            <p>Add all shared driving expenses, switch on Split the cost, and enter the total people paying. The tool divides the full amount equally.</p>
+          </details>
+          <details>
+            <summary>Does the driver count in the gas split?</summary>
+            <p>Yes, if the driver is paying a share. Enter everyone who contributes, including the driver. Leave the driver out only when the group has agreed the driver pays nothing.</p>
+          </details>
+          <details>
+            <summary>How do I calculate round-trip fuel cost?</summary>
+            <p>Enter the one-way distance and switch on Round trip. The calculator doubles the distance before calculating fuel use and cost.</p>
+          </details>
+          <details>
+            <summary>How do I calculate weekly, monthly, or annual commute cost?</summary>
+            <p>Set up one commute day, turn on Regular commute, and enter commute days per week and working weeks per year. The result shows all three periods.</p>
+          </details>
+          <details>
+            <summary>What is the difference between MPG (US) and MPG (UK)?</summary>
+            <p>MPG (US) uses a 3.785-liter US gallon. MPG (UK) uses a 4.54609-liter imperial gallon, so the same numeric MPG value represents different fuel use.</p>
+          </details>
+          <details>
+            <summary>How do I convert MPG to L/100 km?</summary>
+            <p>For US MPG, divide 235.214583 by MPG. For example, 30 MPG (US) is about 7.84 L/100 km.</p>
+          </details>
+          <details>
+            <summary>How do I calculate petrol or diesel trip cost in liters?</summary>
+            <p>Choose kilometers and liters, enter km/L or L/100 km, then enter the petrol or diesel price per liter. The fuel type does not change the formula.</p>
+          </details>
+          <details>
+            <summary>How do I calculate EV charging cost for a trip?</summary>
+            <p>Calculate the kWh needed from distance and EV efficiency, then multiply by electricity price per kWh. Add charging loss only when you want to estimate energy drawn from the charger.</p>
+          </details>
+          <details>
+            <summary>Can I add tolls and parking?</summary>
+            <p>Yes. Put all additional shared driving expenses in the tolls, parking, and other costs field. They are added once per complete calculation.</p>
+          </details>
+          <details>
+            <summary>Should I enter one-way or round-trip distance?</summary>
+            <p>Enter the distance you already know. If it is one way and you will return, switch on Round trip. Do not switch it on when your entered distance already includes both directions.</p>
+          </details>
+          <details>
+            <summary>Is the result exact?</summary>
+            <p>No. It is an estimate based on your inputs. Traffic, speed, weather, elevation, cargo, tire pressure, charging losses, and driving style can change real consumption.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="fuel-seo-content" id="related-tools">
+        <h2>Related Tools</h2>
+        <div class="fuel-related-grid">
+          <a class="fuel-related-link" href="/trip-expense-splitter.html">
+            <strong>Trip Expense Splitter</strong>
+            <span>Track fuel, hotels, meals, and activities, then see who owes whom.</span>
+          </a>
+          <a class="fuel-related-link" href="/expense-splitter.html">
+            <strong>Expense Splitter</strong>
+            <span>Split unequal shared costs across a group and settle the balances.</span>
+          </a>
+          <a class="fuel-related-link" href="/gas-vs-electric-calculator.html">
+            <strong>Gas vs. Electric Calculator</strong>
+            <span>Compare the cost of driving the same distance in two vehicles.</span>
+          </a>
+          <a class="fuel-related-link" href="/">
+            <strong>Split Bill Calculator</strong>
+            <span>Split a restaurant bill, tax, and tip quickly and fairly.</span>
+          </a>
+        </div>
+        <p class="fuel-trust-note">
+          <strong>Method and review:</strong> Calculations use 1 mile = 1.609344 km, 1 US gallon =
+          3.785411784 L, and 1 imperial gallon = 4.54609 L. The page keeps full internal precision and
+          rounds displayed money to two decimals. Methodology reviewed by the Split Bill Calculator
+          editorial team. Last updated July 20, 2026. For a separate official US trip-cost reference, see
+          <a href="https://www.fueleconomy.gov/trip/" rel="noopener noreferrer">FuelEconomy.gov</a>.
+        </p>
+      </section>
+    </main>
+
+    <div data-shared-footer></div>
+  </div>
+
+  <div class="fuel-toast" id="toast" role="status" aria-live="polite">Result copied</div>
+
+  <!-- Mobile-only live summary. Mirrors the result panel; no calculator logic involved. -->
+  <div class="fuel-sticky" id="fuelSticky" hidden>
+    <button class="fuel-sticky-inner" id="fuelStickyButton" type="button" aria-label="Scroll to the full result breakdown">
+      <span class="fuel-sticky-group">
+        <span class="fuel-sticky-label">Total</span>
+        <strong class="fuel-sticky-value" id="fuelStickyTotal">$0.00</strong>
+      </span>
+      <span class="fuel-sticky-divider" aria-hidden="true"></span>
+      <span class="fuel-sticky-group">
+        <span class="fuel-sticky-label">Per person</span>
+        <strong class="fuel-sticky-value" id="fuelStickyPerPerson">$0.00</strong>
+      </span>
+      <span class="fuel-sticky-cta" aria-hidden="true">
+        Details
+        <svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+      </span>
+    </button>
+  </div>
+
+  <!-- Cookie consent banner -->
+  <div class="fuel-cookie" id="cookieBanner">
+    <div class="fuel-cookie-copy">
+      We use cookies and analytics to understand how visitors use the calculator.
+      <a href="/privacy-policy.html">Learn more</a>
+    </div>
+
+    <div class="fuel-cookie-actions">
+      <button class="fuel-cookie-button fuel-cookie-button-primary" id="acceptCookies" type="button">
+        Accept
+      </button>
+
+      <button class="fuel-cookie-button fuel-cookie-button-secondary" id="rejectCookies" type="button">
+        Close
+      </button>
+    </div>
+  </div>
+
+  <script>
+(() => {
+      'use strict';
+
+      const KM_PER_MILE = 1.609344;
+      const LITERS_PER_US_GALLON = 3.785411784;
+      const LITERS_PER_IMPERIAL_GALLON = 4.54609;
+
+      const state = { vehicle: 'gasoline' };
+      const $ = (id) => document.getElementById(id);
+
+      const parseUserNumber = (raw) => {
+        const normalized = String(raw ?? '').trim().replace(',', '.');
+        if (!/^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(normalized)) return Number.NaN;
+        return Number(normalized);
+      };
+      window.fuelParseNumber = parseUserNumber;
+
+      const elements = {
+        distance: $('distance'),
+        distanceUnit: $('distanceUnit'),
+        tripCount: $('tripCount'),
+        roundTrip: $('roundTrip'),
+        efficiency: $('efficiency'),
+        efficiencyUnit: $('efficiencyUnit'),
+        energyPrice: $('energyPrice'),
+        priceUnit: $('priceUnit'),
+        people: $('people'),
+        extraCosts: $('extraCosts'),
+        chargingLoss: $('chargingLoss'),
+        currency: $('currency'),
+        errorBox: $('errorBox')
+      };
+
+      const vehicleConfig = {
+        gasoline: {
+          name: 'Gasoline',
+          efficiencyLabel: 'Vehicle efficiency',
+          efficiencyHelp: "Use your car's combined MPG rating.",
+          priceLabel: 'Gas price',
+          priceHelp: 'Enter the price shown at the pump.',
+          defaultEfficiency: 28,
+          defaultPrice: 3.45,
+          efficiencyUnits: [
+            ['mpg_us', 'MPG (US)'],
+            ['mpg_imp', 'MPG (UK)'],
+            ['miles_per_liter', 'mi/L'],
+            ['km_per_liter', 'km/L'],
+            ['liters_per_100km', 'L/100 km']
+          ],
+          priceUnits: [['per_gallon', 'per US gal'], ['per_imperial_gallon', 'per imp gal'], ['per_liter', 'per L']]
+        },
+        diesel: {
+          name: 'Diesel',
+          efficiencyLabel: 'Vehicle efficiency',
+          efficiencyHelp: "Use your car's combined efficiency rating.",
+          priceLabel: 'Diesel price',
+          priceHelp: 'Enter the current diesel price.',
+          defaultEfficiency: 35,
+          defaultPrice: 3.85,
+          efficiencyUnits: [
+            ['mpg_us', 'MPG (US)'],
+            ['mpg_imp', 'MPG (UK)'],
+            ['miles_per_liter', 'mi/L'],
+            ['km_per_liter', 'km/L'],
+            ['liters_per_100km', 'L/100 km']
+          ],
+          priceUnits: [['per_gallon', 'per US gal'], ['per_imperial_gallon', 'per imp gal'], ['per_liter', 'per L']]
+        },
+        electric: {
+          name: 'Electricity',
+          efficiencyLabel: 'EV efficiency',
+          efficiencyHelp: 'Miles/kilometers per kWh is common in many EV dashboards.',
+          priceLabel: 'Electricity price',
+          priceHelp: 'Enter your home or public charging price.',
+          defaultEfficiency: 3.5,
+          defaultPrice: 0.17,
+          efficiencyUnits: [
+            ['miles_per_kwh', 'mi/kWh'],
+            ['km_per_kwh', 'km/kWh'],
+            ['kwh_per_100mi', 'kWh/100 mi'],
+            ['kwh_per_100km', 'kWh/100 km']
+          ],
+          priceUnits: [['per_kwh', 'per kWh']]
+        }
+      };
+
+      const currencySymbols = {
+        USD: '$', EUR: '€', GBP: '£'
+      };
+
+      function numberValue(element) {
+        const value = parseUserNumber(element.value);
+        return Number.isFinite(value) ? value : 0;
+      }
+
+      function formatMoney(value) {
+        const currency = elements.currency.value;
+        try {
+          return new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency,
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          }).format(value);
+        } catch (_) {
+          return `${currencySymbols[currency] || '$'}${value.toFixed(2)}`;
+        }
+      }
+
+      function formatNumber(value, maximumFractionDigits = 2) {
+        return new Intl.NumberFormat('en-US', {
+          maximumFractionDigits,
+          minimumFractionDigits: 0
+        }).format(value);
+      }
+
+      function setOptions(select, options) {
+        select.innerHTML = options.map(([value, label]) => `<option value="${value}">${label}</option>`).join('');
+      }
+
+      function setVehicle(vehicle, preserveValues = false) {
+        state.vehicle = vehicle;
+        document.querySelectorAll('[data-vehicle]').forEach(button => {
+          const active = button.dataset.vehicle === vehicle;
+          button.classList.toggle('active', active);
+          button.setAttribute('aria-pressed', String(active));
+        });
+
+        const config = vehicleConfig[vehicle];
+        $('efficiencySectionLabel').textContent = vehicle === 'electric'
+          ? 'Add EV efficiency and electricity price'
+          : 'Add fuel efficiency and price';
+        $('efficiencyLabel').textContent = config.efficiencyLabel;
+        $('efficiencyHelp').textContent = config.efficiencyHelp;
+        $('priceLabel').textContent = config.priceLabel;
+        $('priceHelp').textContent = config.priceHelp;
+        setOptions(elements.efficiencyUnit, config.efficiencyUnits);
+        setOptions(elements.priceUnit, config.priceUnits);
+        $('chargingLossField').hidden = vehicle !== 'electric';
+
+        if (!preserveValues) {
+          elements.efficiency.value = config.defaultEfficiency;
+          elements.energyPrice.value = config.defaultPrice;
+        }
+        calculate();
+      }
+
+      function validate() {
+        const errors = [];
+        const energyPriceValue = parseUserNumber(elements.energyPrice.value);
+        const extraCostsValue = parseUserNumber(elements.extraCosts.value);
+        const chargingLossValue = parseUserNumber(elements.chargingLoss.value);
+        const checks = [
+          [elements.distance, 'Enter a trip distance greater than 0.', numberValue(elements.distance) > 0],
+          [elements.tripCount, 'Number of trips must be at least 1.', Number.isInteger(numberValue(elements.tripCount)) && numberValue(elements.tripCount) >= 1],
+          [elements.efficiency, 'Enter a vehicle efficiency greater than 0.', numberValue(elements.efficiency) > 0],
+          [elements.energyPrice, 'Enter an energy price of 0 or more.', Number.isFinite(energyPriceValue) && energyPriceValue >= 0],
+          [elements.people, 'People sharing the cost must be at least 1.', Number.isInteger(numberValue(elements.people)) && numberValue(elements.people) >= 1],
+          [elements.extraCosts, 'Additional costs cannot be negative.', elements.extraCosts.value.trim() === '' || (Number.isFinite(extraCostsValue) && extraCostsValue >= 0)],
+          [elements.chargingLoss, 'Charging loss must be between 0% and 50%.', state.vehicle !== 'electric' || (Number.isFinite(chargingLossValue) && chargingLossValue >= 0 && chargingLossValue <= 50)]
+        ];
+
+        checks.forEach(([element, message, valid]) => {
+          element.classList.toggle('invalid', !valid);
+          if (!valid) errors.push(message);
+        });
+
+        elements.errorBox.textContent = errors[0] || '';
+        elements.errorBox.classList.toggle('show', errors.length > 0);
+        return errors.length === 0;
+      }
+
+      function calculateFuelUse(totalMiles, totalKm, efficiency, unit) {
+        let liters;
+        switch (unit) {
+          case 'mpg_us':
+            liters = (totalMiles / efficiency) * LITERS_PER_US_GALLON;
+            break;
+          case 'mpg_imp':
+            liters = (totalMiles / efficiency) * LITERS_PER_IMPERIAL_GALLON;
+            break;
+          case 'miles_per_liter':
+            liters = totalMiles / efficiency;
+            break;
+          case 'km_per_liter':
+            liters = totalKm / efficiency;
+            break;
+          case 'liters_per_100km':
+            liters = totalKm * efficiency / 100;
+            break;
+          default:
+            liters = 0;
+        }
+        return {
+          gallons: liters / LITERS_PER_US_GALLON,
+          imperialGallons: liters / LITERS_PER_IMPERIAL_GALLON,
+          liters
+        };
+      }
+
+      function calculateElectricityUse(totalMiles, totalKm, efficiency, unit) {
+        switch (unit) {
+          case 'miles_per_kwh': return totalMiles / efficiency;
+          case 'km_per_kwh': return totalKm / efficiency;
+          case 'kwh_per_100mi': return totalMiles * efficiency / 100;
+          case 'kwh_per_100km': return totalKm * efficiency / 100;
+          default: return 0;
+        }
+      }
+
+      function calculate() {
+        if (window.fuelResetInProgress) return;
+        if (!validate()) return;
+
+        const distance = numberValue(elements.distance);
+        const oneWayMiles = elements.distanceUnit.value === 'miles' ? distance : distance / KM_PER_MILE;
+        const oneWayKm = elements.distanceUnit.value === 'km' ? distance : distance * KM_PER_MILE;
+        const tripMultiplier = elements.roundTrip.checked ? 2 : 1;
+        const tripCount = numberValue(elements.tripCount);
+        const totalMiles = oneWayMiles * tripMultiplier * tripCount;
+        const totalKm = oneWayKm * tripMultiplier * tripCount;
+        const efficiency = numberValue(elements.efficiency);
+        const price = numberValue(elements.energyPrice);
+        const people = numberValue(elements.people);
+        const extras = numberValue(elements.extraCosts);
+        const chargingLoss = state.vehicle === 'electric' ? numberValue(elements.chargingLoss) : 0;
+
+        let energyUsed = 0;
+        let energyCost = 0;
+        let energyUsedText = '';
+        let energyUsedLabel = '';
+        let energyCostLabel = '';
+
+        if (state.vehicle === 'electric') {
+          const batteryEnergy = calculateElectricityUse(totalMiles, totalKm, efficiency, elements.efficiencyUnit.value);
+          energyUsed = batteryEnergy * (1 + chargingLoss / 100);
+          energyCost = energyUsed * price;
+          energyUsedText = `${formatNumber(energyUsed, 2)} kWh`;
+          energyUsedLabel = 'ELECTRICITY USED';
+          energyCostLabel = 'CHARGING COST';
+        } else {
+          const fuel = calculateFuelUse(totalMiles, totalKm, efficiency, elements.efficiencyUnit.value);
+          energyUsed = elements.priceUnit.value === 'per_gallon'
+            ? fuel.gallons
+            : elements.priceUnit.value === 'per_imperial_gallon'
+              ? fuel.imperialGallons
+              : fuel.liters;
+          energyCost = energyUsed * price;
+          energyUsedText = elements.priceUnit.value === 'per_gallon'
+            ? `${formatNumber(fuel.gallons, 2)} US gal`
+            : elements.priceUnit.value === 'per_imperial_gallon'
+              ? `${formatNumber(fuel.imperialGallons, 2)} imp gal`
+              : `${formatNumber(fuel.liters, 2)} L`;
+          energyUsedLabel = state.vehicle === 'diesel' ? 'DIESEL NEEDED' : 'GAS NEEDED';
+          energyCostLabel = state.vehicle === 'diesel' ? 'DIESEL COST' : 'GAS COST';
+        }
+
+        const totalCost = energyCost + extras;
+        const perPerson = totalCost / people;
+        const costPerSelectedDistance = elements.distanceUnit.value === 'miles'
+          ? totalCost / totalMiles
+          : totalCost / totalKm;
+        const costPerTrip = totalCost / tripCount;
+        const selectedTotalDistance = elements.distanceUnit.value === 'miles' ? totalMiles : totalKm;
+        const selectedDistanceShort = elements.distanceUnit.value === 'miles' ? 'mi' : 'km';
+        const selectedDistanceLong = elements.distanceUnit.value === 'miles' ? 'miles' : 'km';
+        const journeyLabel = elements.roundTrip.checked ? 'round trip' : 'one-way';
+
+        $('resultContext').textContent = `${formatNumber(selectedTotalDistance, 1)} ${selectedDistanceLong} · ${vehicleConfig[state.vehicle].name} · ${formatNumber(tripCount, 0)} ${tripCount === 1 ? 'trip' : 'trips'}`;
+        $('totalCost').textContent = formatMoney(totalCost);
+        $('perPerson').textContent = formatMoney(perPerson);
+        $('peopleResult').textContent = people === 1 ? 'Not split' : `Split between ${people} people`;
+        $('energyUsedLabel').textContent = energyUsedLabel;
+        $('energyUsed').textContent = energyUsedText;
+        $('energyCostLabel').textContent = energyCostLabel;
+        $('energyCost').textContent = formatMoney(energyCost);
+        $('costPerDistance').textContent = `${formatMoney(costPerSelectedDistance)} / ${selectedDistanceShort}`;
+        $('totalDistance').textContent = `${formatNumber(selectedTotalDistance, 1)} ${selectedDistanceShort}`;
+        $('breakdownEnergyLabel').textContent = vehicleConfig[state.vehicle].name;
+        $('breakdownEnergy').textContent = formatMoney(energyCost);
+        $('breakdownExtras').textContent = formatMoney(extras);
+        $('costPerTrip').textContent = formatMoney(costPerTrip);
+        $('costExplanation').textContent = `${formatNumber(tripCount, 0)} ${journeyLabel} ${tripCount === 1 ? 'journey' : 'journeys'}, including extras`;
+
+        updateCurrencySymbols();
+      }
+
+      function resultSummary() {
+        return [
+          'Fuel Cost Calculator result',
+          `Vehicle: ${vehicleConfig[state.vehicle].name}`,
+          `Distance: ${$('totalDistance').textContent}`,
+          `Energy needed: ${$('energyUsed').textContent}`,
+          `Energy cost: ${$('energyCost').textContent}`,
+          `Additional costs: ${$('breakdownExtras').textContent}`,
+          `Total cost: ${$('totalCost').textContent}`,
+          `Each person pays: ${$('perPerson').textContent}`
+        ].join('\n');
+      }
+
+      async function copyText(text, successMessage) {
+        try {
+          await navigator.clipboard.writeText(text);
+        } catch (_) {
+          const textarea = document.createElement('textarea');
+          textarea.value = text;
+          textarea.style.position = 'fixed';
+          textarea.style.opacity = '0';
+          document.body.appendChild(textarea);
+          textarea.select();
+          document.execCommand('copy');
+          textarea.remove();
+        }
+        showToast(successMessage);
+      }
+
+      function showToast(message) {
+        const toast = $('toast');
+        toast.textContent = message;
+        toast.classList.add('show');
+        clearTimeout(showToast.timeout);
+        showToast.timeout = setTimeout(() => toast.classList.remove('show'), 1800);
+      }
+
+      function updateCurrencySymbols() {
+        const symbol = currencySymbols[elements.currency.value] || '$';
+        document.querySelectorAll('.fuel-currency > span').forEach(el => el.textContent = symbol);
+      }
+
+      function reset() {
+        window.fuelResetInProgress = true;
+        state.vehicle = 'gasoline';
+        elements.distanceUnit.value = 'miles';
+        elements.tripCount.value = 1;
+        elements.roundTrip.checked = false;
+        elements.people.value = 1;
+        elements.currency.value = 'USD';
+        setVehicle('gasoline');
+
+        elements.distance.value = '';
+        elements.efficiency.value = '';
+        elements.energyPrice.value = '';
+        elements.extraCosts.value = '';
+        elements.chargingLoss.value = 0;
+
+        Object.values(elements).forEach(element => {
+          if (element instanceof HTMLElement) element.classList.remove('invalid');
+        });
+        elements.errorBox.textContent = '';
+        elements.errorBox.classList.remove('show');
+
+        $('resultContext').textContent = 'Enter trip details to see an estimate.';
+        $('totalCost').textContent = formatMoney(0);
+        $('perPerson').textContent = formatMoney(0);
+        $('peopleResult').textContent = 'Not split';
+        $('energyUsedLabel').textContent = 'GAS NEEDED';
+        $('energyUsed').textContent = '—';
+        $('energyCostLabel').textContent = 'GAS COST';
+        $('energyCost').textContent = formatMoney(0);
+        $('costPerDistance').textContent = '—';
+        $('totalDistance').textContent = '—';
+        $('breakdownEnergyLabel').textContent = 'Gasoline';
+        $('breakdownEnergy').textContent = formatMoney(0);
+        $('breakdownExtras').textContent = formatMoney(0);
+        $('costPerTrip').textContent = formatMoney(0);
+        $('costExplanation').textContent = 'Add distance, efficiency, and price to calculate.';
+        updateCurrencySymbols();
+        elements.distance.focus();
+        Promise.resolve().then(() => { window.fuelResetInProgress = false; });
+      }
+
+      document.querySelectorAll('[data-vehicle]').forEach(button => {
+        button.addEventListener('click', () => setVehicle(button.dataset.vehicle));
+      });
+
+      Object.values(elements).forEach(element => {
+        if (element instanceof HTMLElement && !['errorBox'].includes(element.id)) {
+          element.addEventListener('input', calculate);
+          element.addEventListener('change', calculate);
+        }
+      });
+
+      $('advancedToggle').addEventListener('click', () => {
+        const expanded = $('advancedToggle').getAttribute('aria-expanded') === 'true';
+        $('advancedToggle').setAttribute('aria-expanded', String(!expanded));
+        $('advancedFields').classList.toggle('open', !expanded);
+      });
+
+      $('resetButton').addEventListener('click', reset);
+      $('copyButton').addEventListener('click', () => copyText(resultSummary(), 'Result copied'));
+      $('shareButton').addEventListener('click', async () => {
+        const text = resultSummary();
+        const url = typeof window.fuelShareUrl === 'function' ? window.fuelShareUrl() : window.location.href;
+        if (navigator.share) {
+          try {
+            await navigator.share({ title: 'Fuel Cost Calculator result', text, url });
+            return;
+          } catch (error) {
+            if (error.name === 'AbortError') return;
+          }
+        }
+        copyText(text + '\n' + url, 'Share link copied');
+      });
+
+      updateCurrencySymbols();
+      calculate();
+    })();
+  </script>
+
+  <script>
+  (() => {
+    'use strict';
+    // Sticky mobile summary: mirrors #totalCost / #perPerson via a MutationObserver.
+    // Fully decoupled from the calculator script above — safe to delete as one block.
+    const bar = document.getElementById('fuelSticky');
+    const totalSource = document.getElementById('totalCost');
+    const perPersonSource = document.getElementById('perPerson');
+    const panel = document.querySelector('.fuel-result-panel');
+    if (!bar || !totalSource || !perPersonSource || !panel) return;
+
+    const totalTarget = document.getElementById('fuelStickyTotal');
+    const perPersonTarget = document.getElementById('fuelStickyPerPerson');
+
+    const perPersonGroup = perPersonTarget.closest('.fuel-sticky-group');
+    const divider = bar.querySelector('.fuel-sticky-divider');
+
+    const sync = () => {
+      totalTarget.textContent = totalSource.textContent;
+      perPersonTarget.textContent = perPersonSource.textContent;
+      const split = perPersonSource.textContent !== totalSource.textContent;
+      if (perPersonGroup) perPersonGroup.hidden = !split;
+      if (divider) divider.hidden = !split;
+    };
+    sync();
+    new MutationObserver(sync).observe(panel, { childList: true, characterData: true, subtree: true });
+
+    const media = window.matchMedia('(max-width: 899px)');
+    let panelVisible = false;
+
+    const update = () => {
+      const show = media.matches && !panelVisible;
+      bar.hidden = !show;
+      document.body.classList.toggle('fuel-sticky-active', show);
+    };
+
+    new IntersectionObserver((entries) => {
+      entries.forEach(entry => { panelVisible = entry.isIntersecting; });
+      update();
+    }, { threshold: 0.12 }).observe(panel);
+
+    if (media.addEventListener) media.addEventListener('change', update);
+    else media.addListener(update);
+    update();
+
+    document.getElementById('fuelStickyButton').addEventListener('click', () => {
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      panel.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+    });
+  })();
+  </script>
+
+  <script>
+  (() => {
+    'use strict';
+    // Global unit-system toggle: batch-switches all unit selects between
+    // US (miles/gallons) and metric (km/liters) AND converts the entered
+    // values, so the calculated result stays the same. Talks to the
+    // calculator only through element values + synthetic change events.
+    const buttons = Array.from(document.querySelectorAll('[data-unit-system]'));
+    if (!buttons.length) return;
+
+    const KM_PER_MILE = 1.609344;
+    const LITERS_PER_US_GALLON = 3.785411784;
+    const LITERS_PER_IMPERIAL_GALLON = 4.54609;
+    const MPG_PER_L100 = 235.2145833; // MPG = this / (L per 100 km)
+    const IMP_MPG_PER_L100 = 282.4809363;
+    const MI_PER_100 = 62.1371192;    // mi/L or mi/kWh = this / (per-100km figure)
+
+    const $ = (id) => document.getElementById(id);
+    const distance = $('distance');
+    const distanceUnit = $('distanceUnit');
+    const efficiency = $('efficiency');
+    const efficiencyUnit = $('efficiencyUnit');
+    const energyPrice = $('energyPrice');
+    const priceUnit = $('priceUnit');
+
+    const num = (el) => {
+      const v = window.fuelParseNumber(el.value);
+      return Number.isFinite(v) ? v : 0;
+    };
+    const round = (v, d) => Number.isFinite(v) ? Number(v.toFixed(d)) : 0;
+    const fire = (el) => el.dispatchEvent(new Event('change', { bubbles: true }));
+    const hasOption = (select, value) => Array.from(select.options).some(o => o.value === value);
+
+    // Normalize any efficiency unit to "per 100 km" (liters or kWh)
+    const toPer100km = (v, unit) => {
+      if (!(v > 0)) return 0;
+      switch (unit) {
+        case 'mpg_us': return MPG_PER_L100 / v;
+        case 'mpg_imp': return IMP_MPG_PER_L100 / v;
+        case 'miles_per_liter': return MI_PER_100 / v;
+        case 'km_per_liter': return 100 / v;
+        case 'liters_per_100km': return v;
+        case 'miles_per_kwh': return MI_PER_100 / v;
+        case 'km_per_kwh': return 100 / v;
+        case 'kwh_per_100mi': return v / KM_PER_MILE;
+        case 'kwh_per_100km': return v;
+        default: return v;
+      }
+    };
+
+    const paint = (system) => {
+      buttons.forEach(b => {
+        const on = b.dataset.unitSystem === system;
+        b.classList.toggle('active', on);
+        b.setAttribute('aria-pressed', String(on));
+      });
+    };
+
+    const apply = (system) => {
+      const metric = system === 'metric';
+
+      const targetDistance = metric ? 'km' : 'miles';
+      if (distanceUnit.value !== targetDistance) {
+        distance.value = round(num(distance) * (metric ? KM_PER_MILE : 1 / KM_PER_MILE), 1);
+        distanceUnit.value = targetDistance;
+      }
+
+      const electric = hasOption(efficiencyUnit, 'kwh_per_100km');
+      const targetEff = electric
+        ? (metric ? 'kwh_per_100km' : 'miles_per_kwh')
+        : (metric ? 'liters_per_100km' : 'mpg_us');
+      if (efficiencyUnit.value !== targetEff) {
+        const per100 = toPer100km(num(efficiency), efficiencyUnit.value);
+        let converted;
+        if (targetEff === 'liters_per_100km' || targetEff === 'kwh_per_100km') converted = per100;
+        else if (targetEff === 'mpg_us') converted = per100 > 0 ? MPG_PER_L100 / per100 : 0;
+        else converted = per100 > 0 ? MI_PER_100 / per100 : 0; // miles_per_kwh
+        efficiency.value = round(converted, 1);
+        efficiencyUnit.value = targetEff;
+      }
+
+      if (hasOption(priceUnit, 'per_gallon')) {
+        const targetPrice = metric ? 'per_liter' : 'per_gallon';
+        if (priceUnit.value !== targetPrice) {
+          const currentPrice = num(energyPrice);
+          if (metric) {
+            const divisor = priceUnit.value === 'per_imperial_gallon' ? 4.54609 : LITERS_PER_US_GALLON;
+            energyPrice.value = round(currentPrice / divisor, 2);
+          } else {
+            energyPrice.value = round(currentPrice * LITERS_PER_US_GALLON, 2);
+          }
+          priceUnit.value = targetPrice;
+        }
+      }
+
+      fire(distanceUnit);
+      fire(efficiencyUnit);
+      fire(priceUnit);
+      try { localStorage.setItem('fuelUnitSystem', system); } catch (_) {}
+      paint(system);
+    };
+
+    buttons.forEach(b => b.addEventListener('click', () => apply(b.dataset.unitSystem)));
+
+    // Keep the highlight honest when units are tweaked manually
+    distanceUnit.addEventListener('change', () => {
+      paint(distanceUnit.value === 'km' ? 'metric' : 'us');
+    });
+
+    // Switching vehicle resets efficiency/price to US defaults (calculator
+    // behavior). If the user is in metric, convert those fresh defaults too.
+    // This listener runs after the calculator's own click handler.
+    document.querySelectorAll('[data-vehicle]').forEach(b => {
+      b.addEventListener('click', () => {
+        if (distanceUnit.value === 'km') apply('metric');
+      });
+    });
+
+    // "Start fresh" returns every unit control to the default US system.
+    $('resetButton').addEventListener('click', () => {
+      try { localStorage.removeItem('fuelUnitSystem'); } catch (_) {}
+      distanceUnit.value = 'miles';
+      if (hasOption(efficiencyUnit, 'mpg_us')) efficiencyUnit.value = 'mpg_us';
+      if (hasOption(priceUnit, 'per_gallon')) priceUnit.value = 'per_gallon';
+      fire(distanceUnit);
+      fire(efficiencyUnit);
+      fire(priceUnit);
+      paint('us');
+    });
+
+    // Restore a saved preference on load
+    let saved = null;
+    try { saved = localStorage.getItem('fuelUnitSystem'); } catch (_) {}
+    if (saved === 'metric') apply('metric');
+    else paint(distanceUnit.value === 'km' ? 'metric' : 'us');
+  })();
+  </script>
+
+  <script>
+  (() => {
+    'use strict';
+    // Opt-in split: the people field is hidden until "Split the cost" is on.
+    // Talks to the calculator only via the #people value + an input event.
+    const toggle = document.getElementById('splitToggle');
+    const fields = document.getElementById('splitFields');
+    const people = document.getElementById('people');
+    if (!toggle || !fields || !people) return;
+
+    const fire = () => people.dispatchEvent(new Event('input', { bubbles: true }));
+
+    const applySplit = (on, resetPeople) => {
+      fields.classList.toggle('open', on);
+      if (on) {
+        const current = window.fuelParseNumber(people.value);
+        if (!(current > 1)) people.value = 2;
+      } else if (resetPeople) {
+        people.value = 1;
+      }
+      fire();
+    };
+
+    toggle.addEventListener('change', () => applySplit(toggle.checked, true));
+
+    // "Start fresh" returns to not-split (the calculator already set people = 1)
+    document.getElementById('resetButton').addEventListener('click', () => {
+      toggle.checked = false;
+      applySplit(false, false);
+    });
+  })();
+  </script>
+
+  <script>
+  (() => {
+    'use strict';
+    // Efficiency helper for fuel cars and EVs. Fuel cars use distance plus
+    // fuel consumed; EVs use full-charge range plus usable battery capacity.
+    const toggleBtn = document.getElementById('mileageToggle');
+    const fields = document.getElementById('mileageFields');
+    const dist = document.getElementById('mileageDistance');
+    const distUnit = document.getElementById('mileageDistanceUnit');
+    const fuel = document.getElementById('mileageFuel');
+    const fuelUnit = document.getElementById('mileageFuelUnit');
+    const result = document.getElementById('mileageResult');
+    const value = document.getElementById('mileageValue');
+    const valueAlt = document.getElementById('mileageValueAlt');
+    const useBtn = document.getElementById('mileageUse');
+    const note = document.getElementById('mileageNote');
+    const toggleLabel = document.getElementById('mileageToggleLabel');
+    const distanceLabel = document.getElementById('mileageDistanceLabel');
+    const distanceHelp = document.getElementById('mileageDistanceHelp');
+    const fuelLabel = document.getElementById('mileageFuelLabel');
+    const fuelHelp = document.getElementById('mileageFuelHelp');
+    const helperLink = document.getElementById('efficiencyHelperLink');
+    if (!toggleBtn || !fields || !dist || !fuel) return;
+
+    const KM_PER_MILE = 1.609344;
+    const LITERS_PER_US_GALLON = 3.785411784;
+    const LITERS_PER_IMPERIAL_GALLON = 4.54609;
+    const mainEfficiency = document.getElementById('efficiency');
+    const mainEfficiencyUnit = document.getElementById('efficiencyUnit');
+    const mainDistanceUnit = document.getElementById('distanceUnit');
+    const toast = document.getElementById('toast');
+    let toastTimeout;
+    let helperMode = null;
+
+    const isElectric = () => {
+      const button = document.querySelector('[data-vehicle="electric"]');
+      return !!(button && button.classList.contains('active'));
+    };
+
+    const setFuelUnitOptions = (electric) => {
+      const options = electric
+        ? [['kwh', 'kWh']]
+        : [['gallons', 'gallons'], ['liters', 'liters']];
+      const currentValues = Array.from(fuelUnit.options).map(option => option.value).join('|');
+      const nextValues = options.map(option => option[0]).join('|');
+      if (currentValues === nextValues) return;
+      fuelUnit.textContent = '';
+      options.forEach(([optionValue, optionLabel]) => {
+        const option = document.createElement('option');
+        option.value = optionValue;
+        option.textContent = optionLabel;
+        fuelUnit.appendChild(option);
+      });
+    };
+
+    const num = (el) => {
+      const v = window.fuelParseNumber(el.value);
+      return Number.isFinite(v) ? v : 0;
+    };
+    const fmt = (v, d = 1) => Number.isFinite(v) ? Number(v.toFixed(d)).toString() : '0';
+
+    const syncHelperUnits = () => {
+      const metric = mainDistanceUnit.value === 'km';
+      const electric = isElectric();
+      const targetDistanceUnit = metric ? 'km' : 'miles';
+      const targetFuelUnit = electric ? 'kwh' : (metric ? 'liters' : 'gallons');
+
+      if (distUnit.value !== targetDistanceUnit) {
+        const currentDistance = num(dist);
+        if (dist.value !== '') {
+          const convertedDistance = currentDistance * (metric ? KM_PER_MILE : 1 / KM_PER_MILE);
+          dist.value = Number(convertedDistance.toFixed(1));
+        }
+        distUnit.value = targetDistanceUnit;
+      }
+
+      if (fuelUnit.value !== targetFuelUnit) {
+        const currentFuel = num(fuel);
+        if (!electric && fuel.value !== '') {
+          const convertedFuel = currentFuel * (metric ? LITERS_PER_US_GALLON : 1 / LITERS_PER_US_GALLON);
+          fuel.value = Number(convertedFuel.toFixed(2));
+        }
+        fuelUnit.value = targetFuelUnit;
+      }
+
+      compute();
+    };
+
+    const kmPerEnergyUnit = () => {
+      const d = num(dist);
+      const f = num(fuel);
+      if (!(d > 0) || !(f > 0)) return 0;
+      const km = distUnit.value === 'km' ? d : d * KM_PER_MILE;
+      if (isElectric()) return km / f;
+      const liters = fuelUnit.value === 'liters' ? f : f * LITERS_PER_US_GALLON;
+      return km / liters;
+    };
+
+    const compute = () => {
+      const kmPerUnit = kmPerEnergyUnit();
+      if (!(kmPerUnit > 0)) {
+        result.hidden = true;
+        note.hidden = true;
+        return;
+      }
+      const metric = mainDistanceUnit.value === 'km';
+      if (isElectric()) {
+        const kmPerKwh = kmPerUnit;
+        const milesPerKwh = kmPerKwh / KM_PER_MILE;
+        const kwhPer100Km = 100 / kmPerKwh;
+        const kwhPer100Mi = 100 / milesPerKwh;
+        value.textContent = metric ? fmt(kmPerKwh) + ' km/kWh' : fmt(milesPerKwh) + ' mi/kWh';
+        valueAlt.textContent = metric
+          ? '\u00b7 ' + fmt(kwhPer100Km) + ' kWh/100 km \u00b7 ' + fmt(milesPerKwh) + ' mi/kWh'
+          : '\u00b7 ' + fmt(kmPerKwh) + ' km/kWh \u00b7 ' + fmt(kwhPer100Mi) + ' kWh/100 mi';
+      } else {
+        const kmPerLiter = kmPerUnit;
+        const litersPer100Km = 100 / kmPerLiter;
+        const mpg = (kmPerLiter / KM_PER_MILE) * LITERS_PER_US_GALLON;
+        value.textContent = metric ? fmt(kmPerLiter) + ' km/L' : fmt(mpg) + ' MPG';
+        valueAlt.textContent = metric
+          ? '\u00b7 ' + fmt(litersPer100Km) + ' L/100 km \u00b7 ' + fmt(mpg) + ' MPG'
+          : '\u00b7 ' + fmt(kmPerLiter) + ' km/L \u00b7 ' + fmt(litersPer100Km) + ' L/100 km';
+      }
+      useBtn.hidden = false;
+      note.hidden = true;
+      result.hidden = false;
+    };
+
+    const syncHelperMode = () => {
+      const electric = isElectric();
+      const nextMode = electric ? 'electric' : 'fuel';
+      if (helperMode && helperMode !== nextMode) {
+        dist.value = '';
+        fuel.value = '';
+        result.hidden = true;
+      }
+      helperMode = nextMode;
+
+      setFuelUnitOptions(electric);
+      toggleLabel.textContent = electric
+        ? "Don't know your EV's efficiency? Calculate it from battery size and range"
+        : "Don't know your car's efficiency? Calculate it from a fill-up";
+      distanceLabel.textContent = electric ? 'Range on a full charge' : 'Distance driven';
+      distanceHelp.textContent = electric
+        ? 'Use the range shown by the car at 100% charge.'
+        : 'How far you drove on the fuel below — a full tank works best.';
+      fuelLabel.textContent = electric ? 'Usable battery capacity' : 'Fuel used';
+      fuelHelp.textContent = electric
+        ? 'Enter the usable battery size, not necessarily the advertised gross capacity.'
+        : 'What it took to fill the tank back up.';
+      dist.placeholder = electric ? 'e.g. 300' : 'e.g. 620';
+      fuel.placeholder = electric ? 'e.g. 75' : 'e.g. 42';
+      if (helperLink) {
+        helperLink.hidden = false;
+        helperLink.textContent = electric
+          ? 'Estimate it from battery size and range'
+          : "Don't know your car's efficiency?";
+      }
+      syncHelperUnits();
+    };
+
+    const openDefaults = () => syncHelperUnits();
+
+    toggleBtn.addEventListener('click', () => {
+      const expanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+      toggleBtn.setAttribute('aria-expanded', String(!expanded));
+      fields.classList.toggle('open', !expanded);
+      if (!expanded) openDefaults();
+    });
+
+    [dist, distUnit, fuel, fuelUnit].forEach(el => {
+      el.addEventListener('input', compute);
+      el.addEventListener('change', compute);
+    });
+
+    mainDistanceUnit.addEventListener('change', syncHelperUnits);
+
+    // Switching vehicle swaps the helper between fuel and battery inputs.
+    document.querySelectorAll('[data-vehicle]').forEach(b => b.addEventListener('click', syncHelperMode));
+
+    useBtn.addEventListener('click', () => {
+      const kmPerUnit = kmPerEnergyUnit();
+      if (!(kmPerUnit > 0)) return;
+      let converted;
+      if (isElectric()) {
+        const milesPerKwh = kmPerUnit / KM_PER_MILE;
+        switch (mainEfficiencyUnit.value) {
+          case 'miles_per_kwh': converted = milesPerKwh; break;
+          case 'km_per_kwh': converted = kmPerUnit; break;
+          case 'kwh_per_100mi': converted = 100 / milesPerKwh; break;
+          case 'kwh_per_100km': converted = 100 / kmPerUnit; break;
+          default: return;
+        }
+      } else {
+        switch (mainEfficiencyUnit.value) {
+          case 'mpg_us': converted = (kmPerUnit / KM_PER_MILE) * LITERS_PER_US_GALLON; break;
+          case 'mpg_imp': converted = (kmPerUnit / KM_PER_MILE) * LITERS_PER_IMPERIAL_GALLON; break;
+          case 'miles_per_liter': converted = kmPerUnit / KM_PER_MILE; break;
+          case 'km_per_liter': converted = kmPerUnit; break;
+          case 'liters_per_100km': converted = 100 / kmPerUnit; break;
+          default: return;
+        }
+      }
+      mainEfficiency.value = Number(converted.toFixed(1));
+      mainEfficiency.dispatchEvent(new Event('input', { bubbles: true }));
+      mainEfficiency.classList.remove('fuel-flash');
+      void mainEfficiency.offsetWidth;
+      mainEfficiency.classList.add('fuel-flash');
+      if (toast) {
+        toast.textContent = 'Efficiency updated';
+        toast.classList.add('show');
+        clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => toast.classList.remove('show'), 1800);
+      }
+    });
+
+    // "Don't know your car's efficiency?" link opens the helper and scrolls to it
+    if (helperLink) {
+      helperLink.addEventListener('click', () => {
+        if (toggleBtn.getAttribute('aria-expanded') !== 'true') toggleBtn.click();
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        fields.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+      });
+    }
+
+    syncHelperMode();
+
+    // "Start fresh" clears and closes the helper and the More options panel
+    const advToggle = document.getElementById('advancedToggle');
+    const advFields = document.getElementById('advancedFields');
+    document.getElementById('resetButton').addEventListener('click', () => {
+      dist.value = '';
+      fuel.value = '';
+      result.hidden = true;
+      note.hidden = true;
+      syncHelperMode();
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      fields.classList.remove('open');
+      if (advToggle && advFields) {
+        advToggle.setAttribute('aria-expanded', 'false');
+        advFields.classList.remove('open');
+      }
+      const mainDistance = document.getElementById('distance');
+      if (mainDistance) {
+        try { mainDistance.select(); } catch (_) {}
+      }
+    });
+  })();
+  </script>
+
+  <script>
+  (() => {
+    'use strict';
+    // Regular commute projection: one entered commute x days/week x work weeks.
+    // Reads #costPerTrip from the result panel; touches no calculator logic.
+    const toggle = document.getElementById('commuteToggle');
+    const fields = document.getElementById('commuteFields');
+    const tripsPerWeek = document.getElementById('tripsPerWeek');
+    const workWeeksYear = document.getElementById('workWeeksYear');
+    const card = document.getElementById('yearlyCard');
+    const note = document.getElementById('yearlyNote');
+    const weeklyValue = document.getElementById('weeklyValue');
+    const monthlyValue = document.getElementById('monthlyValue');
+    const yearlyValue = document.getElementById('yearlyValue');
+    const currency = document.getElementById('currency');
+    const source = document.getElementById('costPerTrip');
+    const panel = document.querySelector('.fuel-result-panel');
+    if (!toggle || !fields || !tripsPerWeek || !workWeeksYear || !card || !source || !panel) return;
+
+    const formatMoney = (amount) => {
+      try {
+        return new Intl.NumberFormat('en-US', {
+          style: 'currency',
+          currency: currency.value,
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        }).format(amount);
+      } catch (_) {
+        return '$' + amount.toFixed(2);
+      }
+    };
+
+    const update = () => {
+      const on = toggle.checked;
+      card.hidden = !on;
+      if (!on) return;
+      const text = source.textContent || '';
+      const amount = window.fuelParseNumber(text.replace(/[^0-9.]/g, ''));
+      const days = window.fuelParseNumber(tripsPerWeek.value);
+      const weeks = window.fuelParseNumber(workWeeksYear.value);
+      if (!Number.isFinite(amount) || !(days >= 1 && days <= 7) || !(weeks >= 1 && weeks <= 52)) {
+        card.hidden = true;
+        return;
+      }
+      const weekly = amount * days;
+      const yearly = weekly * weeks;
+      const monthly = yearly / 12;
+      const label = 'Commute projection \u00b7 ' + days + (days === 1 ? ' day' : ' days') + '/week \u00b7 ' + weeks + ' weeks/year';
+      const weeklyText = formatMoney(weekly);
+      const monthlyText = formatMoney(monthly);
+      const yearlyText = formatMoney(yearly);
+      if (weeklyValue.textContent !== weeklyText) weeklyValue.textContent = weeklyText;
+      if (monthlyValue.textContent !== monthlyText) monthlyValue.textContent = monthlyText;
+      if (yearlyValue.textContent !== yearlyText) yearlyValue.textContent = yearlyText;
+      if (note.textContent !== label) note.textContent = label;
+    };
+
+    toggle.addEventListener('change', () => {
+      fields.classList.toggle('open', toggle.checked);
+      update();
+    });
+    tripsPerWeek.addEventListener('input', update);
+    workWeeksYear.addEventListener('input', update);
+    currency.addEventListener('change', update);
+    new MutationObserver(update).observe(panel, { childList: true, characterData: true, subtree: true });
+
+    document.getElementById('resetButton').addEventListener('click', () => {
+      toggle.checked = false;
+      tripsPerWeek.value = 5;
+      workWeeksYear.value = 48;
+      fields.classList.remove('open');
+      card.hidden = true;
+    });
+
+    update();
+  })();
+  </script>
+
+  <script>
+  (() => {
+    'use strict';
+    // Typical efficiency presets. Values are converted to whichever unit is
+    // selected; a chip is highlighted whenever the field matches its value.
+    const buttons = Array.from(document.querySelectorAll('[data-preset]'));
+    const efficiency = document.getElementById('efficiency');
+    const efficiencyUnit = document.getElementById('efficiencyUnit');
+    if (!buttons.length || !efficiency || !efficiencyUnit) return;
+
+    const KM = 1.609344;
+    const LPG = 3.785411784;
+    const IMPERIAL_TO_US_GALLON = 4.54609 / LPG;
+    const MPG_L100 = 235.2145833;
+    const MI100 = 62.1371192;
+
+    // Base values: fuel vehicles in MPG (US), electric in mi/kWh
+    const PRESETS = {
+      gasoline: { small: 36, sedan: 30, suv: 24, van: 19 },
+      diesel:   { small: 45, sedan: 38, suv: 30, van: 24 },
+      electric: { small: 4.2, sedan: 3.8, suv: 3, van: 2.4 }
+    };
+
+    const currentVehicle = () => {
+      const active = document.querySelector('[data-vehicle].active');
+      return active ? active.dataset.vehicle : 'gasoline';
+    };
+
+    const toUnit = (base, vehicle, unit) => {
+      if (vehicle === 'electric') {
+        switch (unit) {
+          case 'miles_per_kwh': return base;
+          case 'km_per_kwh': return base * KM;
+          case 'kwh_per_100mi': return 100 / base;
+          case 'kwh_per_100km': return MI100 / base;
+          default: return base;
+        }
+      }
+      switch (unit) {
+        case 'mpg_us': return base;
+        case 'mpg_imp': return base * IMPERIAL_TO_US_GALLON;
+        case 'miles_per_liter': return base / LPG;
+        case 'km_per_liter': return base * KM / LPG;
+        case 'liters_per_100km': return MPG_L100 / base;
+        default: return base;
+      }
+    };
+
+    const round = (v) => Number(v.toFixed(1));
+
+    const paint = () => {
+      const vehicle = currentVehicle();
+      const unit = efficiencyUnit.value;
+      const current = window.fuelParseNumber(efficiency.value);
+      buttons.forEach(b => {
+        const target = round(toUnit(PRESETS[vehicle][b.dataset.preset], vehicle, unit));
+        b.classList.toggle('active', Number.isFinite(current) && Math.abs(current - target) < 0.05);
+      });
+    };
+
+    buttons.forEach(b => b.addEventListener('click', () => {
+      const vehicle = currentVehicle();
+      efficiency.value = round(toUnit(PRESETS[vehicle][b.dataset.preset], vehicle, efficiencyUnit.value));
+      efficiency.dispatchEvent(new Event('input', { bubbles: true }));
+      paint();
+    }));
+
+    efficiency.addEventListener('input', paint);
+    efficiencyUnit.addEventListener('change', paint);
+    document.querySelectorAll('[data-vehicle]').forEach(b => b.addEventListener('click', paint));
+    document.getElementById('resetButton').addEventListener('click', paint);
+    paint();
+  })();
+  </script>
+
+  <script>
+  (() => {
+    'use strict';
+    // Shareable URLs: the address bar mirrors the form via replaceState, the
+    // Share button sends a link, and opening a shared link restores the state.
+    const $ = (id) => document.getElementById(id);
+    const els = {
+      distance: $('distance'), distanceUnit: $('distanceUnit'), tripCount: $('tripCount'),
+      roundTrip: $('roundTrip'), efficiency: $('efficiency'), efficiencyUnit: $('efficiencyUnit'),
+      energyPrice: $('energyPrice'), priceUnit: $('priceUnit'), people: $('people'),
+      splitToggle: $('splitToggle'), extraCosts: $('extraCosts'), currency: $('currency'),
+      commuteToggle: $('commuteToggle'), tripsPerWeek: $('tripsPerWeek'),
+      workWeeksYear: $('workWeeksYear'), chargingLoss: $('chargingLoss')
+    };
+    if (!els.distance || !els.efficiencyUnit) return;
+
+    const VEHICLE_CODES = { gasoline: 'g', diesel: 'd', electric: 'e' };
+    const VEHICLE_FROM = { g: 'gasoline', d: 'diesel', e: 'electric' };
+    const EFF_CODES = {
+      mpg_us: 'mpg', mpg_imp: 'mpguk', miles_per_liter: 'mil', km_per_liter: 'kml', liters_per_100km: 'l100',
+      miles_per_kwh: 'mikwh', km_per_kwh: 'kmkwh', kwh_per_100mi: 'kwh100mi', kwh_per_100km: 'kwh100km'
+    };
+    const EFF_FROM = Object.fromEntries(Object.entries(EFF_CODES).map(([k, v]) => [v, k]));
+    const PRICE_CODES = { per_gallon: 'gal', per_imperial_gallon: 'igal', per_liter: 'l', per_kwh: 'kwh' };
+    const PRICE_FROM = Object.fromEntries(Object.entries(PRICE_CODES).map(([k, v]) => [v, k]));
+
+    const activeVehicle = () => {
+      const b = document.querySelector('[data-vehicle].active');
+      return b ? b.dataset.vehicle : 'gasoline';
+    };
+
+    const buildQuery = () => {
+      const q = new URLSearchParams();
+      q.set('v', VEHICLE_CODES[activeVehicle()] || 'g');
+      q.set('d', els.distance.value);
+      q.set('u', els.distanceUnit.value === 'km' ? 'km' : 'mi');
+      q.set('e', els.efficiency.value);
+      q.set('eu', EFF_CODES[els.efficiencyUnit.value] || 'mpg');
+      q.set('p', els.energyPrice.value);
+      q.set('pu', PRICE_CODES[els.priceUnit.value] || 'gal');
+      if (els.roundTrip.checked) q.set('rt', '1');
+      if (window.fuelParseNumber(els.tripCount.value) > 1) q.set('t', els.tripCount.value);
+      if (els.splitToggle && els.splitToggle.checked) q.set('s', els.people.value);
+      if (window.fuelParseNumber(els.extraCosts.value) > 0) q.set('x', els.extraCosts.value);
+      if (els.currency.value !== 'USD') q.set('c', els.currency.value);
+      if (els.commuteToggle && els.commuteToggle.checked) {
+        q.set('cw', els.tripsPerWeek.value);
+        q.set('wy', els.workWeeksYear.value);
+      }
+      if (activeVehicle() === 'electric' && window.fuelParseNumber(els.chargingLoss.value) > 0) q.set('cl', els.chargingLoss.value);
+      return '?' + q.toString();
+    };
+
+    window.fuelShareUrl = () => location.origin + location.pathname + buildQuery();
+
+    let syncTimeout;
+    const syncUrl = () => {
+      clearTimeout(syncTimeout);
+      syncTimeout = setTimeout(() => {
+        try { history.replaceState(null, '', location.pathname + buildQuery()); } catch (_) {}
+      }, 200);
+    };
+
+    Object.values(els).forEach(field => {
+      if (!field) return;
+      field.addEventListener('input', syncUrl);
+      field.addEventListener('change', syncUrl);
+    });
+    document.querySelectorAll('[data-vehicle], [data-unit-system], [data-preset]').forEach(b =>
+      b.addEventListener('click', syncUrl));
+    document.getElementById('resetButton').addEventListener('click', () => {
+      clearTimeout(syncTimeout);
+      try { history.replaceState(null, '', location.pathname); } catch (_) {}
+    });
+
+    // Restore state from a shared link
+    const restore = () => {
+      const q = new URLSearchParams(location.search);
+      if (!q.has('d') && !q.has('v')) return;
+
+      const fire = (field, type) => field.dispatchEvent(new Event(type, { bubbles: true }));
+      const setValue = (field, raw) => {
+        if (raw === null) return;
+        const parsed = window.fuelParseNumber(raw);
+        if (Number.isFinite(parsed) && parsed >= 0) field.value = raw;
+      };
+      const hasOption = (select, optionValue) =>
+        Array.from(select.options).some(o => o.value === optionValue);
+
+      const vehicle = VEHICLE_FROM[q.get('v')] || 'gasoline';
+      if (activeVehicle() !== vehicle) {
+        const button = document.querySelector('[data-vehicle="' + vehicle + '"]');
+        if (button) button.click();
+      }
+
+      els.distanceUnit.value = q.get('u') === 'km' ? 'km' : 'miles';
+      const eu = EFF_FROM[q.get('eu')];
+      if (eu && hasOption(els.efficiencyUnit, eu)) els.efficiencyUnit.value = eu;
+      const pu = PRICE_FROM[q.get('pu')];
+      if (pu && hasOption(els.priceUnit, pu)) els.priceUnit.value = pu;
+
+      setValue(els.distance, q.get('d'));
+      setValue(els.efficiency, q.get('e'));
+      setValue(els.energyPrice, q.get('p'));
+      setValue(els.extraCosts, q.get('x'));
+      setValue(els.tripCount, q.get('t'));
+      setValue(els.workWeeksYear, q.get('wy'));
+      setValue(els.chargingLoss, q.get('cl'));
+      els.roundTrip.checked = q.get('rt') === '1';
+      if (q.has('c') && hasOption(els.currency, q.get('c'))) els.currency.value = q.get('c');
+
+      const people = window.fuelParseNumber(q.get('s'));
+      if (els.splitToggle && Number.isFinite(people) && people > 1) {
+        els.people.value = people;
+        els.splitToggle.checked = true;
+        fire(els.splitToggle, 'change');
+      }
+
+      const commute = window.fuelParseNumber(q.get('cw'));
+      if (els.commuteToggle && Number.isFinite(commute) && commute >= 1) {
+        els.tripsPerWeek.value = commute;
+        els.commuteToggle.checked = true;
+        fire(els.commuteToggle, 'change');
+      }
+
+      fire(els.distanceUnit, 'change');
+      fire(els.efficiency, 'input');
+    };
+
+    restore();
+    syncUrl();
+  })();
+  </script>
+
+  <script>
+  (function () {
+    const CONSENT_KEY = "cookieBannerSeen";
+
+    function hideBanner() {
+      const banner = document.getElementById("cookieBanner");
+      if (banner) banner.style.display = "none";
+    }
+
+    function showBanner() {
+      const banner = document.getElementById("cookieBanner");
+      if (banner) banner.style.display = "block";
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const seen = localStorage.getItem(CONSENT_KEY);
+      const acceptBtn = document.getElementById("acceptCookies");
+      const rejectBtn = document.getElementById("rejectCookies");
+
+      if (!seen) showBanner();
+
+      if (acceptBtn) {
+        acceptBtn.addEventListener("click", function () {
+          localStorage.setItem(CONSENT_KEY, "accepted");
+          hideBanner();
+        });
+      }
+
+      if (rejectBtn) {
+        rejectBtn.addEventListener("click", function () {
+          localStorage.setItem(CONSENT_KEY, "closed");
+          hideBanner();
+        });
+      }
+    });
+
+    window.resetCookieBanner = function () {
+      localStorage.removeItem(CONSENT_KEY);
+      showBanner();
+    };
+  })();
+  </script>
+
+  <script src="/assets/shared-layout.js?v=1.18" defer></script>
+</body>
+</html>

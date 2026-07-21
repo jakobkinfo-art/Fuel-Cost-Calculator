@@ -170,7 +170,7 @@
 .shared-footer-inner {
   width: min(100%, 76rem);
   display: grid;
-  grid-template-columns: minmax(14rem, 1.4fr) repeat(3, minmax(8rem, .7fr));
+  grid-template-columns: minmax(14rem, 1.7fr) repeat(2, minmax(9rem, .7fr));
   gap: 2rem;
   margin-inline: auto;
   padding: 2.2rem clamp(1rem, 4vw, 1.6rem) 1.7rem;

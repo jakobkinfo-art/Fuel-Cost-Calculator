@@ -2,32 +2,22 @@
   'use strict';
 
   const path = window.location.pathname.toLowerCase();
-  const isFuelPage = path === '/' || path.endsWith('/index.html') || path.endsWith('/fuel-cost-calculator.html');
-  const fuelPageHref = isFuelPage ? window.location.pathname : '/';
-  const sectionHref = (hash) => isFuelPage ? hash : `/${hash}`;
   const isCurrentPage = (href) => {
     const target = new URL(href, window.location.origin);
     return target.pathname.toLowerCase() === path && (!target.hash || target.hash === window.location.hash);
   };
   const currentAttribute = (href) => isCurrentPage(href) ? ' aria-current="page"' : '';
 
-  // Add future pages here once; the shared header and footer will update everywhere.
-  const calculators = [
-    { href: fuelPageHref, label: 'Fuel Cost Calculator', detail: 'Gas, diesel, and EV trip costs' },
-    { href: '/gas-vs-electric-calculator.html', label: 'Gas vs. Electric', detail: 'Compare two vehicles side by side' },
-    { href: '/trip-expense-splitter.html', label: 'Trip Expense Splitter', detail: 'Share every expense from a trip' },
-    { href: '/expense-splitter.html', label: 'Expense Splitter', detail: 'Settle unequal group expenses' }
+  // Add future pages here once; the shared footer will update everywhere.
+  const companyLinks = [
+    { href: '/about.html', label: 'About' },
+    { href: '/faq.html', label: 'FAQ' },
+    { href: '/contact.html', label: 'Contact' }
   ];
 
-  const guides = [
-    { href: sectionHref('#how-it-works'), label: 'How it works' },
-    { href: sectionHref('#fuel-economy-units'), label: 'Fuel economy units' },
-    { href: sectionHref('#faq'), label: 'Frequently asked questions' }
-  ];
-
-  const other = [
-    { href: sectionHref('#related-tools'), label: 'Related tools' },
-    { href: sectionHref('#examples'), label: 'Examples' }
+  const legalLinks = [
+    { href: '/privacy-policy.html', label: 'Privacy Policy' },
+    { href: '/terms-of-service.html', label: 'Terms of Service' }
   ];
 
   const mark = `
@@ -35,12 +25,6 @@
 
   const headerRoot = document.querySelector('[data-shared-header]');
   if (headerRoot) {
-    const calculatorLinks = calculators.map((item) => `
-      <a href="${item.href}"${currentAttribute(item.href)}>
-        ${item.label}
-        <small>${item.detail}</small>
-      </a>`).join('');
-
     headerRoot.innerHTML = `
       <header class="fuel-site-header">
         <div class="fuel-site-header-inner">
@@ -50,34 +34,10 @@
           </a>
 
           <nav class="fuel-site-nav" aria-label="Primary navigation">
-            <details class="shared-nav-menu">
-              <summary class="shared-nav-summary">
-                Calculators
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
-              </summary>
-              <div class="shared-nav-dropdown" aria-label="Calculators menu">
-                ${calculatorLinks}
-              </div>
-            </details>
-            <a href="${sectionHref('#how-it-works')}">Guides</a>
-            <a href="${sectionHref('#related-tools')}">Other</a>
+            <a href="/"${currentAttribute('/')}>Calculators</a>
           </nav>
         </div>
       </header>`;
-
-    const menu = headerRoot.querySelector('.shared-nav-menu');
-    headerRoot.addEventListener('click', (event) => {
-      if (event.target.closest('.shared-nav-dropdown a')) menu.open = false;
-    });
-    document.addEventListener('click', (event) => {
-      if (menu.open && !menu.contains(event.target)) menu.open = false;
-    });
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && menu.open) {
-        menu.open = false;
-        menu.querySelector('summary').focus();
-      }
-    });
   }
 
   const linkList = (items) => items.map((item) => `<a href="${item.href}"${currentAttribute(item.href)}>${item.label}</a>`).join('');
@@ -94,19 +54,14 @@
             <p>Free, straightforward estimates for fuel, electricity, trip expenses, and fair passenger shares.</p>
           </div>
 
-          <section class="shared-footer-column" aria-labelledby="shared-footer-calculators">
-            <h2 id="shared-footer-calculators">Calculators</h2>
-            <nav aria-label="Footer calculators">${linkList(calculators)}</nav>
+          <section class="shared-footer-column" aria-labelledby="shared-footer-company">
+            <h2 id="shared-footer-company">Company</h2>
+            <nav aria-label="Company pages">${linkList(companyLinks)}</nav>
           </section>
 
-          <section class="shared-footer-column" aria-labelledby="shared-footer-guides">
-            <h2 id="shared-footer-guides">Guides</h2>
-            <nav aria-label="Footer guides">${linkList(guides)}</nav>
-          </section>
-
-          <section class="shared-footer-column" aria-labelledby="shared-footer-other">
-            <h2 id="shared-footer-other">Other</h2>
-            <nav aria-label="Footer other links">${linkList(other)}</nav>
+          <section class="shared-footer-column" aria-labelledby="shared-footer-legal">
+            <h2 id="shared-footer-legal">Legal</h2>
+            <nav aria-label="Legal pages">${linkList(legalLinks)}</nav>
           </section>
         </div>
 

@@ -3,8 +3,8 @@
 
   const path = window.location.pathname.toLowerCase();
   const isFuelPage = path === '/' || path.endsWith('/index.html') || path.endsWith('/fuel-cost-calculator.html');
-  const fuelPageHref = isFuelPage ? window.location.pathname : '/fuel-cost-calculator.html';
-  const sectionHref = (hash) => isFuelPage ? hash : `/fuel-cost-calculator.html${hash}`;
+  const fuelPageHref = isFuelPage ? window.location.pathname : '/';
+  const sectionHref = (hash) => isFuelPage ? hash : `/${hash}`;
   const isCurrentPage = (href) => {
     const target = new URL(href, window.location.origin);
     return target.pathname.toLowerCase() === path && (!target.hash || target.hash === window.location.hash);

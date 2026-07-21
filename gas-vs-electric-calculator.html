@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#075985">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.png" type="image/png" sizes="512x512">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <title>Gas vs Electric Cost Calculator – Compare Driving Costs</title>
+  <meta name="description" content="Compare gas and electric vehicle costs per trip, mile, month, year, and 5 years. Add MPG, electricity rates, charging mix, maintenance, prices, and EV incentives.">
+  <link rel="canonical" href="https://fuel-cost-calculator.com/gas-vs-electric-calculator.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Fuel Cost Calculator">
+  <meta property="og:title" content="Gas vs Electric Cost Calculator">
+  <meta property="og:description" content="Compare gasoline and EV driving costs per trip, mile, year, and five years.">
+  <meta property="og:url" content="https://fuel-cost-calculator.com/gas-vs-electric-calculator.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Gas vs Electric Cost Calculator">
+  <meta name="twitter:description" content="Compare gasoline and EV driving costs per trip, mile, year, and five years.">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://fuel-cost-calculator.com/gas-vs-electric-calculator.html#webpage",
+        "url": "https://fuel-cost-calculator.com/gas-vs-electric-calculator.html",
+        "name": "Gas vs Electric Cost Calculator",
+        "description": "Compare gasoline and electric vehicle energy costs, maintenance, purchase price, incentives, annual savings, and break-even time.",
+        "inLanguage": "en-US",
+        "dateModified": "2026-07-20",
+        "breadcrumb": { "@id": "https://fuel-cost-calculator.com/gas-vs-electric-calculator.html#breadcrumb" },
+        "mainEntity": { "@id": "https://fuel-cost-calculator.com/gas-vs-electric-calculator.html#app" }
+      },
+      {
+        "@type": "WebApplication",
+        "@id": "https://fuel-cost-calculator.com/gas-vs-electric-calculator.html#app",
+        "name": "Gas vs Electric Cost Calculator",
+        "url": "https://fuel-cost-calculator.com/gas-vs-electric-calculator.html",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://fuel-cost-calculator.com/gas-vs-electric-calculator.html#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Fuel Cost Calculator",
+            "item": "https://fuel-cost-calculator.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Gas vs Electric Cost Calculator",
+            "item": "https://fuel-cost-calculator.com/gas-vs-electric-calculator.html"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/assets/site.v1.14.min.css?v=1.21">
+  <link rel="stylesheet" href="/assets/shared-layout.css?v=1.2">
+  <script src="/assets/shared-layout.js?v=1.2" defer></script>
+
+  <style>
+    :root {
+      --sky-50:#f0f9ff; --sky-100:#e0f2fe; --sky-200:#bae6fd; --sky-300:#7dd3fc;
+      --sky-500:#0ea5e9; --sky-600:#0284c7; --sky-700:#0369a1; --sky-800:#075985;
+      --blue-900:#0c3150; --slate-50:#f8fafc; --slate-100:#f1f5f9; --slate-200:#e2e8f0;
+      --slate-300:#cbd5e1; --slate-400:#94a3b8; --slate-500:#64748b; --slate-600:#475569;
+      --slate-700:#334155; --slate-800:#1e293b; --slate-900:#0f172a;
+      --green-50:#ecfdf5; --green-100:#d1fae5; --green-500:#10b981; --green-600:#059669; --green-700:#047857;
+      --orange-50:#fff7ed; --orange-100:#ffedd5; --orange-500:#f97316; --orange-600:#ea580c;
+      --red-50:#fef2f2; --red-200:#fecaca; --red-600:#dc2626; --red-700:#b91c1c;
+      --radius-sm:.65rem; --radius:.9rem; --radius-lg:1.25rem; --radius-xl:1.7rem;
+      --font:'Inter',ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      --shadow:0 28px 70px -38px rgba(7,89,133,.42),0 8px 24px -18px rgba(15,23,42,.22);
+    }
+
+    *,*::before,*::after{box-sizing:border-box}
+    html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+    body{margin:0;min-height:100vh;font-family:var(--font);color:var(--slate-800);background:
+      radial-gradient(58rem 34rem at 88% -8%,rgba(56,189,248,.15),transparent 62%),
+      radial-gradient(44rem 28rem at -10% 15%,rgba(14,165,233,.08),transparent 60%),
+      linear-gradient(180deg,var(--sky-50),#fff 38rem);-webkit-font-smoothing:antialiased}
+    button,input,select{font:inherit;color:inherit}
+    button{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+    [hidden]{display:none!important}
+    :focus-visible{outline:3px solid rgba(14,165,233,.42);outline-offset:2px}
+    input:focus-visible,select:focus-visible{outline:none}
+    .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+
+    .page{width:min(100%,76rem);margin-inline:auto;padding:1.1rem clamp(.9rem,4vw,1.6rem) 4rem}
+    .hero{max-width:52rem;margin:0 auto 2rem;padding-top:clamp(.75rem,3vw,2rem);text-align:center}
+    .crumbs{display:flex;justify-content:center;gap:.45rem;margin:0 0 .8rem;color:var(--slate-500);font-size:.74rem}
+    .crumbs a{color:var(--sky-700);text-decoration:none}.crumbs a:hover{text-decoration:underline}
+    h1{margin:0;color:var(--slate-900);font-size:clamp(2.2rem,6vw,4rem);font-weight:800;line-height:1.02;letter-spacing:-.045em;text-wrap:balance}
+    .hero-copy{max-width:43rem;margin:.85rem auto 0;color:var(--slate-600);font-size:clamp(1rem,2vw,1.14rem);line-height:1.65;text-wrap:pretty}
+
+    .calculator{overflow:hidden;border:1px solid #d7e8ee;border-radius:var(--radius-xl);background:#fff;box-shadow:var(--shadow)}
+    .calculator-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem clamp(1rem,3vw,1.55rem);border-bottom:1px solid var(--slate-100);background:linear-gradient(180deg,#fff,#fbfdfe)}
+    .top-copy strong{display:block;color:var(--slate-900);font-size:1rem}.top-copy span{display:block;margin-top:.15rem;color:var(--slate-500);font-size:.75rem}
+    .top-actions{display:flex;align-items:center;gap:.55rem}
+    .segmented{display:grid;grid-template-columns:1fr 1fr;gap:.2rem;padding:.22rem;border:1px solid #d6e5ea;border-radius:999px;background:#edf5f7}
+    .segmented button{min-height:2.2rem;padding:.35rem .72rem;border:0;border-radius:999px;background:transparent;color:var(--slate-500);font-size:.73rem;font-weight:700;cursor:pointer}
+    .segmented button.active{background:#fff;color:var(--sky-700);box-shadow:0 1px 5px rgba(15,57,82,.16)}
+    .reset{display:inline-flex;align-items:center;gap:.35rem;min-height:2.2rem;padding:.4rem .62rem;border:0;border-radius:.55rem;background:transparent;color:var(--slate-500);font-size:.72rem;font-weight:700;cursor:pointer}
+    .reset:hover{background:var(--slate-100);color:var(--sky-700)}
+    .reset svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+    .calculator-body{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(340px,.92fr)}
+    .form-panel{padding:clamp(1.15rem,3vw,1.8rem)}
+    .results-panel{position:relative;overflow:hidden;padding:clamp(1.15rem,3vw,1.8rem);border-left:1px solid #d5e8ec;background:
+      radial-gradient(circle at 90% 4%,rgba(255,255,255,.9),transparent 29%),
+      linear-gradient(145deg,#f0fafb,#e5f4f6);color:#153c58}
+    .results-panel::before,.results-panel::after{content:"";position:absolute;left:-.78rem;width:1.5rem;height:1.5rem;border-radius:50%;background:#fff;box-shadow:inset -1px 0 0 #d5e8ec}
+    .results-panel::before{top:31%}.results-panel::after{top:67%}
+    .results-panel>*{position:relative}
+
+    .section+.section{margin-top:1.35rem;padding-top:1.35rem;border-top:1px solid var(--slate-100)}
+    .section-title{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.9rem}
+    .section-title-main{display:flex;align-items:center;gap:.55rem}
+    .step{display:grid;place-items:center;width:1.65rem;height:1.65rem;flex:0 0 auto;border-radius:.55rem;background:linear-gradient(145deg,var(--sky-500),var(--sky-700));color:#fff;font-size:.74rem;font-weight:800;box-shadow:0 3px 8px rgba(2,132,199,.28)}
+    .section-title h2,.section-title h3{margin:0;color:var(--slate-900);font-size:.94rem;font-weight:800;letter-spacing:-.01em}
+    .section-note{color:var(--slate-500);font-size:.72rem}
+    .grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.9rem}
+    .grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem}
+    .field{min-width:0}
+    .field label{display:block;margin-bottom:.38rem;color:var(--slate-700);font-size:.78rem;font-weight:700}
+    .control{display:flex;align-items:stretch;min-width:0}
+    .control>input{flex:1 1 0;min-width:0}
+    .field input,.field select{width:100%;min-height:3rem;padding:.65rem .8rem;border:1px solid var(--slate-300);border-radius:var(--radius-sm);background:#fff;color:var(--slate-900);font-size:1rem;font-weight:550;font-variant-numeric:tabular-nums;transition:border-color .15s,box-shadow .15s}
+    .field input:hover,.field select:hover{border-color:var(--slate-400)}
+    .field input:focus,.field select:focus{border-color:var(--sky-500);box-shadow:0 0 0 4px rgba(14,165,233,.13)}
+    .field input.invalid,.field select.invalid{border-color:var(--red-600)}
+    .unit input{border-radius:var(--radius-sm) 0 0 var(--radius-sm);border-right:0}
+    .unit select{flex:0 0 auto;width:auto;min-width:7.7rem;border-radius:0 var(--radius-sm) var(--radius-sm) 0;background-color:var(--slate-50);font-size:.78rem;font-weight:700}
+    .currency{position:relative}.currency>span{position:absolute;left:.86rem;top:50%;z-index:2;transform:translateY(-50%);color:var(--slate-500);font-weight:700;pointer-events:none}.currency input{padding-left:1.8rem}
+    .help{margin-top:.36rem;color:var(--slate-500);font-size:.7rem;line-height:1.5}
+
+    .vehicle-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+    .vehicle-card{padding:1rem;border:1px solid var(--slate-200);border-radius:var(--radius-lg);background:var(--slate-50)}
+    .vehicle-card.gas{border-top:4px solid var(--orange-500)}
+    .vehicle-card.ev{border-top:4px solid var(--green-500)}
+    .vehicle-head{display:flex;align-items:center;gap:.7rem;margin-bottom:.9rem}
+    .vehicle-icon{display:grid;place-items:center;width:2.5rem;height:2.5rem;border-radius:.78rem}
+    .gas .vehicle-icon{background:var(--orange-100);color:var(--orange-600)}
+    .ev .vehicle-icon{background:var(--green-100);color:var(--green-700)}
+    .vehicle-icon svg{width:1.35rem;height:1.35rem;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .vehicle-head strong{display:block;color:var(--slate-900);font-size:.92rem}.vehicle-head span{display:block;margin-top:.1rem;color:var(--slate-500);font-size:.69rem}
+    .vehicle-card .field+.field{margin-top:.8rem}
+
+    .switch-row{display:flex;align-items:center;justify-content:space-between;gap:.9rem;margin-top:.85rem;padding:.75rem .85rem;border:1px solid var(--slate-200);border-radius:var(--radius);background:#fff}
+    .switch-copy strong{display:block;color:var(--slate-800);font-size:.78rem}.switch-copy span{display:block;margin-top:.1rem;color:var(--slate-500);font-size:.68rem;line-height:1.4}
+    .switch{position:relative;width:3rem;height:1.7rem;flex:0 0 auto}.switch input{position:absolute;opacity:0}.track{position:absolute;inset:0;border-radius:999px;background:var(--slate-300);transition:.2s}.track::after{content:"";position:absolute;top:.2rem;left:.2rem;width:1.3rem;height:1.3rem;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(15,23,42,.25);transition:transform .2s}.switch input:checked+.track{background:var(--sky-500)}.switch input:checked+.track::after{transform:translateX(1.3rem)}
+
+    .advanced-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;margin-top:1rem;padding:.78rem .9rem;border:1px solid #d8e7ed;border-radius:var(--radius-sm);background:#f9fcfd;color:#38536a;font-size:.79rem;font-weight:750;cursor:pointer}
+    .advanced-toggle:hover{border-color:var(--sky-300);background:var(--sky-50);color:var(--sky-700)}
+    .advanced-toggle-copy{display:grid;gap:.12rem;text-align:left}.advanced-toggle-copy strong{color:inherit;font-size:.8rem}.advanced-toggle-copy small{color:var(--slate-500);font-size:.68rem;font-weight:550;line-height:1.35}
+    .advanced-toggle svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;transition:transform .18s}.advanced-toggle[aria-expanded="true"] svg{transform:rotate(180deg)}
+    .advanced-fields{display:none;margin-top:.9rem}.advanced-fields.open{display:block}
+    .advanced-group{padding:.9rem;border:1px solid var(--slate-200);border-radius:var(--radius);background:var(--slate-50)}
+    .advanced-group+.advanced-group{margin-top:.75rem}
+    .advanced-group h4{margin:0 0 .75rem;color:var(--slate-800);font-size:.78rem}
+
+    .error{display:none;margin-top:1rem;padding:.75rem .85rem;border:1px solid var(--red-200);border-radius:var(--radius-sm);background:var(--red-50);color:var(--red-700);font-size:.75rem;font-weight:700;line-height:1.45}.error.show{display:block}
+    .calculate-button{display:none;width:100%;min-height:3.4rem;align-items:center;justify-content:center;gap:.55rem;margin-top:1rem;border:0;border-radius:.8rem;background:linear-gradient(135deg,var(--orange-500),var(--orange-600));color:#fff;font-size:.95rem;font-weight:800;cursor:pointer;box-shadow:0 10px 22px -12px rgba(234,88,12,.7)}
+    .calculate-button svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+
+    .result-head{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:1rem}
+    .result-head h2{margin:0;color:var(--blue-900);font-size:1.15rem;letter-spacing:-.02em}.result-head p{margin:.28rem 0 0;color:#668092;font-size:.72rem;line-height:1.5}
+    .winner{display:inline-flex;align-items:center;gap:.35rem;padding:.35rem .6rem;border-radius:999px;background:#fff;color:var(--green-700);font-size:.67rem;font-weight:800;box-shadow:0 2px 8px rgba(15,57,82,.1)}
+    .winner svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+
+    .savings-card{padding:1rem;border:1px solid #cfe3e7;border-radius:var(--radius-lg);background:rgba(255,255,255,.64);box-shadow:inset 0 1px 0 rgba(255,255,255,.9)}
+    .savings-label{display:block;color:#60798b;font-size:.67rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    .savings-value{display:block;margin-top:.28rem;color:#0d3454;font-size:clamp(2rem,5vw,2.8rem);font-weight:800;line-height:1;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+    .savings-sub{display:block;margin-top:.5rem;color:#668092;font-size:.71rem;line-height:1.5}
+    .savings-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.55rem;margin-top:.85rem}
+    .mini-stat{padding:.65rem;border-radius:.7rem;background:rgba(226,240,243,.75)}
+    .mini-stat span{display:block;color:#6b8292;font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em}.mini-stat strong{display:block;margin-top:.18rem;color:#153c58;font-size:.88rem;font-variant-numeric:tabular-nums}
+
+    .comparison{margin-top:.85rem;padding:.9rem;border:1px solid #cfe3e7;border-radius:var(--radius);background:rgba(255,255,255,.58)}
+    .comparison-title{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:.7rem}.comparison-title strong{font-size:.75rem;color:#294b63}.comparison-title span{font-size:.63rem;color:#718899}
+    .bars{display:grid;gap:.65rem}.bar-row{display:grid;grid-template-columns:4.5rem minmax(0,1fr) auto;align-items:center;gap:.55rem}.bar-name{display:flex;align-items:center;gap:.35rem;color:#38586e;font-size:.69rem;font-weight:700}.dot{width:.55rem;height:.55rem;border-radius:50%}.dot.gas{background:var(--orange-500)}.dot.ev{background:var(--green-500)}.bar-track{height:.58rem;overflow:hidden;border-radius:999px;background:#dbeaed}.bar-fill{height:100%;min-width:2px;border-radius:999px;transition:width .3s ease}.bar-fill.gas{background:linear-gradient(90deg,#fb923c,var(--orange-600))}.bar-fill.ev{background:linear-gradient(90deg,#34d399,var(--green-600))}.bar-value{min-width:4.6rem;text-align:right;color:#21455f;font-size:.7rem;font-weight:800;font-variant-numeric:tabular-nums}
+
+    .result-table{margin-top:.85rem;border:1px solid #cfe3e7;border-radius:var(--radius);background:rgba(255,255,255,.58);overflow:hidden}
+    .result-row{display:grid;grid-template-columns:minmax(0,1fr) 5.4rem 5.4rem;align-items:center;gap:.5rem;min-height:3.1rem;padding:.6rem .75rem;border-bottom:1px solid #d3e5e8}.result-row:last-child{border-bottom:0}.result-row.header{min-height:2.4rem;background:rgba(221,238,241,.72);color:#647d8f;font-size:.62rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em}.result-row span:first-child{color:#46657a;font-size:.71rem}.result-row strong{color:#173c56;font-size:.75rem;text-align:right;font-variant-numeric:tabular-nums}.result-row .gas-value{color:#b45309}.result-row .ev-value{color:#047857}
+    .break-even{margin-top:.85rem;padding:.8rem .9rem;border-left:4px solid var(--sky-500);border-radius:0 var(--radius) var(--radius) 0;background:#fff;color:#49677b;font-size:.7rem;line-height:1.55}.break-even strong{color:#173c56}
+    .result-actions{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:.85rem}.result-action{min-height:2.8rem;display:inline-flex;align-items:center;justify-content:center;gap:.45rem;border:1px solid #bcd9df;border-radius:.7rem;background:rgba(255,255,255,.65);color:#21506e;font-size:.75rem;font-weight:800;cursor:pointer}.result-action:hover{background:#fff}.result-action.primary{border-color:#0f6f9d;background:#0f6f9d;color:#fff}.result-action.primary:hover{background:#0b628d}.result-action svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .estimate-note{display:flex;gap:.45rem;margin:.75rem 0 0;color:#718899;font-size:.62rem;line-height:1.5}.estimate-note svg{flex:0 0 auto;width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2}
+
+    .crosslinks{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin-top:1rem}.crosslink{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:1rem;border:1px solid var(--sky-200);border-radius:var(--radius-lg);background:linear-gradient(155deg,var(--sky-50),#fff);color:inherit;text-decoration:none}.crosslink:hover{border-color:var(--sky-300);box-shadow:0 8px 22px rgba(2,132,199,.08)}.crosslink strong{display:block;color:var(--slate-900);font-size:.85rem}.crosslink span span{display:block;margin-top:.2rem;color:var(--slate-500);font-size:.72rem;line-height:1.45}.crosslink svg{flex:0 0 auto;width:18px;height:18px;fill:none;stroke:var(--sky-700);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+    .content{margin-top:1rem;padding:clamp(1.15rem,3vw,1.8rem);border:1px solid var(--slate-200);border-radius:var(--radius-lg);background:#fff;box-shadow:0 1px 2px rgba(15,23,42,.03)}
+    .content h2{margin:0 0 .65rem;color:var(--slate-900);font-size:clamp(1.2rem,2.5vw,1.52rem);line-height:1.3;letter-spacing:-.025em}.content h3{margin:1.15rem 0 .38rem;color:var(--slate-900);font-size:.96rem}.content p,.content li{color:var(--slate-600);font-size:.87rem;line-height:1.75}.content p{margin:.5rem 0 0}.content a{color:var(--sky-700);font-weight:650}.content-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem;margin-top:.9rem}.info-card{padding:.95rem;border:1px solid var(--slate-200);border-radius:var(--radius);background:var(--slate-50)}.info-card h3{margin:0 0 .3rem}.info-card p{margin:0;font-size:.8rem;line-height:1.65}.formula{margin-top:.8rem;padding:.9rem 1rem;border-left:4px solid var(--sky-500);border-radius:0 var(--radius) var(--radius) 0;background:var(--sky-50);color:var(--slate-800);font-size:.8rem;font-weight:700;line-height:1.8;overflow-wrap:anywhere}
+    .example-table{width:100%;margin-top:.8rem;border-collapse:collapse;font-size:.78rem}.example-table th,.example-table td{padding:.65rem;border-bottom:1px solid var(--slate-200);text-align:left}.example-table th{background:var(--slate-50);color:var(--slate-800)}.example-table td{color:var(--slate-600)}
+    .faq{margin-top:.75rem;border-top:1px solid var(--slate-200)}.faq details{border-bottom:1px solid var(--slate-200)}.faq summary{position:relative;padding:.85rem 2rem .85rem 0;color:var(--slate-900);font-size:.85rem;font-weight:750;line-height:1.45;cursor:pointer;list-style:none}.faq summary::-webkit-details-marker{display:none}.faq summary::after{content:"+";position:absolute;right:.2rem;top:.72rem;color:var(--sky-600);font-size:1.2rem}.faq details[open] summary::after{content:"−"}.faq details p{margin:-.2rem 0 .85rem;padding-right:1.6rem;font-size:.8rem}
+    .trust{margin-top:.9rem;padding-top:.9rem;border-top:1px solid var(--slate-200);color:var(--slate-500);font-size:.7rem;line-height:1.6}
+
+    .toast{position:fixed;left:50%;bottom:1.2rem;z-index:10000;transform:translate(-50%,1rem);padding:.68rem .95rem;border-radius:.7rem;background:var(--slate-900);color:#fff;box-shadow:0 12px 28px rgba(15,23,42,.25);opacity:0;pointer-events:none;transition:.2s;font-size:.75rem;font-weight:700}.toast.show{opacity:1;transform:translate(-50%,0)}
+
+    @media(max-width:960px){.calculator-body{grid-template-columns:1fr}.results-panel{border-left:0;border-top:1px solid #d5e8ec}.results-panel::before,.results-panel::after{display:none}.vehicle-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:700px){.page{padding-inline:.7rem}.hero{margin-bottom:1.35rem}.hero h1{font-size:clamp(2.05rem,11vw,2.8rem)}.hero-copy{font-size:.93rem}.calculator{border-radius:1.25rem}.calculator-top{align-items:flex-start;flex-direction:column}.top-actions{width:100%;justify-content:space-between}.form-panel,.results-panel{padding:1rem}.grid-2,.grid-3,.vehicle-grid,.content-grid,.crosslinks{grid-template-columns:1fr}.section-title{align-items:flex-start}.section-note{display:none}.calculate-button{display:flex}.savings-grid{grid-template-columns:1fr 1fr}.savings-grid .mini-stat:last-child{grid-column:1/-1}.result-row{grid-template-columns:minmax(0,1fr) 4.8rem 4.8rem;padding-inline:.58rem}.result-row span:first-child{font-size:.67rem}.result-row strong{font-size:.69rem}.bar-row{grid-template-columns:4rem minmax(0,1fr) 4.4rem}.result-actions{grid-template-columns:1fr}.unit select{min-width:6.8rem}.example-table,.example-table tbody{display:block;width:100%}.example-table thead{display:none}.example-table tbody{display:grid;gap:.55rem}.example-table tr{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--slate-200);border-radius:.7rem;overflow:hidden}.example-table td{border:0}.example-table td:first-child{grid-column:1/-1;background:var(--slate-50);font-weight:700;color:var(--slate-800)}.example-table td:nth-child(4){grid-column:1/-1;border-top:1px solid var(--slate-200)}}
+    @media(max-width:390px){.page{padding-inline:.5rem}.top-actions{gap:.25rem}.segmented button{padding-inline:.55rem}.savings-grid{grid-template-columns:1fr}.savings-grid .mini-stat:last-child{grid-column:auto}.result-row{grid-template-columns:minmax(0,1fr) 4.3rem 4.3rem}.unit select{min-width:6.1rem;font-size:.7rem}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+  </style>
+</head>
+<body>
+  <div data-shared-header></div>
+
+  <div class="page">
+    <header class="hero">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="/">Fuel Cost Calculator</a><span aria-hidden="true">/</span><span>Gas vs Electric</span>
+      </nav>
+      <h1>Gas vs Electric Cost Calculator</h1>
+      <p class="hero-copy">Compare a gas car and an electric vehicle for the same trip and annual mileage. See energy cost, maintenance, five-year savings, and when a higher EV purchase price could break even.</p>
+    </header>
+
+    <main>
+      <section class="calculator" id="calculator" aria-labelledby="calculator-title">
+        <div class="calculator-top">
+          <div class="top-copy">
+            <strong id="calculator-title">Compare the same driving in two vehicles</strong>
+            <span>Start with the four main inputs. Open advanced options for a deeper ownership comparison.</span>
+          </div>
+          <div class="top-actions">
+            <div class="segmented" role="group" aria-label="Measurement system">
+              <button type="button" class="active" data-system="us" aria-pressed="true">Miles</button>
+              <button type="button" data-system="metric" aria-pressed="false">Kilometers</button>
+            </div>
+            <button class="reset" id="resetButton" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.3-5.7L4 8.5"/><path d="M4 4v4.5h4.5"/></svg>
+              <span>Start fresh</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="calculator-body">
+          <div class="form-panel">
+            <section class="section">
+              <div class="section-title">
+                <div class="section-title-main"><span class="step">1</span><h2>Driving distance</h2></div>
+                <span class="section-note">Used for trip and long-term comparisons</span>
+              </div>
+
+              <div class="grid-2">
+                <div class="field">
+                  <label for="tripDistance">Trip distance</label>
+                  <div class="control unit">
+                    <input id="tripDistance" type="text" inputmode="decimal" value="100" aria-describedby="tripHelp">
+                    <select id="tripUnit" aria-label="Trip distance unit">
+                      <option value="miles" selected>miles</option>
+                      <option value="km">km</option>
+                    </select>
+                  </div>
+                  <div class="help" id="tripHelp">The distance used for the one-trip comparison.</div>
+                </div>
+
+                <div class="field">
+                  <label for="annualDistance">Annual driving</label>
+                  <div class="control unit">
+                    <input id="annualDistance" type="text" inputmode="decimal" value="12000" aria-describedby="annualHelp">
+                    <select id="annualUnit" aria-label="Annual distance unit">
+                      <option value="miles" selected>miles/year</option>
+                      <option value="km">km/year</option>
+                    </select>
+                  </div>
+                  <div class="help" id="annualHelp">Used for monthly, annual, five-year, and break-even results.</div>
+                </div>
+              </div>
+
+              <div class="switch-row">
+                <div class="switch-copy">
+                  <strong>Round trip</strong>
+                  <span>Double only the trip distance. Annual driving stays unchanged.</span>
+                </div>
+                <label class="switch">
+                  <input id="roundTrip" type="checkbox" aria-label="Calculate a round trip">
+                  <span class="track" aria-hidden="true"></span>
+                </label>
+              </div>
+            </section>
+
+            <section class="section">
+              <div class="section-title">
+                <div class="section-title-main"><span class="step">2</span><h2>Vehicle efficiency and energy price</h2></div>
+              </div>
+
+              <div class="vehicle-grid">
+                <article class="vehicle-card gas">
+                  <div class="vehicle-head">
+                    <span class="vehicle-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24"><path d="M4 20V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v14"/><path d="M4 11h12M8 8h4M16 8h2l2 2v7a2 2 0 0 1-2 2h-2"/><path d="M20 12h-2"/></svg>
+                    </span>
+                    <span><strong>Gas car</strong><span>Gasoline or diesel</span></span>
+                  </div>
+
+                  <div class="field">
+                    <label for="gasEfficiency">Fuel efficiency</label>
+                    <div class="control unit">
+                      <input id="gasEfficiency" type="text" inputmode="decimal" value="30">
+                      <select id="gasEfficiencyUnit" aria-label="Gas vehicle efficiency unit">
+                        <option value="mpg_us" selected>MPG (US)</option>
+                        <option value="mpg_imp">MPG (UK)</option>
+                        <option value="l100km">L/100 km</option>
+                        <option value="kml">km/L</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <label for="gasPrice">Fuel price</label>
+                    <div class="control unit currency">
+                      <span>$</span>
+                      <input id="gasPrice" type="text" inputmode="decimal" value="3.50">
+                      <select id="gasPriceUnit" aria-label="Fuel price unit">
+                        <option value="us_gallon" selected>per US gal</option>
+                        <option value="imp_gallon">per imp gal</option>
+                        <option value="liter">per liter</option>
+                      </select>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="vehicle-card ev">
+                  <div class="vehicle-head">
+                    <span class="vehicle-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24"><path d="M13 2 5 14h7l-1 8 8-12h-7l1-8Z"/></svg>
+                    </span>
+                    <span><strong>Electric vehicle</strong><span>Battery electric vehicle</span></span>
+                  </div>
+
+                  <div class="field">
+                    <label for="evEfficiency">EV efficiency</label>
+                    <div class="control unit">
+                      <input id="evEfficiency" type="text" inputmode="decimal" value="3.5">
+                      <select id="evEfficiencyUnit" aria-label="Electric vehicle efficiency unit">
+                        <option value="miles_kwh" selected>mi/kWh</option>
+                        <option value="kwh_100mi">kWh/100 mi</option>
+                        <option value="km_kwh">km/kWh</option>
+                        <option value="kwh_100km">kWh/100 km</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <label for="homeElectricityPrice">Home electricity price</label>
+                    <div class="control unit currency">
+                      <span>$</span>
+                      <input id="homeElectricityPrice" type="text" inputmode="decimal" value="0.17">
+                      <select aria-label="Electricity price unit" disabled><option>per kWh</option></select>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </section>
+
+            <section class="section">
+              <div class="section-title">
+                <div class="section-title-main"><span class="step">3</span><h2>Optional ownership costs</h2></div>
+              </div>
+
+              <button class="advanced-toggle" id="advancedToggle" type="button" aria-expanded="false" aria-controls="advancedFields">
+                <span class="advanced-toggle-copy"><strong>More options</strong><small>Charging mix, maintenance, purchase prices, and EV incentives</small></span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+
+              <div class="advanced-fields" id="advancedFields">
+                <div class="advanced-group">
+                  <h4>EV charging assumptions</h4>
+                  <div class="grid-3">
+                    <div class="field">
+                      <label for="publicShare">Public charging share</label>
+                      <div class="control unit">
+                        <input id="publicShare" type="text" inputmode="decimal" value="0">
+                        <select aria-label="Public charging share unit" disabled><option>%</option></select>
+                      </div>
+                      <div class="help">The remaining share uses your home price.</div>
+                    </div>
+                    <div class="field">
+                      <label for="publicPrice">Public charging price</label>
+                      <div class="control unit currency">
+                        <span>$</span>
+                        <input id="publicPrice" type="text" inputmode="decimal" value="0.45">
+                        <select aria-label="Public charging price unit" disabled><option>per kWh</option></select>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label for="chargingLoss">Charging loss</label>
+                      <div class="control unit">
+                        <input id="chargingLoss" type="text" inputmode="decimal" value="0">
+                        <select aria-label="Charging loss unit" disabled><option>%</option></select>
+                      </div>
+                      <div class="help">Leave at 0% for battery-use cost only.</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="advanced-group">
+                  <h4>Maintenance and purchase price</h4>
+                  <div class="grid-2">
+                    <div class="field">
+                      <label for="gasMaintenance">Gas maintenance per distance</label>
+                      <div class="control unit currency">
+                        <span>$</span>
+                        <input id="gasMaintenance" type="text" inputmode="decimal" value="0">
+                        <select id="gasMaintenanceUnit" aria-label="Gas maintenance distance unit"><option value="mile" selected>per mile</option><option value="km">per km</option></select>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label for="evMaintenance">EV maintenance per distance</label>
+                      <div class="control unit currency">
+                        <span>$</span>
+                        <input id="evMaintenance" type="text" inputmode="decimal" value="0">
+                        <select id="evMaintenanceUnit" aria-label="EV maintenance distance unit"><option value="mile" selected>per mile</option><option value="km">per km</option></select>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label for="gasPurchasePrice">Gas vehicle purchase price</label>
+                      <div class="control currency"><span>$</span><input id="gasPurchasePrice" type="text" inputmode="decimal" value="0"></div>
+                    </div>
+                    <div class="field">
+                      <label for="evPurchasePrice">EV purchase price</label>
+                      <div class="control currency"><span>$</span><input id="evPurchasePrice" type="text" inputmode="decimal" value="0"></div>
+                    </div>
+                    <div class="field">
+                      <label for="evIncentive">EV incentive or rebate</label>
+                      <div class="control currency"><span>$</span><input id="evIncentive" type="text" inputmode="decimal" value="0"></div>
+                      <div class="help">Enter only an incentive you know applies to you.</div>
+                    </div>
+                    <div class="field">
+                      <label for="projectionYears">Ownership projection</label>
+                      <div class="control unit">
+                        <input id="projectionYears" type="number" inputmode="numeric" min="1" max="20" step="1" value="5">
+                        <select aria-label="Ownership projection unit" disabled><option>years</option></select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="error" id="errorBox" role="alert"></div>
+              <button class="calculate-button" id="calculateButton" type="button">
+                Compare vehicles
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+            </section>
+          </div>
+
+          <aside class="results-panel" aria-live="polite">
+            <div class="result-head">
+              <div>
+                <h2>Your comparison</h2>
+                <p id="resultContext">100 miles per trip · 12,000 miles per year</p>
+              </div>
+              <span class="winner" id="winnerBadge">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>
+                EV costs less
+              </span>
+            </div>
+
+            <div class="savings-card">
+              <span class="savings-label" id="savingsLabel">Estimated annual savings with the EV</span>
+              <strong class="savings-value" id="annualSavings">$817.14</strong>
+              <span class="savings-sub" id="savingsSummary">Based on energy and optional maintenance costs. Purchase price is shown separately.</span>
+
+              <div class="savings-grid">
+                <div class="mini-stat"><span>Monthly savings</span><strong id="monthlySavings">$68.10</strong></div>
+                <div class="mini-stat"><span id="projectionLabel">5-year savings</span><strong id="fiveYearSavings">$4,085.71</strong></div>
+                <div class="mini-stat"><span>Break-even</span><strong id="breakEvenValue">No price entered</strong></div>
+              </div>
+            </div>
+
+            <div class="comparison">
+              <div class="comparison-title"><strong>Annual operating cost</strong><span>Energy + optional maintenance</span></div>
+              <div class="bars">
+                <div class="bar-row"><span class="bar-name"><i class="dot gas"></i>Gas</span><span class="bar-track"><span class="bar-fill gas" id="gasBar"></span></span><strong class="bar-value" id="gasAnnualBarValue">$1,400.00</strong></div>
+                <div class="bar-row"><span class="bar-name"><i class="dot ev"></i>EV</span><span class="bar-track"><span class="bar-fill ev" id="evBar"></span></span><strong class="bar-value" id="evAnnualBarValue">$582.86</strong></div>
+              </div>
+            </div>
+
+            <div class="result-table" role="table" aria-label="Gas and electric cost comparison">
+              <div class="result-row header" role="row"><span role="columnheader">Cost</span><strong role="columnheader">Gas</strong><strong role="columnheader">EV</strong></div>
+              <div class="result-row" role="row"><span role="cell">One trip</span><strong class="gas-value" id="gasTrip">$11.67</strong><strong class="ev-value" id="evTrip">$4.86</strong></div>
+              <div class="result-row" role="row"><span role="cell">Energy per trip</span><strong class="gas-value" id="gasTripEnergy">3.33 gal</strong><strong class="ev-value" id="evTripEnergy">28.57 kWh</strong></div>
+              <div class="result-row" role="row"><span role="cell" id="costPerDistanceLabel">Operating cost per mile</span><strong class="gas-value" id="gasPerDistance">$0.12</strong><strong class="ev-value" id="evPerDistance">$0.05</strong></div>
+              <div class="result-row" role="row"><span role="cell">Energy per year</span><strong class="gas-value" id="gasAnnualEnergy">400.00 gal</strong><strong class="ev-value" id="evAnnualEnergy">3,428.57 kWh</strong></div>
+              <div class="result-row" role="row"><span role="cell">Energy cost per year</span><strong class="gas-value" id="gasAnnualEnergyCost">$1,400.00</strong><strong class="ev-value" id="evAnnualEnergyCost">$582.86</strong></div>
+              <div class="result-row" role="row"><span role="cell">Maintenance per year</span><strong class="gas-value" id="gasAnnualMaintenance">$0.00</strong><strong class="ev-value" id="evAnnualMaintenance">$0.00</strong></div>
+              <div class="result-row" role="row"><span role="cell" id="totalCostLabel">5-year total incl. purchase</span><strong class="gas-value" id="gasProjectedTotal">$7,000.00</strong><strong class="ev-value" id="evProjectedTotal">$2,914.29</strong></div>
+            </div>
+
+            <div class="break-even" id="breakEvenText"><strong>Break-even:</strong> Enter both purchase prices to estimate whether the EV's operating savings recover a higher upfront cost.</div>
+
+            <div class="result-actions">
+              <button class="result-action primary" id="copyButton" type="button"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copy result</button>
+              <button class="result-action" id="shareButton" type="button"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-4M8.6 13.5l6.8 4"/></svg>Share</button>
+            </div>
+
+            <p class="estimate-note"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>Estimates depend on your inputs. They exclude insurance, financing, depreciation, taxes, registration, repairs, and charger installation unless you account for them in the values entered.</p>
+          </aside>
+        </div>
+      </section>
+
+      <div class="crosslinks">
+        <a class="crosslink" href="/">
+          <span><strong>Need one trip estimate?</strong><span>Calculate gas, diesel, or EV cost without comparing two vehicles.</span></span>
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="crosslink" href="/#ev-charging-cost">
+          <span><strong>Need an EV trip estimate?</strong><span>Calculate one electric trip from distance, efficiency, and electricity price.</span></span>
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <section class="content" id="how-it-works">
+        <h2>Compare Gas and Electric Car Costs</h2>
+        <p>This gas vs electric cost calculator compares the same distance in a gasoline vehicle and a battery electric vehicle. It starts with the costs that are easiest to verify: fuel or electricity, vehicle efficiency, annual driving, charging losses, and optional maintenance. Add purchase prices and an EV incentive only when you want a broader ownership and break-even estimate.</p>
+        <div class="content-grid">
+          <article class="info-card"><h3>Trip comparison</h3><p>See what one drive costs in each vehicle, how much fuel or electricity it uses, and the energy cost per mile or kilometer.</p></article>
+          <article class="info-card"><h3>Annual comparison</h3><p>Apply your annual mileage to compare monthly cost, annual operating cost, projected savings, and energy use.</p></article>
+          <article class="info-card"><h3>Real charging mix</h3><p>Combine a home electricity rate with a percentage of higher-priced public charging instead of assuming every kWh costs the same.</p></article>
+          <article class="info-card"><h3>Purchase-price break-even</h3><p>Compare the EV's net purchase price after an entered incentive with the gas vehicle and estimate how long operating savings take to recover the difference.</p></article>
+        </div>
+      </section>
+
+      <section class="content" id="formula">
+        <h2>Gas vs Electric Cost Formulas</h2>
+        <p>The calculator converts every efficiency format to a common energy-per-distance basis before comparing costs. It keeps full precision internally and rounds displayed money to two decimals.</p>
+        <div class="formula">
+          Gas gallons used = miles ÷ MPG (US)<br>
+          Gas energy cost = gallons used × fuel price per gallon<br>
+          EV battery energy = miles ÷ miles per kWh<br>
+          EV charger energy = battery energy × (1 + charging loss %)<br>
+          Weighted electricity price = home price × home share + public price × public share<br>
+          Annual operating savings = gas annual operating cost − EV annual operating cost<br>
+          Break-even years = extra EV purchase cost ÷ annual operating savings
+        </div>
+        <p>For metric vehicles, L/100 km is converted directly to liters used, while kWh/100 km is converted directly to electricity used. US and imperial gallons are treated as different units.</p>
+      </section>
+
+      <section class="content" id="charging-mix">
+        <h2>Why Home and Public Charging Should Be Separated</h2>
+        <p>An EV driver may charge at home most of the time and use faster public charging on some trips. Enter the percentage of annual electricity bought publicly and its price. The calculator uses a weighted electricity rate, so 20% public charging does not incorrectly apply the public rate to the other 80% of your charging.</p>
+        <p>Charging loss is also optional. A 10% loss means the charger must supply approximately 1.10 kWh for each 1.00 kWh added to the battery. Leave the value at 0% when you want to compare battery energy only or do not have a reliable loss estimate.</p>
+      </section>
+
+      <section class="content" id="example">
+        <h2>Gas vs Electric Cost Example</h2>
+        <p>Consider 12,000 miles of annual driving. The gas car returns 30 MPG and gasoline costs $3.50 per gallon. The EV returns 3.5 miles per kWh and electricity costs $0.17 per kWh.</p>
+        <table class="example-table">
+          <thead><tr><th>Measure</th><th>Gas car</th><th>Electric vehicle</th><th>Difference</th></tr></thead>
+          <tbody>
+            <tr><td>Annual energy use</td><td>400 gallons</td><td>3,428.57 kWh</td><td>Different energy units</td></tr>
+            <tr><td>Annual energy cost</td><td>$1,400.00</td><td>$582.86</td><td>$817.14 EV savings</td></tr>
+            <tr><td>Energy cost per mile</td><td>$0.1167</td><td>$0.0486</td><td>$0.0681 EV savings</td></tr>
+          </tbody>
+        </table>
+        <p>This example excludes maintenance, purchase prices, incentives, public charging, and charging losses. Add those values when they are relevant to your decision.</p>
+      </section>
+
+      <section class="content" id="what-to-include">
+        <h2>What to Include in a Vehicle Cost Comparison</h2>
+        <div class="content-grid">
+          <article class="info-card"><h3>Use your real energy prices</h3><p>Enter a local gasoline price and the electricity rate you actually pay. A single national average may not reflect your location or charging habits.</p></article>
+          <article class="info-card"><h3>Use comparable efficiency</h3><p>Use combined or real-world efficiency for both vehicles. Comparing highway MPG with city EV efficiency can distort the result.</p></article>
+          <article class="info-card"><h3>Add maintenance carefully</h3><p>Maintenance per mile is optional because costs vary by vehicle age, warranty, tires, service schedule, and local labor prices.</p></article>
+          <article class="info-card"><h3>Do not invent an incentive</h3><p>Tax credits and rebates can depend on the vehicle, buyer, location, purchase date, and other conditions. Enter only a value you have verified.</p></article>
+        </div>
+      </section>
+
+      <section class="content" id="faq">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq">
+          <details><summary>Is an electric car always cheaper to drive than a gas car?</summary><p>No. The result depends on gasoline price, electricity price, efficiency, charging losses, public charging use, maintenance, and annual mileage. Public fast charging can narrow or reverse the energy-cost advantage in some cases.</p></details>
+          <details><summary>How do I compare gas cost with EV charging cost?</summary><p>Convert each vehicle to cost per mile or kilometer. For gas, divide fuel price per gallon by MPG. For an EV, divide electricity price per kWh by miles per kWh, then account for charging loss and any public charging mix.</p></details>
+          <details><summary>What is a good miles-per-kWh number?</summary><p>A higher miles-per-kWh value means the EV travels farther on the same electricity. Use the vehicle's combined rating or a recent real-world average rather than assuming one value fits every EV.</p></details>
+          <details><summary>Should I include public charging?</summary><p>Yes, when it represents a meaningful part of your annual charging. Enter its share and price separately so the calculator can combine it with home charging.</p></details>
+          <details><summary>How is EV break-even calculated?</summary><p>The calculator subtracts the entered EV incentive from the EV purchase price, compares that net amount with the gas vehicle price, and divides any extra EV upfront cost by annual operating savings.</p></details>
+          <details><summary>What happens if the EV costs more to operate?</summary><p>The calculator reports that the gas vehicle costs less and does not show a positive EV break-even period. A higher EV purchase price cannot be recovered through operating savings when those savings are zero or negative.</p></details>
+          <details><summary>Does this include depreciation and insurance?</summary><p>No. Insurance, financing, depreciation, taxes, registration, unexpected repairs, resale value, and charger installation are excluded because they vary widely. The calculator states this clearly rather than hiding assumptions.</p></details>
+          <details><summary>Can I compare diesel with an EV?</summary><p>Yes. Enter the diesel vehicle's efficiency and diesel price in the gas-car column. The underlying fuel-cost formula is the same.</p></details>
+          <details><summary>Can I use kilometers and L/100 km?</summary><p>Yes. Switch to kilometers and enter the gas vehicle in L/100 km or km/L. The EV can use km/kWh or kWh/100 km.</p></details>
+          <details><summary>Should I use EPA ratings or my real efficiency?</summary><p>Official combined ratings provide a consistent starting point. Recent real-world efficiency from similar weather, speed, terrain, and driving conditions may provide a closer personal estimate.</p></details>
+        </div>
+        <p class="trust"><strong>Method:</strong> The calculator uses 1 mile = 1.609344 kilometers, 1 US gallon = 3.785411784 liters, and 1 imperial gallon = 4.54609 liters. Displayed values are rounded, while calculations retain greater precision. Last updated July 20, 2026.</p>
+      </section>
+    </main>
+  </div>
+
+  <div data-shared-footer></div>
+  <div class="toast" id="toast" role="status" aria-live="polite">Result copied</div>
+
+  <script>
+  (() => {
+    'use strict';
+
+    const KM_PER_MILE = 1.609344;
+    const L_PER_US_GAL = 3.785411784;
+    const L_PER_IMP_GAL = 4.54609;
+    const state = { system: 'us' };
+    const $ = id => document.getElementById(id);
+
+    const el = {
+      tripDistance:$('tripDistance'), tripUnit:$('tripUnit'), annualDistance:$('annualDistance'), annualUnit:$('annualUnit'), roundTrip:$('roundTrip'),
+      gasEfficiency:$('gasEfficiency'), gasEfficiencyUnit:$('gasEfficiencyUnit'), gasPrice:$('gasPrice'), gasPriceUnit:$('gasPriceUnit'),
+      evEfficiency:$('evEfficiency'), evEfficiencyUnit:$('evEfficiencyUnit'), homeElectricityPrice:$('homeElectricityPrice'),
+      publicShare:$('publicShare'), publicPrice:$('publicPrice'), chargingLoss:$('chargingLoss'),
+      gasMaintenance:$('gasMaintenance'), gasMaintenanceUnit:$('gasMaintenanceUnit'), evMaintenance:$('evMaintenance'), evMaintenanceUnit:$('evMaintenanceUnit'),
+      gasPurchasePrice:$('gasPurchasePrice'), evPurchasePrice:$('evPurchasePrice'), evIncentive:$('evIncentive'), projectionYears:$('projectionYears'),
+      errorBox:$('errorBox')
+    };
+
+    const parseNumber = raw => {
+      const value = String(raw ?? '').trim().replace(',', '.');
+      if (!/^(?:\d+(?:\.\d*)?|\.\d+)$/.test(value)) return NaN;
+      return Number(value);
+    };
+    const preciseValues = new WeakMap();
+    const value = input => {
+      const stored = preciseValues.get(input);
+      if (stored && stored.display === input.value) return stored.exact;
+      preciseValues.delete(input);
+      return parseNumber(input.value);
+    };
+    const optionalValue = input => String(input.value ?? '').trim() === '' ? 0 : value(input);
+    const setPrecise = (input, exact, digits) => {
+      if(!Number.isFinite(exact)){
+        input.value='';
+        preciseValues.delete(input);
+        return;
+      }
+      const display = String(Number(exact.toFixed(digits)));
+      input.value = display;
+      preciseValues.set(input, { exact, display });
+    };
+    const money = number => new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',minimumFractionDigits:2,maximumFractionDigits:2}).format(number);
+    const num = (number, digits=2) => new Intl.NumberFormat('en-US',{maximumFractionDigits:digits}).format(number);
+
+    function gasLiters(distanceMiles, efficiency, unit){
+      const km = distanceMiles * KM_PER_MILE;
+      switch(unit){
+        case 'mpg_us': return (distanceMiles / efficiency) * L_PER_US_GAL;
+        case 'mpg_imp': return (distanceMiles / efficiency) * L_PER_IMP_GAL;
+        case 'l100km': return km * efficiency / 100;
+        case 'kml': return km / efficiency;
+        default: return 0;
+      }
+    }
+
+    function gasCostFromLiters(liters, price, unit){
+      if(unit === 'us_gallon') return (liters / L_PER_US_GAL) * price;
+      if(unit === 'imp_gallon') return (liters / L_PER_IMP_GAL) * price;
+      return liters * price;
+    }
+
+    function formatGasEnergy(liters, unit){
+      if(unit === 'imp_gallon') return `${num(liters / L_PER_IMP_GAL,2)} imp gal`;
+      if(unit === 'liter') return `${num(liters,2)} L`;
+      return `${num(liters / L_PER_US_GAL,2)} US gal`;
+    }
+
+    function evBatteryKwh(distanceMiles, efficiency, unit){
+      const km = distanceMiles * KM_PER_MILE;
+      switch(unit){
+        case 'miles_kwh': return distanceMiles / efficiency;
+        case 'kwh_100mi': return distanceMiles * efficiency / 100;
+        case 'km_kwh': return km / efficiency;
+        case 'kwh_100km': return km * efficiency / 100;
+        default: return 0;
+      }
+    }
+
+    function maintenancePerMile(amount, unit){ return unit === 'km' ? amount * KM_PER_MILE : amount; }
+
+    function validate(){
+      const publicShareValue=optionalValue(el.publicShare);
+      const checks = [
+        [el.tripDistance,'Enter a trip distance greater than 0.',value(el.tripDistance) > 0],
+        [el.annualDistance,'Enter annual driving greater than 0.',value(el.annualDistance) > 0],
+        [el.gasEfficiency,'Enter gas vehicle efficiency greater than 0.',value(el.gasEfficiency) > 0],
+        [el.gasPrice,'Enter a fuel price of 0 or more.',Number.isFinite(value(el.gasPrice)) && value(el.gasPrice) >= 0],
+        [el.evEfficiency,'Enter EV efficiency greater than 0.',value(el.evEfficiency) > 0],
+        [el.homeElectricityPrice,'Enter an electricity price of 0 or more.',Number.isFinite(value(el.homeElectricityPrice)) && value(el.homeElectricityPrice) >= 0],
+        [el.publicShare,'Public charging share must be between 0 and 100%.',Number.isFinite(publicShareValue) && publicShareValue >= 0 && publicShareValue <= 100],
+        [el.publicPrice,'Enter a public charging price of 0 or more.',publicShareValue === 0 || (Number.isFinite(optionalValue(el.publicPrice)) && optionalValue(el.publicPrice) >= 0)],
+        [el.chargingLoss,'Charging loss must be between 0 and 50%.',Number.isFinite(optionalValue(el.chargingLoss)) && optionalValue(el.chargingLoss) >= 0 && optionalValue(el.chargingLoss) <= 50],
+        [el.gasMaintenance,'Gas maintenance cannot be negative.',Number.isFinite(optionalValue(el.gasMaintenance)) && optionalValue(el.gasMaintenance) >= 0],
+        [el.evMaintenance,'EV maintenance cannot be negative.',Number.isFinite(optionalValue(el.evMaintenance)) && optionalValue(el.evMaintenance) >= 0],
+        [el.gasPurchasePrice,'Gas purchase price cannot be negative.',Number.isFinite(optionalValue(el.gasPurchasePrice)) && optionalValue(el.gasPurchasePrice) >= 0],
+        [el.evPurchasePrice,'EV purchase price cannot be negative.',Number.isFinite(optionalValue(el.evPurchasePrice)) && optionalValue(el.evPurchasePrice) >= 0],
+        [el.evIncentive,'EV incentive cannot be negative.',Number.isFinite(optionalValue(el.evIncentive)) && optionalValue(el.evIncentive) >= 0],
+        [el.projectionYears,'Projection must be between 1 and 20 years.',Number.isInteger(value(el.projectionYears)) && value(el.projectionYears) >= 1 && value(el.projectionYears) <= 20]
+      ];
+      const errors=[];
+      checks.forEach(([field,message,valid])=>{field.classList.toggle('invalid',!valid);if(!valid)errors.push(message)});
+      el.errorBox.textContent=errors[0]||''; el.errorBox.classList.toggle('show',errors.length>0);
+      return errors.length===0;
+    }
+
+    function calculate(){
+      if(!validate()){
+        window.latestComparison=null;
+        $('winnerBadge').innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg>Check inputs';
+        $('winnerBadge').style.color='#b91c1c';
+        $('resultContext').textContent='Correct the highlighted field to update the comparison.';
+        return false;
+      }
+      const tripRaw=value(el.tripDistance);
+      const annualRaw=value(el.annualDistance);
+      const tripMiles=(el.tripUnit.value==='miles'?tripRaw:tripRaw/KM_PER_MILE)*(el.roundTrip.checked?2:1);
+      const annualMiles=el.annualUnit.value==='miles'?annualRaw:annualRaw/KM_PER_MILE;
+
+      const gasEff=value(el.gasEfficiency), gasPrice=value(el.gasPrice);
+      const evEff=value(el.evEfficiency), homePrice=value(el.homeElectricityPrice);
+      const publicShare=optionalValue(el.publicShare)/100, publicPrice=optionalValue(el.publicPrice), loss=optionalValue(el.chargingLoss)/100;
+      const weightedElectricityPrice=homePrice*(1-publicShare)+publicPrice*publicShare;
+
+      const gasTripLiters=gasLiters(tripMiles,gasEff,el.gasEfficiencyUnit.value);
+      const gasAnnualLiters=gasLiters(annualMiles,gasEff,el.gasEfficiencyUnit.value);
+      const gasTripEnergyCost=gasCostFromLiters(gasTripLiters,gasPrice,el.gasPriceUnit.value);
+      const gasAnnualEnergyCost=gasCostFromLiters(gasAnnualLiters,gasPrice,el.gasPriceUnit.value);
+
+      const evTripBattery=evBatteryKwh(tripMiles,evEff,el.evEfficiencyUnit.value);
+      const evAnnualBattery=evBatteryKwh(annualMiles,evEff,el.evEfficiencyUnit.value);
+      const evTripGrid=evTripBattery*(1+loss);
+      const evAnnualGrid=evAnnualBattery*(1+loss);
+      const evTripEnergyCost=evTripGrid*weightedElectricityPrice;
+      const evAnnualEnergyCost=evAnnualGrid*weightedElectricityPrice;
+
+      const gasMaintPerMile=maintenancePerMile(optionalValue(el.gasMaintenance),el.gasMaintenanceUnit.value);
+      const evMaintPerMile=maintenancePerMile(optionalValue(el.evMaintenance),el.evMaintenanceUnit.value);
+      const gasTripMaintenance=gasMaintPerMile*tripMiles;
+      const evTripMaintenance=evMaintPerMile*tripMiles;
+      const gasAnnualMaintenance=gasMaintPerMile*annualMiles;
+      const evAnnualMaintenance=evMaintPerMile*annualMiles;
+
+      const gasTripTotal=gasTripEnergyCost+gasTripMaintenance;
+      const evTripTotal=evTripEnergyCost+evTripMaintenance;
+      const gasAnnualTotal=gasAnnualEnergyCost+gasAnnualMaintenance;
+      const evAnnualTotal=evAnnualEnergyCost+evAnnualMaintenance;
+      const annualSavings=gasAnnualTotal-evAnnualTotal;
+      const years=value(el.projectionYears);
+      const projectedOperatingSavings=annualSavings*years;
+
+      const gasPurchase=optionalValue(el.gasPurchasePrice);
+      const evPurchase=optionalValue(el.evPurchasePrice);
+      const incentive=Math.min(optionalValue(el.evIncentive),evPurchase);
+      const netEvPurchase=Math.max(0,evPurchase-incentive);
+      const gasProjectedTotal=gasPurchase+gasAnnualTotal*years;
+      const evProjectedTotal=netEvPurchase+evAnnualTotal*years;
+      const upfrontDifference=netEvPurchase-gasPurchase;
+
+      let breakEvenLabel='No price entered';
+      let breakEvenSentence='Enter both purchase prices to estimate whether the EV\'s operating savings recover a higher upfront cost.';
+      if(gasPurchase>0 && evPurchase>0){
+        if(upfrontDifference<=0){
+          breakEvenLabel='Immediate';
+          breakEvenSentence='The EV has no higher net purchase price after the entered incentive, so there is no additional upfront amount to recover.';
+        } else if(annualSavings>0.005){
+          const yearsToBreakEven=upfrontDifference/annualSavings;
+          breakEvenLabel=yearsToBreakEven>99?'Over 99 years':`${num(yearsToBreakEven,1)} years`;
+          breakEvenSentence=`The EV costs ${money(upfrontDifference)} more upfront after the entered incentive. At ${money(annualSavings)} in annual operating savings, estimated break-even is ${num(yearsToBreakEven,1)} years.`;
+        } else {
+          breakEvenLabel='No break-even';
+          breakEvenSentence='With these inputs, the EV does not produce annual operating savings, so a higher EV purchase price is not recovered.';
+        }
+      }
+
+      const tied=Math.abs(annualSavings)<0.005;
+      const gasWins=!tied && annualSavings<0;
+      const savingsAbs=tied?0:Math.abs(annualSavings);
+      $('winnerBadge').innerHTML=tied
+        ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9h12M6 15h12"/></svg>Same annual cost'
+        : `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>${gasWins?'Gas costs less':'EV costs less'}`;
+      $('winnerBadge').style.color=tied?'#475569':gasWins?'#b45309':'#047857';
+      $('savingsLabel').textContent=tied?'Estimated annual operating-cost difference':`Estimated annual savings with the ${gasWins?'gas car':'EV'}`;
+      $('annualSavings').textContent=money(savingsAbs);
+      $('monthlySavings').textContent=money(savingsAbs/12);
+      $('projectionLabel').textContent=`${years}-year operating savings`;
+      $('fiveYearSavings').textContent=money(tied?0:Math.abs(projectedOperatingSavings));
+      $('breakEvenValue').textContent=breakEvenLabel;
+      $('savingsSummary').textContent=tied?'Both vehicles have the same estimated annual operating cost.':`The ${gasWins?'gas car':'EV'} is estimated to cost ${money(savingsAbs)} less per year for energy and optional maintenance.`;
+
+      $('gasTrip').textContent=money(gasTripTotal); $('evTrip').textContent=money(evTripTotal);
+      $('gasTripEnergy').textContent=formatGasEnergy(gasTripLiters,el.gasPriceUnit.value); $('evTripEnergy').textContent=`${num(evTripGrid,2)} kWh`;
+      const tripUsesKm=el.tripUnit.value==='km';
+      const annualUsesKm=el.annualUnit.value==='km';
+      const selectedTripDistance=tripUsesKm?tripMiles*KM_PER_MILE:tripMiles;
+      const selectedAnnualDistance=annualUsesKm?annualMiles*KM_PER_MILE:annualMiles;
+      const tripDistanceLabel=tripUsesKm?'km':'mile';
+      const annualDistanceLabel=annualUsesKm?'km':'mile';
+      $('costPerDistanceLabel').textContent=`Operating cost per ${tripDistanceLabel}`;
+      $('gasPerDistance').textContent=money(gasTripTotal/selectedTripDistance); $('evPerDistance').textContent=money(evTripTotal/selectedTripDistance);
+      $('gasAnnualEnergy').textContent=formatGasEnergy(gasAnnualLiters,el.gasPriceUnit.value); $('evAnnualEnergy').textContent=`${num(evAnnualGrid,2)} kWh`;
+      $('gasAnnualEnergyCost').textContent=money(gasAnnualEnergyCost); $('evAnnualEnergyCost').textContent=money(evAnnualEnergyCost);
+      $('gasAnnualMaintenance').textContent=money(gasAnnualMaintenance); $('evAnnualMaintenance').textContent=money(evAnnualMaintenance);
+      $('totalCostLabel').textContent=`${years}-year total incl. purchase`;
+      $('gasProjectedTotal').textContent=money(gasProjectedTotal); $('evProjectedTotal').textContent=money(evProjectedTotal);
+      $('breakEvenText').innerHTML=`<strong>Break-even:</strong> ${breakEvenSentence}`;
+      $('resultContext').textContent=`${num(selectedTripDistance,1)} ${tripDistanceLabel}${tripDistanceLabel==='mile'&&selectedTripDistance!==1?'s':''} per ${el.roundTrip.checked?'round trip':'trip'} · ${num(selectedAnnualDistance,0)} ${annualDistanceLabel}${annualDistanceLabel==='mile'&&selectedAnnualDistance!==1?'s':''} per year`;
+
+      $('gasAnnualBarValue').textContent=money(gasAnnualTotal); $('evAnnualBarValue').textContent=money(evAnnualTotal);
+      const max=Math.max(gasAnnualTotal,evAnnualTotal,0.01);
+      $('gasBar').style.width=`${Math.max(2,gasAnnualTotal/max*100)}%`;
+      $('evBar').style.width=`${Math.max(2,evAnnualTotal/max*100)}%`;
+
+      window.latestComparison={
+        tripMiles,annualMiles,gasTripTotal,evTripTotal,gasAnnualTotal,evAnnualTotal,annualSavings,years,gasProjectedTotal,evProjectedTotal,breakEvenLabel,weightedElectricityPrice
+      };
+      return true;
+    }
+
+    function convertSystem(system){
+      const metric=system==='metric';
+      if(state.system===system) return calculate();
+      const trip=value(el.tripDistance), annual=value(el.annualDistance);
+      setPrecise(el.tripDistance, trip*(metric?KM_PER_MILE:1/KM_PER_MILE), 1);
+      setPrecise(el.annualDistance, annual*(metric?KM_PER_MILE:1/KM_PER_MILE), 0);
+      el.tripUnit.value=metric?'km':'miles'; el.annualUnit.value=metric?'km':'miles';
+
+      const gasEff=value(el.gasEfficiency);
+      if(metric){
+        let mpg;
+        if(el.gasEfficiencyUnit.value==='mpg_us') mpg=gasEff;
+        else if(el.gasEfficiencyUnit.value==='mpg_imp') mpg=gasEff*(L_PER_US_GAL/L_PER_IMP_GAL);
+        else if(el.gasEfficiencyUnit.value==='l100km') mpg=235.214583/gasEff;
+        else mpg=(gasEff/KM_PER_MILE)*L_PER_US_GAL;
+        setPrecise(el.gasEfficiency, 235.214583/mpg, 1); el.gasEfficiencyUnit.value='l100km';
+        if(el.gasPriceUnit.value==='us_gallon'){setPrecise(el.gasPrice, value(el.gasPrice)/L_PER_US_GAL, 2);}
+        else if(el.gasPriceUnit.value==='imp_gallon'){setPrecise(el.gasPrice, value(el.gasPrice)/L_PER_IMP_GAL, 2);}
+        el.gasPriceUnit.value='liter';
+
+        const evEff=value(el.evEfficiency);
+        let kwh100km;
+        if(el.evEfficiencyUnit.value==='miles_kwh') kwh100km=62.137119/evEff;
+        else if(el.evEfficiencyUnit.value==='kwh_100mi') kwh100km=evEff/KM_PER_MILE;
+        else if(el.evEfficiencyUnit.value==='km_kwh') kwh100km=100/evEff;
+        else kwh100km=evEff;
+        setPrecise(el.evEfficiency, kwh100km, 1); el.evEfficiencyUnit.value='kwh_100km';
+
+        ['gasMaintenance','evMaintenance'].forEach(id=>{const input=el[id],unit=el[id+'Unit'];setPrecise(input, optionalValue(input)/KM_PER_MILE, 3);unit.value='km';});
+      } else {
+        const gasEff=value(el.gasEfficiency);
+        let mpg;
+        if(el.gasEfficiencyUnit.value==='l100km') mpg=235.214583/gasEff;
+        else if(el.gasEfficiencyUnit.value==='kml') mpg=(gasEff/KM_PER_MILE)*L_PER_US_GAL;
+        else if(el.gasEfficiencyUnit.value==='mpg_imp') mpg=gasEff*(L_PER_US_GAL/L_PER_IMP_GAL);
+        else mpg=gasEff;
+        setPrecise(el.gasEfficiency, mpg, 1); el.gasEfficiencyUnit.value='mpg_us';
+        if(el.gasPriceUnit.value==='liter') setPrecise(el.gasPrice, value(el.gasPrice)*L_PER_US_GAL, 2);
+        else if(el.gasPriceUnit.value==='imp_gallon') setPrecise(el.gasPrice, value(el.gasPrice)*(L_PER_US_GAL/L_PER_IMP_GAL), 2);
+        el.gasPriceUnit.value='us_gallon';
+
+        const evEff=value(el.evEfficiency);
+        let milesKwh;
+        if(el.evEfficiencyUnit.value==='kwh_100km') milesKwh=62.137119/evEff;
+        else if(el.evEfficiencyUnit.value==='km_kwh') milesKwh=evEff/KM_PER_MILE;
+        else if(el.evEfficiencyUnit.value==='kwh_100mi') milesKwh=100/evEff;
+        else milesKwh=evEff;
+        setPrecise(el.evEfficiency, milesKwh, 1); el.evEfficiencyUnit.value='miles_kwh';
+
+        ['gasMaintenance','evMaintenance'].forEach(id=>{const input=el[id],unit=el[id+'Unit'];setPrecise(input, optionalValue(input)*KM_PER_MILE, 3);unit.value='mile';});
+      }
+      state.system=system;
+      document.querySelectorAll('[data-system]').forEach(button=>{const active=button.dataset.system===system;button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active))});
+      return calculate();
+    }
+
+    function summary(){
+      const d=window.latestComparison;
+      if(!d) return 'Gas vs Electric Cost Calculator';
+      return [
+        'Gas vs Electric Cost Calculator result',
+        `Gas trip cost: ${money(d.gasTripTotal)}`,
+        `EV trip cost: ${money(d.evTripTotal)}`,
+        `Gas annual operating cost: ${money(d.gasAnnualTotal)}`,
+        `EV annual operating cost: ${money(d.evAnnualTotal)}`,
+        `${Math.abs(d.annualSavings)<0.005?'Annual operating cost difference':`${d.annualSavings>=0?'EV':'Gas'} annual savings`}: ${money(Math.abs(d.annualSavings))}`,
+        `${d.years}-year gas total: ${money(d.gasProjectedTotal)}`,
+        `${d.years}-year EV total: ${money(d.evProjectedTotal)}`,
+        `Break-even: ${d.breakEvenLabel}`
+      ].join('\n');
+    }
+
+    let restoringFromUrl = false;
+    let urlSyncTimer;
+
+    const queryNumber = (input, optional=false) => {
+      const number=optional?optionalValue(input):value(input);
+      return Number.isFinite(number)?String(Number(number.toFixed(8))):'';
+    };
+
+    function buildShareUrl(){
+      const q = new URLSearchParams();
+      q.set('sys', state.system === 'metric' ? 'km' : 'mi');
+      q.set('td', queryNumber(el.tripDistance));
+      q.set('tu', el.tripUnit.value === 'km' ? 'km' : 'mi');
+      q.set('ad', queryNumber(el.annualDistance));
+      q.set('au', el.annualUnit.value === 'km' ? 'km' : 'mi');
+      if(el.roundTrip.checked) q.set('rt','1');
+      q.set('ge', queryNumber(el.gasEfficiency));
+      q.set('geu', el.gasEfficiencyUnit.value);
+      q.set('gp', queryNumber(el.gasPrice));
+      q.set('gpu', el.gasPriceUnit.value);
+      q.set('ee', queryNumber(el.evEfficiency));
+      q.set('eeu', el.evEfficiencyUnit.value);
+      q.set('hp', queryNumber(el.homeElectricityPrice));
+      if(optionalValue(el.publicShare) > 0) q.set('ps', queryNumber(el.publicShare,true));
+      if(optionalValue(el.publicShare) > 0) q.set('pp', queryNumber(el.publicPrice,true));
+      if(optionalValue(el.chargingLoss) > 0) q.set('cl', queryNumber(el.chargingLoss,true));
+      if(optionalValue(el.gasMaintenance) > 0) { q.set('gm', queryNumber(el.gasMaintenance,true)); q.set('gmu', el.gasMaintenanceUnit.value); }
+      if(optionalValue(el.evMaintenance) > 0) { q.set('em', queryNumber(el.evMaintenance,true)); q.set('emu', el.evMaintenanceUnit.value); }
+      if(optionalValue(el.gasPurchasePrice) > 0) q.set('gpp', queryNumber(el.gasPurchasePrice,true));
+      if(optionalValue(el.evPurchasePrice) > 0) q.set('epp', queryNumber(el.evPurchasePrice,true));
+      if(optionalValue(el.evIncentive) > 0) q.set('inc', queryNumber(el.evIncentive,true));
+      if(value(el.projectionYears) !== 5) q.set('yr', queryNumber(el.projectionYears));
+      return location.origin + location.pathname + '?' + q.toString();
+    }
+
+    function scheduleUrlSync(){
+      if(restoringFromUrl) return;
+      clearTimeout(urlSyncTimer);
+      urlSyncTimer = setTimeout(() => {
+        try {
+          const url = new URL(buildShareUrl());
+          history.replaceState(null,'',url.pathname + url.search);
+        } catch(_) {}
+      },180);
+    }
+
+    function restoreFromUrl(){
+      const q = new URLSearchParams(location.search);
+      if(!q.has('td') && !q.has('ge') && !q.has('ee')) return;
+      restoringFromUrl = true;
+      const setNonNegative = (input,key) => {
+        if(!q.has(key)) return;
+        const parsed = parseNumber(q.get(key));
+        if(Number.isFinite(parsed) && parsed >= 0) input.value = String(parsed);
+      };
+      const setOption = (select,key) => {
+        const wanted = q.get(key);
+        if(wanted && Array.from(select.options).some(option => option.value === wanted)) select.value = wanted;
+      };
+
+      state.system = q.get('sys') === 'km' ? 'metric' : 'us';
+      document.querySelectorAll('[data-system]').forEach(button => {
+        const active = button.dataset.system === state.system;
+        button.classList.toggle('active',active);
+        button.setAttribute('aria-pressed',String(active));
+      });
+      setNonNegative(el.tripDistance,'td'); setOption(el.tripUnit,'tu');
+      setNonNegative(el.annualDistance,'ad'); setOption(el.annualUnit,'au');
+      el.roundTrip.checked = q.get('rt') === '1';
+      setNonNegative(el.gasEfficiency,'ge'); setOption(el.gasEfficiencyUnit,'geu');
+      setNonNegative(el.gasPrice,'gp'); setOption(el.gasPriceUnit,'gpu');
+      setNonNegative(el.evEfficiency,'ee'); setOption(el.evEfficiencyUnit,'eeu');
+      setNonNegative(el.homeElectricityPrice,'hp');
+      setNonNegative(el.publicShare,'ps'); setNonNegative(el.publicPrice,'pp'); setNonNegative(el.chargingLoss,'cl');
+      setNonNegative(el.gasMaintenance,'gm'); setOption(el.gasMaintenanceUnit,'gmu');
+      setNonNegative(el.evMaintenance,'em'); setOption(el.evMaintenanceUnit,'emu');
+      setNonNegative(el.gasPurchasePrice,'gpp'); setNonNegative(el.evPurchasePrice,'epp'); setNonNegative(el.evIncentive,'inc'); setNonNegative(el.projectionYears,'yr');
+
+      const hasAdvanced = ['ps','pp','cl','gm','em','gpp','epp','inc','yr'].some(key => q.has(key));
+      if(hasAdvanced){ $('advancedToggle').setAttribute('aria-expanded','true'); $('advancedFields').classList.add('open'); }
+      restoringFromUrl = false;
+    }
+
+    async function copyText(text,message){
+      try{await navigator.clipboard.writeText(text)}catch(_){const t=document.createElement('textarea');t.value=text;t.style.position='fixed';t.style.opacity='0';document.body.appendChild(t);t.select();document.execCommand('copy');t.remove()}
+      const toast=$('toast');toast.textContent=message;toast.classList.add('show');clearTimeout(copyText.timeout);copyText.timeout=setTimeout(()=>toast.classList.remove('show'),1800);
+    }
+
+    function reset(){
+      const defaults={tripDistance:'100',annualDistance:'12000',gasEfficiency:'30',gasPrice:'3.50',evEfficiency:'3.5',homeElectricityPrice:'0.17',publicShare:'0',publicPrice:'0.45',chargingLoss:'0',gasMaintenance:'0',evMaintenance:'0',gasPurchasePrice:'0',evPurchasePrice:'0',evIncentive:'0',projectionYears:'5'};
+      state.system='us'; Object.values(el).forEach(node=>{ if(node instanceof HTMLElement) preciseValues.delete(node); }); Object.entries(defaults).forEach(([id,v])=>el[id].value=v);
+      el.tripUnit.value='miles';el.annualUnit.value='miles';el.roundTrip.checked=false;el.gasEfficiencyUnit.value='mpg_us';el.gasPriceUnit.value='us_gallon';el.evEfficiencyUnit.value='miles_kwh';el.gasMaintenanceUnit.value='mile';el.evMaintenanceUnit.value='mile';
+      document.querySelectorAll('[data-system]').forEach(button=>{const active=button.dataset.system==='us';button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active))});
+      $('advancedToggle').setAttribute('aria-expanded','false');$('advancedFields').classList.remove('open');try{history.replaceState(null,'',location.pathname)}catch(_){}calculate();el.tripDistance.focus();
+    }
+
+    Object.values(el).forEach(node=>{
+      if(node instanceof HTMLElement && node!==el.errorBox){
+        node.addEventListener('input',()=>{
+          preciseValues.delete(node);
+          if(calculate()) scheduleUrlSync();
+        });
+        node.addEventListener('change',()=>{
+          if(calculate()) scheduleUrlSync();
+        });
+      }
+    });
+    document.querySelectorAll('[data-system]').forEach(button=>button.addEventListener('click',()=>{
+      if(convertSystem(button.dataset.system)) scheduleUrlSync();
+    }));
+    $('advancedToggle').addEventListener('click',()=>{const open=$('advancedToggle').getAttribute('aria-expanded')==='true';$('advancedToggle').setAttribute('aria-expanded',String(!open));$('advancedFields').classList.toggle('open',!open)});
+    $('resetButton').addEventListener('click',reset);
+    $('calculateButton').addEventListener('click',()=>{
+      if(calculate()) document.querySelector('.results-panel').scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+    });
+    $('copyButton').addEventListener('click',()=>{
+      if(calculate()) copyText(summary(),'Comparison copied');
+    });
+    $('shareButton').addEventListener('click',async()=>{
+      if(!calculate()) return;
+      const text=summary();
+      if(navigator.share){
+        try{await navigator.share({title:'Gas vs Electric Cost Calculator',text,url:buildShareUrl()});return}
+        catch(error){if(error.name==='AbortError')return}
+      }
+      copyText(text+'\n'+buildShareUrl(),'Share link copied');
+    });
+
+    restoreFromUrl();
+    calculate();
+  })();
+  </script>
+</body>
+</html>

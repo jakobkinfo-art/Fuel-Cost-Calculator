@@ -35,6 +35,7 @@
 
           <nav class="fuel-site-nav" aria-label="Primary navigation">
             <a href="/"${currentAttribute('/')}>Calculators</a>
+            <a href="/gas-vs-electric-calculator.html"${currentAttribute('/gas-vs-electric-calculator.html')}>Gas vs. EV Car</a>
           </nav>
         </div>
       </header>`;
@@ -51,7 +52,7 @@
               <span class="shared-footer-mark" aria-hidden="true">${mark}</span>
               Fuel Cost Calculator
             </a>
-            <p>Free, straightforward estimates for fuel, electricity, trip expenses, and fair passenger shares.</p>
+            <p>Use our free fuel cost calculator to estimate gasoline, diesel, or electric vehicle expenses. Calculate gas cost for a trip, check fuel consumption, and split travel costs fairly between passengers.</p>
           </div>
 
           <section class="shared-footer-column" aria-labelledby="shared-footer-company">

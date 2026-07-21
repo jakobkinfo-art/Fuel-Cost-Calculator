@@ -155,6 +155,7 @@
     .field input.invalid,.field select.invalid{border-color:var(--red-600)}
     .unit input{border-radius:var(--radius-sm) 0 0 var(--radius-sm);border-right:0}
     .unit select{flex:0 0 auto;width:auto;min-width:7.7rem;border-radius:0 var(--radius-sm) var(--radius-sm) 0;background-color:var(--slate-50);font-size:.78rem;font-weight:700}
+    .unit select:disabled{min-width:0;padding-right:.7rem;color:var(--slate-500);opacity:1;background-image:none;-webkit-appearance:none;-moz-appearance:none;appearance:none}
     .currency{position:relative}.currency>span{position:absolute;left:.86rem;top:50%;z-index:2;transform:translateY(-50%);color:var(--slate-500);font-weight:700;pointer-events:none}.currency input{padding-left:1.8rem}
     .help{margin-top:.36rem;color:var(--slate-500);font-size:.7rem;line-height:1.5}
 
@@ -163,10 +164,13 @@
     .vehicle-card.gas{border-top:4px solid var(--orange-500)}
     .vehicle-card.ev{border-top:4px solid var(--green-500)}
     .vehicle-head{display:flex;align-items:center;gap:.7rem;margin-bottom:.9rem}
-    .vehicle-icon{display:grid;place-items:center;width:2.5rem;height:2.5rem;border-radius:.78rem}
+    .vehicle-icon{position:relative;display:grid;place-items:center;width:2.5rem;height:2.5rem;overflow:hidden;border-radius:.78rem}
     .gas .vehicle-icon{background:var(--orange-100);color:var(--orange-600)}
     .ev .vehicle-icon{background:var(--green-100);color:var(--green-700)}
     .vehicle-icon svg{width:1.35rem;height:1.35rem;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .vehicle-icon img{display:block;width:100%;height:100%;max-width:none;object-fit:contain;mix-blend-mode:multiply;transform-origin:center}
+    .gas .vehicle-icon img{transform:scale(2.05)}
+    .ev .vehicle-icon img{transform:scale(1.58)}
     .vehicle-head strong{display:block;color:var(--slate-900);font-size:.92rem}.vehicle-head span{display:block;margin-top:.1rem;color:var(--slate-500);font-size:.69rem}
     .vehicle-card .field+.field{margin-top:.8rem}
 
@@ -312,7 +316,7 @@
                 <article class="vehicle-card gas">
                   <div class="vehicle-head">
                     <span class="vehicle-icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24"><path d="M4 20V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v14"/><path d="M4 11h12M8 8h4M16 8h2l2 2v7a2 2 0 0 1-2 2h-2"/><path d="M20 12h-2"/></svg>
+                      <img src="/assets/images/gas-car-icon.png" alt="" width="1254" height="1254" decoding="async">
                     </span>
                     <span><strong>Gas car</strong><span>Gasoline or diesel</span></span>
                   </div>
@@ -347,7 +351,7 @@
                 <article class="vehicle-card ev">
                   <div class="vehicle-head">
                     <span class="vehicle-icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24"><path d="M13 2 5 14h7l-1 8 8-12h-7l1-8Z"/></svg>
+                      <img src="/assets/images/ev-icon.png" alt="" width="1254" height="1254" decoding="async">
                     </span>
                     <span><strong>Electric vehicle</strong><span>Battery electric vehicle</span></span>
                   </div>

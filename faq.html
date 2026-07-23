@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#0ea5e9">
-  <link rel="icon" href="/favicon.png?v=3" type="image/png" sizes="1254x1254">
+  <link rel="icon" href="/favicon.v4.png" type="image/png" sizes="96x96">
   <title>Fuel Cost Calculator FAQ – Help With MPG, EVs &amp; Trip Costs</title>
   <meta name="description" content="Answers to common questions about fuel cost estimates, MPG, miles and kilometers, EV charging, privacy, sharing, and passenger splits.">
   <link rel="canonical" href="https://fuel-cost-calculator.com/faq.html">
@@ -17,12 +17,8 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Fuel Cost Calculator FAQ – Help With MPG, EVs &amp; Trip Costs">
   <meta name="twitter:description" content="Answers to common questions about fuel cost estimates, MPG, miles and kilometers, EV charging, privacy, sharing, and passenger splits.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/site.v1.14.min.css?v=1.21">
-  <link rel="stylesheet" href="/assets/shared-layout.css?v=1.3">
-  <script src="/assets/shared-layout.js?v=1.5" defer></script>
+  <link rel="stylesheet" href="/assets/shared-layout.v2.css">
+  <script src="/assets/shared-layout.v2.js" defer></script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -73,7 +69,7 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{
-  margin:0;min-height:100vh;font-family:'Inter',ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  margin:0;min-height:100vh;font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   color:var(--text);background:
   radial-gradient(54rem 28rem at 90% -8%,rgba(14,165,233,.15),transparent 62%),
   linear-gradient(180deg,var(--sky) 0,#fff 29rem);
@@ -172,7 +168,20 @@ details p{margin:-.2rem 0 1rem;color:var(--muted);font-size:.88rem;line-height:1
   
 </head>
 <body>
-  <div data-shared-header></div>
+  <div data-shared-header>
+    <header class="fuel-site-header">
+      <div class="fuel-site-header-inner">
+        <a class="fuel-site-brand" href="/" aria-label="Fuel Cost Calculator home">
+          <span class="fuel-site-mark" aria-hidden="true"><img src="/assets/images/fuel-cost-calculator-logo.v2.webp" alt="" width="192" height="157" decoding="async"></span>
+          <span class="fuel-site-title">Fuel Cost Calculator</span>
+        </a>
+        <nav class="fuel-site-nav" aria-label="Primary navigation">
+          <a href="/">Calculators</a>
+          <a href="/gas-vs-electric-calculator.html">Gas vs. EV Car</a>
+        </nav>
+      </div>
+    </header>
+  </div>
   <div class="container">
     <nav class="breadcrumbs" aria-label="Breadcrumb">
       <a href="/">Home</a><span aria-hidden="true">/</span><span>Frequently Asked Questions</span>

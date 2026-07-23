@@ -1,0 +1,30 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/assets/shared-layout.v2.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/shared-layout.v2.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/images/*.v2.webp
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/icons/*
+  Cache-Control: public, max-age=604800, must-revalidate
+
+/favicon.v4.png
+  Cache-Control: public, max-age=31536000, immutable
+
+/sitemap.xml
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/BingSiteAuth.xml
+  Cache-Control: public, max-age=3600, must-revalidate

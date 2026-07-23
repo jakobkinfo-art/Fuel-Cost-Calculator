@@ -2,14 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" href="/favicon.png?v=3" type="image/png" sizes="1254x1254">
+  <link rel="icon" href="/favicon.v4.png" type="image/png" sizes="96x96">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#0ea5e9">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <title>Fuel Cost Calculator – Gas, Diesel &amp; EV Trip Costs</title>
   <meta name="description" content="Free fuel cost calculator for gasoline, diesel, and EV trips. Calculate fuel consumption, trip expenses, cost per mile or kilometer, and passenger shares.">
@@ -65,18 +61,8 @@
   }
   </script>
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GM1YFWN8P1"></script>
-  <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-GM1YFWN8P1');
-  </script>
-
-  <link rel="stylesheet" href="/assets/site.v1.14.min.css?v=1.21">
-  <link rel="stylesheet" href="/assets/shared-layout.css?v=1.3">
-  <script src="/assets/shared-layout.js?v=1.5" defer></script>
+  <link rel="stylesheet" href="/assets/shared-layout.v2.css">
+  <script src="/assets/shared-layout.v2.js" defer></script>
 
   <style>
     /* ============ Tokens (splitbillcalculator.net design system) ============ */
@@ -90,7 +76,7 @@
       --slate-900: #0f172a;
       --red-600: #dc2626;  --red-700: #b91c1c;  --red-50: #fef2f2; --red-200: #fecaca;
       --radius-sm: .6rem;  --radius: .8rem;  --radius-lg: 1.1rem;  --radius-xl: 1.5rem;
-      --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       --shadow-card: 0 1px 2px rgba(15, 23, 42, .04), 0 24px 55px -18px rgba(2, 132, 199, .18);
     }
 
@@ -1332,6 +1318,8 @@
       border-radius: var(--radius-lg);
       background: #fff;
       box-shadow: 0 1px 2px rgba(15, 23, 42, .03);
+      content-visibility: auto;
+      contain-intrinsic-size: auto 24rem;
     }
 
     .fuel-seo-content h2 {
@@ -2882,7 +2870,20 @@
 </head>
 
 <body class="bg-gradient-to-br from-primary-50 to-white min-h-screen font-sans text-gray-800">
-  <div data-shared-header></div>
+  <div data-shared-header>
+    <header class="fuel-site-header">
+      <div class="fuel-site-header-inner">
+        <a class="fuel-site-brand" href="/" aria-label="Fuel Cost Calculator home">
+          <span class="fuel-site-mark" aria-hidden="true"><img src="/assets/images/fuel-cost-calculator-logo.v2.webp" alt="" width="192" height="157" decoding="async"></span>
+          <span class="fuel-site-title">Fuel Cost Calculator</span>
+        </a>
+        <nav class="fuel-site-nav" aria-label="Primary navigation">
+          <a href="/">Calculators</a>
+          <a href="/gas-vs-electric-calculator.html">Gas vs. EV Car</a>
+        </nav>
+      </div>
+    </header>
+  </div>
 
   <div class="container mx-auto px-3 py-4 max-w-6xl">
     <header class="mb-7">
@@ -3168,7 +3169,7 @@
 
           <div class="fuel-ticket-visual" aria-hidden="true">
             <span class="fuel-ticket-car">
-              <img src="/assets/images/red-sports-car.png" alt="" width="1024" height="392">
+              <img src="/assets/images/red-sports-car.v2.webp" alt="" width="320" height="123" decoding="async">
             </span>
             <svg class="fuel-ticket-route" viewBox="0 0 260 72">
               <path d="M29 40c31 21 55-20 88-3 35 18 55 14 83-7 14-11 25-9 34-3" fill="none" stroke="#0873a4" stroke-width="2.3" stroke-dasharray="5 6" stroke-linecap="round"/>
@@ -3763,6 +3764,8 @@
       const currencySymbols = {
         USD: '$', EUR: '€', GBP: '£'
       };
+      const moneyFormatters = new Map();
+      const numberFormatters = new Map();
 
       function numberValue(element) {
         const value = parseUserNumber(element.value);
@@ -3772,22 +3775,28 @@
       function formatMoney(value) {
         const currency = elements.currency.value;
         try {
-          return new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency,
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2
-          }).format(value);
+          if (!moneyFormatters.has(currency)) {
+            moneyFormatters.set(currency, new Intl.NumberFormat('en-US', {
+              style: 'currency',
+              currency,
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2
+            }));
+          }
+          return moneyFormatters.get(currency).format(value);
         } catch (_) {
           return `${currencySymbols[currency] || '$'}${value.toFixed(2)}`;
         }
       }
 
       function formatNumber(value, maximumFractionDigits = 2) {
-        return new Intl.NumberFormat('en-US', {
-          maximumFractionDigits,
-          minimumFractionDigits: 0
-        }).format(value);
+        if (!numberFormatters.has(maximumFractionDigits)) {
+          numberFormatters.set(maximumFractionDigits, new Intl.NumberFormat('en-US', {
+            maximumFractionDigits,
+            minimumFractionDigits: 0
+          }));
+        }
+        return numberFormatters.get(maximumFractionDigits).format(value);
       }
 
       function setOptions(select, options) {
@@ -4103,6 +4112,8 @@
         copyText(text + '\n' + url, 'Share link copied');
       });
 
+      window.fuelSetVehicle = setVehicle;
+      window.fuelGetVehicle = () => state.vehicle;
       updateCurrencySymbols();
       calculate();
     })();
@@ -4137,24 +4148,25 @@
 
     const media = window.matchMedia('(max-width: 899px)');
     let panelVisible = false;
+    let panelIsAboveViewport = false;
 
     const update = () => {
       // Only show the compact summary after the full receipt has been passed.
       // This keeps it from covering the form and Calculate button on first load.
-      const panelIsAboveViewport = panel.getBoundingClientRect().bottom < 0;
       const show = media.matches && !panelVisible && panelIsAboveViewport;
       bar.hidden = !show;
       document.body.classList.toggle('fuel-sticky-active', show);
     };
 
     new IntersectionObserver((entries) => {
-      entries.forEach(entry => { panelVisible = entry.isIntersecting; });
+      const entry = entries[0];
+      panelVisible = entry.isIntersecting;
+      panelIsAboveViewport = entry.boundingClientRect.bottom < 0;
       update();
-    }, { threshold: 0.12 }).observe(panel);
+    }, { threshold: [0, 0.12] }).observe(panel);
 
     if (media.addEventListener) media.addEventListener('change', update);
     else media.addListener(update);
-    window.addEventListener('scroll', update, { passive: true });
     update();
 
     document.getElementById('fuelStickyButton').addEventListener('click', () => {
@@ -4607,15 +4619,20 @@
     const source = document.getElementById('costPerTrip');
     const panel = document.querySelector('.fuel-result-panel');
     if (!toggle || !fields || !tripsPerWeek || !workWeeksYear || !card || !source || !panel) return;
+    const moneyFormatters = new Map();
 
     const formatMoney = (amount) => {
       try {
-        return new Intl.NumberFormat('en-US', {
-          style: 'currency',
-          currency: currency.value,
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2
-        }).format(amount);
+        const code = currency.value;
+        if (!moneyFormatters.has(code)) {
+          moneyFormatters.set(code, new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: code,
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          }));
+        }
+        return moneyFormatters.get(code).format(amount);
       } catch (_) {
         return '$' + amount.toFixed(2);
       }
@@ -4769,6 +4786,7 @@
     const PRICE_FROM = Object.fromEntries(Object.entries(PRICE_CODES).map(([k, v]) => [v, k]));
 
     const activeVehicle = () => {
+      if (typeof window.fuelGetVehicle === 'function') return window.fuelGetVehicle();
       const b = document.querySelector('[data-vehicle-quick].active');
       return b ? b.dataset.vehicleQuick : 'gasoline';
     };
@@ -4833,9 +4851,13 @@
 
       const vehicle = VEHICLE_FROM[q.get('v')] || 'gasoline';
       if (activeVehicle() !== vehicle) {
-        const quickVehicle = vehicle === 'electric' ? 'electric' : 'gasoline';
-        const button = document.querySelector('[data-vehicle-quick="' + quickVehicle + '"]');
-        if (button) button.click();
+        if (typeof window.fuelSetVehicle === 'function') {
+          window.fuelSetVehicle(vehicle);
+        } else {
+          const quickVehicle = vehicle === 'electric' ? 'electric' : 'gasoline';
+          const button = document.querySelector('[data-vehicle-quick="' + quickVehicle + '"]');
+          if (button) button.click();
+        }
       }
 
       els.distanceUnit.value = q.get('u') === 'km' ? 'km' : 'miles';
